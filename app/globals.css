@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050709;
+  --foreground: #e2e8f0;
+  --accent-amber: #e5a93c;
+  --accent-emerald: #68d391;
+  --tactical-border: rgba(255, 255, 255, 0.08);
+}
+
+@theme {
+  --color-obsidian-950: #030406;
+  --color-obsidian-900: #050709;
+  --color-obsidian-850: #080b0f;
+  --color-obsidian-800: #0d1219;
+  --color-amber-tiger: #e5a93c;
+  --color-forest-emerald: #68d391;
+  --color-tactical-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  background-color: #050709;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Tactical Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050709;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(229, 169, 60, 0.25);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(229, 169, 60, 0.5);
+}
+
+/* Radar & Tactical Grid utilities */
+.tactical-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.radar-sweep-conic {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 280deg,
+    rgba(229, 169, 60, 0.15) 340deg,
+    rgba(229, 169, 60, 0.4) 360deg
+  );
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(8, 12, 16, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.glass-pill {
+  background: rgba(13, 18, 25, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
