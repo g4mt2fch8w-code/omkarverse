@@ -134,9 +134,10 @@ export default function LidarTiger({ opacity = 1 }: LidarTigerProps) {
   useFrame(({ camera }) => {
     raycaster.setFromCamera(mouse, camera);
     const target = new THREE.Vector3();
-    raycaster.ray.intersectPlane(plane, target);
-    if (target) {
-      pointer3D.current.copy(target);
+    // intersectPlane returns the target Vector3 or null — explicit null check required
+    const hit = raycaster.ray.intersectPlane(plane, target);
+    if (hit !== null) {
+      pointer3D.current.copy(hit);
     }
   });
 

@@ -112,19 +112,21 @@ export default function FluidNavbar({ onToggle3D, is3DActive = true }: FluidNavb
             <span className="hidden sm:inline">{isMuted ? "MUTED" : "SOUND"}</span>
           </button>
 
-          {/* 3D EXP Trigger */}
-          <button
-            onClick={onToggle3D}
-            type="button"
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-pill border font-mono text-xs transition-all ${
-              is3DActive
-                ? "border-emerald-400/40 text-emerald-400 shadow-[0_0_12px_rgba(104,211,145,0.2)]"
-                : "border-white/10 text-slate-400 hover:border-white/20 hover:text-slate-200"
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">3D EXP</span>
-          </button>
+          {/* 3D EXP Trigger — only shown on pages that support the 3D canvas */}
+          {onToggle3D && (
+            <button
+              onClick={onToggle3D}
+              type="button"
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-pill border font-mono text-xs transition-all ${
+                is3DActive
+                  ? "border-emerald-400/40 text-emerald-400 shadow-[0_0_12px_rgba(104,211,145,0.2)]"
+                  : "border-white/10 text-slate-400 hover:border-white/20 hover:text-slate-200"
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">3D EXP</span>
+            </button>
+          )}
 
           {/* Mobile Menu Hamburger Button */}
           <button

@@ -8,6 +8,9 @@ interface OrbitSphereProps {
   opacity?: number;
 }
 
+// Blueprint constant: globe radius
+const GLOBE_RADIUS = 4.2;
+
 // Convert Lat/Lon to 3D Cartesian coordinates on sphere radius R
 function latLonToVector3(lat: number, lon: number, radius: number): THREE.Vector3 {
   const phi = (90 - lat) * (Math.PI / 180);
@@ -35,21 +38,21 @@ export default function OrbitSphere({ opacity = 1 }: OrbitSphereProps) {
   const parallaxGroupRef = useRef<THREE.Group>(null);
   const { mouse } = useThree();
 
-  const RADIUS = 4.2;
+  const RADIUS = GLOBE_RADIUS;
 
   // Tadoba Core coordinates: 20.246° N, 79.312° E
-  const tadobaPos = useMemo(() => latLonToVector3(20.246, 79.312, RADIUS), [RADIUS]);
+  const tadobaPos = useMemo(() => latLonToVector3(20.246, 79.312, GLOBE_RADIUS), []);
 
   // Telemetry satellite hubs connected to Central India
   const satHubs = useMemo(
     () => [
-      latLonToVector3(28.6139, 77.209, RADIUS), // Delhi / Dehradun WII
-      latLonToVector3(12.9716, 77.5946, RADIUS), // Bengaluru ISRO
-      latLonToVector3(22.5726, 88.3639, RADIUS), // Sundarbans
-      latLonToVector3(26.8467, 80.9462, RADIUS), // Dudhwa
-      latLonToVector3(19.076, 72.8777, RADIUS), // Mumbai HQ
+      latLonToVector3(28.6139, 77.209, GLOBE_RADIUS),  // Delhi / Dehradun WII
+      latLonToVector3(12.9716, 77.5946, GLOBE_RADIUS), // Bengaluru ISRO
+      latLonToVector3(22.5726, 88.3639, GLOBE_RADIUS), // Sundarbans
+      latLonToVector3(26.8467, 80.9462, GLOBE_RADIUS), // Dudhwa
+      latLonToVector3(19.076, 72.8777, GLOBE_RADIUS),  // Mumbai HQ
     ],
-    [RADIUS]
+    []
   );
 
   // Precompute telemetry arcs geometries & materials once to eliminate memory leaks

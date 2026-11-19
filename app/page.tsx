@@ -7,7 +7,7 @@ import SceneOrchestrator, { SceneStage } from "@/components/3d/SceneOrchestrator
 import TextScrub from "@/components/ui/TextScrub";
 import BlinkitMiniMap from "@/components/ui/BlinkitMiniMap";
 import Link from "next/link";
-import { Shield, Globe, Cpu, ArrowUpRight, Compass, Terminal, Layers } from "lucide-react";
+import { Shield, Globe, Cpu, ArrowUpRight, Compass, Terminal } from "lucide-react";
 
 export default function Home() {
   const [isBooted, setIsBooted] = useState<boolean>(false);

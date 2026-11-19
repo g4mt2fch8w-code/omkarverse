@@ -134,6 +134,19 @@ export default function AmbientPlayer({
     };
   }, [isPlaying]);
 
+  // Cleanup AudioContext and oscillator on unmount to prevent Web Audio resource leaks
+  useEffect(() => {
+    return () => {
+      if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);
+      try {
+        oscRef.current?.stop();
+      } catch {
+        // osc may already be stopped
+      }
+      audioContextRef.current?.close().catch(() => {});
+    };
+  }, []);
+
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-2xl glass-panel border border-white/10 my-6 shadow-xl">
       <div className="flex items-center gap-3.5">

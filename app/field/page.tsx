@@ -31,7 +31,12 @@ export default function FieldPage() {
         <div className="absolute inset-0 tactical-grid opacity-30" />
         
         {/* Subtle Ambient Vignette & Glowing Forest Hue */}
-        <div className="absolute inset-0 bg-radial from-transparent via-black/40 to-black/80" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.8) 100%)",
+          }}
+        />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-72 h-72 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
         </div>

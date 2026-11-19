@@ -19,10 +19,16 @@ export default function HypersonicDive({
 }: HypersonicDiveProps) {
   const { camera } = useThree();
   const hasTriggered = useRef(false);
+  // Track active GSAP tweens for cleanup
+  const tweensRef = useRef<gsap.core.Tween[]>([]);
 
   useEffect(() => {
     if (!isDiving) {
       hasTriggered.current = false;
+      // Level off camera roll on ESC/skip mid-dive
+      gsap.to(camera.rotation, { z: 0, duration: 0.3, ease: "power2.out" });
+      tweensRef.current.forEach((t) => t.kill());
+      tweensRef.current = [];
       return;
     }
 
@@ -38,7 +44,7 @@ export default function HypersonicDive({
       };
 
       // Non-linear cubic-bezier(0.85, 0, 0.15, 1) over duration T = 1.6s
-      gsap.to(timeline, {
+      const t1 = gsap.to(timeline, {
         altitude: 25,
         camZ: 4.8,
         camY: 0.4,
@@ -57,15 +63,30 @@ export default function HypersonicDive({
       });
 
       // Banking roll: -14 degrees (-0.244 rad) then level-off
-      gsap.to(camera.rotation, {
+      const t2 = gsap.to(camera.rotation, {
         z: -0.244,
         duration: 0.8,
         ease: "power2.in",
         yoyo: true,
         repeat: 1,
+        onComplete: () => {
+          // Ensure perfectly leveled after oscillation
+          camera.rotation.z = 0;
+        },
       });
+
+      tweensRef.current = [t1, t2];
     }
   }, [isDiving, camera, onDiveComplete, onAltitudeChange]);
+
+  // Cleanup all tweens on component unmount
+  useEffect(() => {
+    return () => {
+      tweensRef.current.forEach((t) => t.kill());
+      gsap.set(camera.rotation, { z: 0 });
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Subtle camera mouse yaw/pitch parallax
   useFrame(({ mouse }) => {

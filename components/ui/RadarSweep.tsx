@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { soundEngine } from "@/components/audio/soundManager";
 
 interface RadarCardItem {
@@ -26,7 +26,7 @@ export default function RadarSweep({ items }: RadarSweepProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Decryption scramble effect on mount or card trigger
-  const triggerScramble = (id: string, targetText: string) => {
+  const triggerScramble = useCallback((id: string, targetText: string) => {
     let iteration = 0;
     const maxIterations = 8;
     const interval = setInterval(() => {
@@ -50,16 +50,18 @@ export default function RadarSweep({ items }: RadarSweepProps) {
         setDecryptedTitles((prev) => ({ ...prev, [id]: targetText }));
       }
     }, 40);
-  };
+  }, []);
 
   useEffect(() => {
-    // Initial sequential decryption
+    // Initial sequential decryption on mount
     items.forEach((item, index) => {
       setTimeout(() => {
         triggerScramble(item.id, item.title);
         soundEngine?.playRadarPing?.();
       }, index * 120);
     });
+  // triggerScramble is stable (useCallback), items only changes if parent re-renders with new data
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items]);
 
   return (

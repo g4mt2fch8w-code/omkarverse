@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from "react";
 
 export default function CustomCursor() {
+  const [mounted, setMounted] = useState<boolean>(false);
   const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isClicked, setIsClicked] = useState<boolean>(false);
@@ -26,6 +27,7 @@ export default function CustomCursor() {
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setMounted(true);
     // Detect touch-only screens (coarse pointer)
     if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
       setIsTouchDevice(true);
@@ -121,7 +123,7 @@ export default function CustomCursor() {
     };
   }, []);
 
-  if (isTouchDevice) return null;
+  if (!mounted || isTouchDevice) return null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden select-none">
