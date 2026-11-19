@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import CustomCursor from "@/components/ui/CustomCursor";
+import PageTransition from "@/components/ui/PageTransition";
 import "./globals.css";
 
 const inter = Inter({
@@ -42,8 +43,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#050709] text-slate-100 selection:bg-amber-500/20 selection:text-amber-300 min-h-screen`}
       >
+        {/* Scroll-driven reading progress bar (CSS-only, Safari fallback graceful) */}
+        <div className="reading-progress" aria-hidden="true" />
         <CustomCursor />
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
       </body>
     </html>
   );

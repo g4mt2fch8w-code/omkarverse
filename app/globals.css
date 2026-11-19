@@ -36,10 +36,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Allow text selection inside editorial prose */
+p, h1, h2, h3, h4, h5, h6 {
+  user-select: text;
+}
+
 /* Custom Tactical Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -47,20 +52,24 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(229, 169, 60, 0.25);
+  background: rgba(229, 169, 60, 0.2);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(229, 169, 60, 0.5);
+  background: rgba(229, 169, 60, 0.45);
 }
+
+/* Hide scrollbar for horizontal overflow elements */
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* Radar & Tactical Grid utilities */
 .tactical-grid {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
 }
 
 .radar-sweep-conic {
@@ -68,22 +77,77 @@ body {
     from 0deg,
     transparent 0deg,
     transparent 280deg,
-    rgba(229, 169, 60, 0.15) 340deg,
-    rgba(229, 169, 60, 0.4) 360deg
+    rgba(229, 169, 60, 0.12) 340deg,
+    rgba(229, 169, 60, 0.38) 360deg
   );
 }
 
 /* Glassmorphism helpers */
 .glass-panel {
   background: rgba(8, 12, 16, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
   border: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 .glass-pill {
   background: rgba(13, 18, 25, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px) saturate(110%);
+  -webkit-backdrop-filter: blur(12px) saturate(110%);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
+
+/* Scroll-driven reading progress bar */
+@supports (animation-timeline: scroll()) {
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, #e5a93c, #68d391);
+    transform-origin: left;
+    animation: reading-progress-anim linear;
+    animation-timeline: scroll(root);
+    z-index: 100;
+  }
+}
+
+@keyframes reading-progress-anim {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Scan-line CRT texture overlay */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+}
+
+/* Amber glow text utility */
+.text-glow-amber {
+  text-shadow: 0 0 20px rgba(229, 169, 60, 0.5), 0 0 60px rgba(229, 169, 60, 0.15);
+}
+
+/* Emerald glow text utility */
+.text-glow-emerald {
+  text-shadow: 0 0 20px rgba(104, 211, 145, 0.5), 0 0 60px rgba(104, 211, 145, 0.15);
+}
+
+/* Noise texture via SVG filter — applied to PostFX canvas layer for film grain fallback */
+.noise-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+

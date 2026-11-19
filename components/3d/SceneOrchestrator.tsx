@@ -7,6 +7,7 @@ import * as THREE from "three";
 import OrbitSphere from "./OrbitSphere";
 import HypersonicDive from "./HypersonicDive";
 import LidarTiger from "./LidarTiger";
+import PostFX from "./PostFX";
 import { X, Navigation, Radio } from "lucide-react";
 import { soundEngine } from "@/components/audio/soundManager";
 
@@ -122,16 +123,10 @@ export default function SceneOrchestrator({
         {(stage === "lidar" || stage === "settled" || stage === "diving") && (
           <LidarTiger opacity={stage === "diving" ? Math.max(0, 1 - altitude / 8000) : 1} />
         )}
-      </Canvas>
 
-      {/* Act 2 Shaders: Radial Chromatic Aberration & Edge Motion Blur Lines */}
-      {stage === "diving" && (
-        <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,rgba(229,169,60,0.18)_75%,rgba(6,8,9,0.85)_100%)] mix-blend-screen" />
-          <div className="absolute inset-0 backdrop-blur-[0.5px]" />
-          <div className="absolute inset-0 opacity-30 bg-[repeating-linear-gradient(0deg,transparent,transparent_3px,rgba(255,255,255,0.06)_3px,rgba(255,255,255,0.06)_6px)]" />
-        </div>
-      )}
+        {/* Post-processing FX stack — bloom, grain, vignette, chromatic aberration */}
+        <PostFX isDiving={stage === "diving"} />
+      </Canvas>
 
       {/* Mandatory ESC/SKIP HUD (min 48px touch target on mobile) */}
       {stage !== "settled" && (
@@ -163,11 +158,30 @@ export default function SceneOrchestrator({
         </div>
       )}
 
-      {/* Act 2 Real-Time Hypersonic Telemetry Altitude Scrubber */}
+      {/* Act 2 Real-Time Hypersonic Telemetry Altitude Scrubber — 4-stage waypoints */}
       {stage === "diving" && (
-        <div className="absolute bottom-10 inset-x-0 z-20 flex flex-col items-center justify-center font-mono pointer-events-none px-4 text-center">
-          <div className="px-5 py-2.5 rounded-full glass-panel border border-amber-400/40 text-amber-400 text-xs md:text-sm tracking-widest animate-pulse shadow-[0_0_20px_rgba(229,169,60,0.2)]">
-            HYPERSONIC PLUNGE // ALT: {altitude.toLocaleString()}M ➔ 25M LEVEL-OFF
+        <div className="absolute bottom-10 inset-x-0 z-20 flex flex-col items-center justify-center font-mono pointer-events-none px-4 text-center gap-3">
+          {/* Main altitude readout */}
+          <div className="px-5 py-2.5 rounded-full glass-panel border border-amber-400/40 text-amber-400 text-xs md:text-sm tracking-widest shadow-[0_0_20px_rgba(229,169,60,0.2)]">
+            HYPERSONIC PLUNGE // ALT: {altitude.toLocaleString()}M
+          </div>
+          {/* 4-waypoint strip */}
+          <div className="flex items-center gap-2 text-[10px] text-slate-500">
+            {[
+              { alt: 8000, label: "ORBIT" },
+              { alt: 2400, label: "STRATO" },
+              { alt: 450,  label: "CANOPY" },
+              { alt: 25,   label: "GROUND" },
+            ].map((wp, i, arr) => {
+              const passed = altitude <= wp.alt;
+              return (
+                <span key={wp.alt} className="flex items-center gap-1.5">
+                  <span className={`inline-block w-1.5 h-1.5 rounded-full transition-colors duration-500 ${passed ? "bg-amber-400 shadow-[0_0_6px_#e5a93c]" : "bg-slate-700"}`} />
+                  <span className={passed ? "text-amber-400" : "text-slate-600"}>{wp.label} {wp.alt}M</span>
+                  {i < arr.length - 1 && <span className="text-slate-700 mx-1">──</span>}
+                </span>
+              );
+            })}
           </div>
         </div>
       )}

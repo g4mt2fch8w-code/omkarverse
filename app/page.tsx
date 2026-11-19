@@ -6,6 +6,7 @@ import FluidNavbar from "@/components/ui/FluidNavbar";
 import SceneOrchestrator, { SceneStage } from "@/components/3d/SceneOrchestrator";
 import TextScrub from "@/components/ui/TextScrub";
 import BlinkitMiniMap from "@/components/ui/BlinkitMiniMap";
+import HeroOverlay from "@/components/ui/HeroOverlay";
 import Link from "next/link";
 import { Shield, Globe, Cpu, ArrowUpRight, Compass, Terminal } from "lucide-react";
 
@@ -32,6 +33,9 @@ export default function Home() {
             onStageChange={(stage) => setSceneStage(stage)}
             onSkip={() => setSceneStage("settled")}
           />
+
+          {/* Editorial stencil title + live telemetry chips */}
+          <HeroOverlay stage={sceneStage} isBooted={isBooted} />
 
           {/* Top-Left Tactical Coordinates Overlay */}
           <div className="absolute top-24 left-6 z-20 hidden md:flex flex-col gap-1 font-mono text-[11px] text-slate-400 glass-pill px-4 py-2.5 rounded-xl border border-white/10 pointer-events-none">
