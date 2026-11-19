@@ -234,6 +234,21 @@ export default function LidarTiger({ opacity = 1 }: LidarTigerProps) {
     };
   }, []);
 
+  // Strict WebGL memory cleanup on unmount
+  useEffect(() => {
+    const pts = pointsRef.current;
+    return () => {
+      if (pts) {
+        pts.geometry.dispose();
+        if (Array.isArray(pts.material)) {
+          pts.material.forEach((m) => m.dispose());
+        } else {
+          pts.material.dispose();
+        }
+      }
+    };
+  }, []);
+
   return (
     <points ref={pointsRef}>
       <bufferGeometry>

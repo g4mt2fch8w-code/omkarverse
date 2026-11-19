@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import CustomCursor from "@/components/ui/CustomCursor";
 import "./globals.css";
 
 const inter = Inter({
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#050709] text-slate-100 selection:bg-amber-500/20 selection:text-amber-300 min-h-screen`}
       >
+        <CustomCursor />
         {children}
       </body>
     </html>

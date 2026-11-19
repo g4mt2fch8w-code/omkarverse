@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef, useMemo } from "react";
-import { useFrame } from "@react-three/fiber";
+import React, { useRef, useMemo, useEffect } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 interface OrbitSphereProps {
@@ -32,7 +32,8 @@ function createTelemetryArc(start: THREE.Vector3, end: THREE.Vector3, altitudeFa
 export default function OrbitSphere({ opacity = 1 }: OrbitSphereProps) {
   const globeGroupRef = useRef<THREE.Group>(null);
   const atmosphereRef = useRef<THREE.Mesh>(null);
-  const arcsGroupRef = useRef<THREE.Group>(null);
+  const parallaxGroupRef = useRef<THREE.Group>(null);
+  const { mouse } = useThree();
 
   const RADIUS = 4.2;
 
@@ -51,118 +52,161 @@ export default function OrbitSphere({ opacity = 1 }: OrbitSphereProps) {
     [RADIUS]
   );
 
-  // Generate glowing telemetry arcs
-  const arcCurves = useMemo(() => {
-    return satHubs.map((hub) => createTelemetryArc(tadobaPos, hub, 0.45));
+  // Precompute telemetry arcs geometries & materials once to eliminate memory leaks
+  const { arcLines, arcGeometries, arcMaterials } = useMemo(() => {
+    const geometries: THREE.BufferGeometry[] = [];
+    const materials: THREE.LineBasicMaterial[] = [];
+    const lines: THREE.Line[] = [];
+
+    satHubs.forEach((hub, idx) => {
+      const pts = createTelemetryArc(tadobaPos, hub, 0.45);
+      const geom = new THREE.BufferGeometry().setFromPoints(pts);
+      const mat = new THREE.LineBasicMaterial({
+        color: idx % 2 === 0 ? "#e5a93c" : "#68d391",
+        transparent: true,
+        opacity: 0.55,
+        linewidth: 1.5,
+        blending: THREE.AdditiveBlending,
+      });
+      const line = new THREE.Line(geom, mat);
+      geometries.push(geom);
+      materials.push(mat);
+      lines.push(line);
+    });
+
+    return { arcLines: lines, arcGeometries: geometries, arcMaterials: materials };
   }, [satHubs, tadobaPos]);
 
-  // Subtle globe rotation and telemetry pulse
-  useFrame((state, delta) => {
+  // Dynamically update arc material opacity based on scene transition
+  useEffect(() => {
+    arcMaterials.forEach((mat) => {
+      mat.opacity = 0.55 * opacity;
+    });
+  }, [opacity, arcMaterials]);
+
+  // Explicit WebGL memory disposal on unmount
+  useEffect(() => {
+    return () => {
+      arcGeometries.forEach((g) => g.dispose());
+      arcMaterials.forEach((m) => m.dispose());
+    };
+  }, [arcGeometries, arcMaterials]);
+
+  // Mouse pitch/yaw parallax (clamped: θx, θy in [-15°, +15°] = [-0.26 rad, +0.26 rad])
+  useFrame((_, delta) => {
     if (globeGroupRef.current) {
-      globeGroupRef.current.rotation.y += delta * 0.06;
+      globeGroupRef.current.rotation.y += delta * 0.05;
     }
     if (atmosphereRef.current) {
-      atmosphereRef.current.rotation.y += delta * 0.08;
+      atmosphereRef.current.rotation.y += delta * 0.07;
+    }
+
+    if (parallaxGroupRef.current) {
+      const targetRotY = THREE.MathUtils.clamp(-mouse.x * 0.26, -0.26, 0.26);
+      const targetRotX = THREE.MathUtils.clamp(mouse.y * 0.26, -0.26, 0.26);
+      parallaxGroupRef.current.rotation.y = THREE.MathUtils.lerp(
+        parallaxGroupRef.current.rotation.y,
+        targetRotY,
+        0.05
+      );
+      parallaxGroupRef.current.rotation.x = THREE.MathUtils.lerp(
+        parallaxGroupRef.current.rotation.x,
+        targetRotX,
+        0.05
+      );
     }
   });
 
   return (
-    <group ref={globeGroupRef}>
-      {/* Dark Luxury Geospatial Sphere Base */}
-      <mesh>
-        <sphereGeometry args={[RADIUS, 64, 64]} />
-        <meshStandardMaterial
-          color="#06090e"
-          roughness={0.7}
-          metalness={0.3}
-          wireframe={false}
-          transparent
-          opacity={opacity}
-        />
-      </mesh>
-
-      {/* Wireframe Lat/Lon Tactical Coordinate Grid */}
-      <mesh>
-        <sphereGeometry args={[RADIUS * 1.002, 36, 18]} />
-        <meshBasicMaterial
-          color="#1e293b"
-          wireframe
-          transparent
-          opacity={0.35 * opacity}
-        />
-      </mesh>
-
-      {/* Atmospheric Haze Glow */}
-      <mesh ref={atmosphereRef}>
-        <sphereGeometry args={[RADIUS * 1.06, 48, 48]} />
-        <meshBasicMaterial
-          color="#0ea5e9"
-          side={THREE.BackSide}
-          transparent
-          opacity={0.12 * opacity}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh>
-
-      {/* Equatorial & Polar Tactical Orbital Rings */}
-      <mesh rotation={[Math.PI / 4, 0, 0]}>
-        <torusGeometry args={[RADIUS * 1.35, 0.015, 16, 100]} />
-        <meshBasicMaterial
-          color="#e5a93c"
-          transparent
-          opacity={0.25 * opacity}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh>
-      <mesh rotation={[-Math.PI / 3, Math.PI / 6, 0]}>
-        <torusGeometry args={[RADIUS * 1.45, 0.01, 16, 100]} />
-        <meshBasicMaterial
-          color="#68d391"
-          transparent
-          opacity={0.2 * opacity}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh>
-
-      {/* Tadoba Central Node Pin */}
-      <group position={tadobaPos}>
+    <group ref={parallaxGroupRef}>
+      <group ref={globeGroupRef}>
+        {/* Dark Luxury Geospatial Sphere Base */}
         <mesh>
-          <sphereGeometry args={[0.08, 16, 16]} />
-          <meshBasicMaterial color="#e5a93c" />
-        </mesh>
-        <mesh>
-          <ringGeometry args={[0.12, 0.16, 24]} />
-          <meshBasicMaterial
-            color="#e5a93c"
-            side={THREE.DoubleSide}
+          <sphereGeometry args={[RADIUS, 64, 64]} />
+          <meshStandardMaterial
+            color="#06090e"
+            roughness={0.7}
+            metalness={0.3}
+            wireframe={false}
             transparent
-            opacity={0.7 * opacity}
+            opacity={opacity}
           />
         </mesh>
-      </group>
 
-      {/* Sat Hub Nodes */}
-      {satHubs.map((hub, idx) => (
-        <mesh key={idx} position={hub}>
-          <sphereGeometry args={[0.045, 12, 12]} />
-          <meshBasicMaterial color="#68d391" />
+        {/* Wireframe Lat/Lon Tactical Coordinate Grid */}
+        <mesh>
+          <sphereGeometry args={[RADIUS * 1.002, 36, 18]} />
+          <meshBasicMaterial
+            color="#1e293b"
+            wireframe
+            transparent
+            opacity={0.35 * opacity}
+          />
         </mesh>
-      ))}
 
-      {/* Glowing Telemetry Arcs */}
-      <group ref={arcsGroupRef}>
-        {arcCurves.map((pts, idx) => {
-          const geometry = new THREE.BufferGeometry().setFromPoints(pts);
-          const material = new THREE.LineBasicMaterial({
-            color: idx % 2 === 0 ? "#e5a93c" : "#68d391",
-            transparent: true,
-            opacity: 0.55 * opacity,
-            linewidth: 1.5,
-            blending: THREE.AdditiveBlending,
-          });
-          const lineObj = new THREE.Line(geometry, material);
-          return <primitive key={idx} object={lineObj} />;
-        })}
+        {/* Atmospheric Haze Glow */}
+        <mesh ref={atmosphereRef}>
+          <sphereGeometry args={[RADIUS * 1.06, 48, 48]} />
+          <meshBasicMaterial
+            color="#0ea5e9"
+            side={THREE.BackSide}
+            transparent
+            opacity={0.12 * opacity}
+            blending={THREE.AdditiveBlending}
+          />
+        </mesh>
+
+        {/* Equatorial & Polar Tactical Orbital Rings */}
+        <mesh rotation={[Math.PI / 4, 0, 0]}>
+          <torusGeometry args={[RADIUS * 1.35, 0.015, 16, 100]} />
+          <meshBasicMaterial
+            color="#e5a93c"
+            transparent
+            opacity={0.25 * opacity}
+            blending={THREE.AdditiveBlending}
+          />
+        </mesh>
+        <mesh rotation={[-Math.PI / 3, Math.PI / 6, 0]}>
+          <torusGeometry args={[RADIUS * 1.45, 0.01, 16, 100]} />
+          <meshBasicMaterial
+            color="#68d391"
+            transparent
+            opacity={0.2 * opacity}
+            blending={THREE.AdditiveBlending}
+          />
+        </mesh>
+
+        {/* Tadoba Central Node Pin */}
+        <group position={tadobaPos}>
+          <mesh>
+            <sphereGeometry args={[0.08, 16, 16]} />
+            <meshBasicMaterial color="#e5a93c" />
+          </mesh>
+          <mesh>
+            <ringGeometry args={[0.12, 0.16, 24]} />
+            <meshBasicMaterial
+              color="#e5a93c"
+              side={THREE.DoubleSide}
+              transparent
+              opacity={0.7 * opacity}
+            />
+          </mesh>
+        </group>
+
+        {/* Sat Hub Nodes */}
+        {satHubs.map((hub, idx) => (
+          <mesh key={idx} position={hub}>
+            <sphereGeometry args={[0.045, 12, 12]} />
+            <meshBasicMaterial color="#68d391" />
+          </mesh>
+        ))}
+
+        {/* Glowing Telemetry Arcs */}
+        <group>
+          {arcLines.map((line, idx) => (
+            <primitive key={idx} object={line} />
+          ))}
+        </group>
       </group>
     </group>
   );

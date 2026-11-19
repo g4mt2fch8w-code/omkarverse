@@ -1,0 +1,16 @@
+{
+  "name": "OMKARVERSE",
+  "short_name": "OMKARVERSE",
+  "description": "Digital Territory & Tactical GIS Universe // Architect: Onkar Bhople Patil",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050709",
+  "theme_color": "#e5a93c",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

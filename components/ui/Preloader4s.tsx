@@ -20,36 +20,6 @@ export default function Preloader4s({ onComplete }: Preloader4sProps) {
   const [countdown, setCountdown] = useState<number>(4);
   const [logIndex, setLogIndex] = useState<number>(0);
   const [isFinished, setIsFinished] = useState<boolean>(false);
-  
-  // Custom magnetic cursor position
-  const cursorRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
-  const [cursorPos, setCursorPos] = useState<{ x: number; y: number }>({ x: -100, y: -100 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      cursorRef.current = { x: e.clientX, y: e.clientY };
-    };
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-
-    let animationFrameId: number;
-    let currentX = -100;
-    let currentY = -100;
-
-    const renderCursor = () => {
-      // Lerp smoothing (0.18 speed)
-      currentX += (cursorRef.current.x - currentX) * 0.18;
-      currentY += (cursorRef.current.y - currentY) * 0.18;
-      setCursorPos({ x: currentX, y: currentY });
-      animationFrameId = requestAnimationFrame(renderCursor);
-    };
-
-    animationFrameId = requestAnimationFrame(renderCursor);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -72,30 +42,14 @@ export default function Preloader4s({ onComplete }: Preloader4sProps) {
   }, [onComplete]);
 
   return (
-    <>
-      {/* Custom Tactical Cursor Follower */}
-      <div
-        className="pointer-events-none fixed z-50 transition-opacity duration-300"
-        style={{
-          transform: `translate3d(${cursorPos.x - 16}px, ${cursorPos.y - 16}px, 0)`,
-          opacity: cursorPos.x < 0 ? 0 : 1,
-        }}
-      >
-        <div className="relative flex items-center justify-center w-8 h-8">
-          <div className="absolute w-8 h-8 rounded-full border border-amber-400/40 animate-ping" />
-          <div className="absolute w-6 h-6 rounded-full border border-amber-400/60" />
-          <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {!isFinished && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 1.02 }}
-            transition={{ duration: 0.65, ease: [0.85, 0, 0.15, 1] }}
-            className="fixed inset-0 z-40 flex flex-col justify-between p-8 md:p-14 bg-[#050709] text-amber-400/90 select-none tactical-grid overflow-hidden"
-          >
+    <AnimatePresence>
+      {!isFinished && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0, scale: 1.02 }}
+          transition={{ duration: 0.65, ease: [0.85, 0, 0.15, 1] }}
+          className="fixed inset-0 z-40 flex flex-col justify-between p-8 md:p-14 bg-[#050709] text-amber-400/90 select-none tactical-grid overflow-hidden"
+        >
             {/* Top Tactical Status */}
             <div className="flex items-center justify-between font-mono text-xs tracking-widest text-slate-400">
               <div className="flex items-center gap-3">
@@ -105,7 +59,16 @@ export default function Preloader4s({ onComplete }: Preloader4sProps) {
               <div className="hidden sm:block text-slate-500">
                 ARCHITECT: ONKAR BHOPLE PATIL
               </div>
-              <div>TARU [87PX+7FV]</div>
+              <div className="flex items-center gap-3">
+                <span>TARU [87PX+7FV]</span>
+                <button
+                  onClick={() => onComplete()}
+                  type="button"
+                  className="px-2.5 py-1 rounded-full border border-white/10 hover:border-amber-400/50 text-slate-400 hover:text-amber-400 text-[10px] transition-colors"
+                >
+                  SKIP
+                </button>
+              </div>
             </div>
 
             {/* Center Massive Countdown */}
@@ -151,6 +114,5 @@ export default function Preloader4s({ onComplete }: Preloader4sProps) {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
-  );
+    );
 }

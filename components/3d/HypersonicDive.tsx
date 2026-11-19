@@ -21,6 +21,11 @@ export default function HypersonicDive({
   const hasTriggered = useRef(false);
 
   useEffect(() => {
+    if (!isDiving) {
+      hasTriggered.current = false;
+      return;
+    }
+
     if (isDiving && !hasTriggered.current) {
       hasTriggered.current = true;
       soundEngine?.playHypersonicDive?.();
