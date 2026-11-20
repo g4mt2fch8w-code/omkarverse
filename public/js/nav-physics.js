@@ -18,6 +18,13 @@
         tigerTab.classList.add('active');
         activeTab = tigerTab;
       }
+    } else if (window.location.pathname.startsWith('/field')) {
+      const fieldTab = tabs.find(t => t.getAttribute('data-nav') === 'field');
+      if (fieldTab) {
+        tabs.forEach(t => t.classList.remove('active'));
+        fieldTab.classList.add('active');
+        activeTab = fieldTab;
+      }
     }
     let isHovering = false;
 
