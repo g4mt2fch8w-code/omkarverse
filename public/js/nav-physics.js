@@ -20,7 +20,7 @@
       if (isImmediate) {
         pill.style.transition = 'none';
       } else {
-        pill.style.transition = 'transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), width 0.35s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.2s ease';
+        pill.style.transition = 'transform 0.36s cubic-bezier(0.25, 1, 0.35, 1), width 0.36s cubic-bezier(0.25, 1, 0.35, 1), opacity 0.2s ease';
       }
       pill.style.transform = `translate3d(${left}px, 0, 0)`;
       pill.style.width = `${width}px`;
@@ -36,6 +36,14 @@
     // Double check after fonts/layout settle
     setTimeout(() => movePillTo(activeTab, true), 100);
 
+    const navTargets = {
+      core: { route: '/', targetId: 's1' },
+      telemetry: { route: '/telemetry', targetId: 'stage01Cta' },
+      forest: { route: '/forest', targetId: 's2' },
+      tiger: { route: '/tiger', targetId: 's3' },
+      field: { route: '/field', targetId: 's4' }
+    };
+
     tabs.forEach(tab => {
       tab.addEventListener('mouseenter', () => {
         isHovering = true;
@@ -46,14 +54,22 @@
         movePillTo(tab);
       });
       tab.addEventListener('click', (e) => {
-        const href = tab.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
+        e.preventDefault();
+        const navKey = tab.getAttribute('data-nav') || 'core';
+        const route = tab.getAttribute('data-route') || (navTargets[navKey] ? navTargets[navKey].route : '/');
+        const targetId = navTargets[navKey] ? navTargets[navKey].targetId : 's1';
+        const target = document.getElementById(targetId) || document.querySelector(tab.getAttribute('href'));
+
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
         }
+
+        try {
+          if (window.location.pathname !== route) {
+            history.pushState({ nav: navKey }, '', route);
+          }
+        } catch (err) {}
+
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
         activeTab = tab;
@@ -66,27 +82,42 @@
       movePillTo(activeTab);
     });
 
+    window.addEventListener('popstate', () => {
+      const path = window.location.pathname;
+      const tabForPath = tabs.find(t => t.getAttribute('data-route') === path);
+      if (tabForPath) {
+        tabs.forEach(t => t.classList.remove('active'));
+        tabForPath.classList.add('active');
+        activeTab = tabForPath;
+        movePillTo(tabForPath);
+      }
+    });
+
     // Auto-update active tab and route tag on page scroll
-    const sceneSections = ['s1', 's2', 's3', 's4'].map(id => document.getElementById(id)).filter(Boolean);
-    const routeTag = document.getElementById('routeTag');
-
-    const sceneRoutes = {
-      s1: 'home',
-      s2: 'forest',
-      s3: 'tiger',
-      s4: 'field',
-      s5: 'core'
-    };
-
     function onScroll() {
       const scrollPos = window.scrollY + window.innerHeight * 0.35;
-      let currentId = 's1';
-      for (const section of sceneSections) {
-        if (section.offsetTop <= scrollPos) {
-          currentId = section.id;
+      let currentNav = 'core';
+
+      const s1 = document.getElementById('s1');
+      const s2 = document.getElementById('s2');
+      const s3 = document.getElementById('s3');
+      const s4 = document.getElementById('s4');
+
+      if (s4 && s4.offsetTop <= scrollPos) {
+        currentNav = 'field';
+      } else if (s3 && s3.offsetTop <= scrollPos) {
+        currentNav = 'tiger';
+      } else if (s2 && s2.offsetTop <= scrollPos) {
+        currentNav = 'forest';
+      } else if (s1) {
+        if (window.scrollY > 220 && window.scrollY < (s2 ? s2.offsetTop - 80 : 800)) {
+          currentNav = 'telemetry';
+        } else {
+          currentNav = 'core';
         }
       }
-      const matchingTab = tabs.find(t => t.getAttribute('data-nav') === currentId);
+
+      const matchingTab = tabs.find(t => t.getAttribute('data-nav') === currentNav);
       if (matchingTab && matchingTab !== activeTab) {
         tabs.forEach(t => t.classList.remove('active'));
         matchingTab.classList.add('active');
@@ -94,10 +125,6 @@
         if (!isHovering) {
           movePillTo(activeTab);
         }
-      }
-      if (routeTag && sceneRoutes[currentId]) {
-        const lbl = routeTag.querySelector('.lbl') || routeTag;
-        lbl.innerHTML = `<i>/</i>${sceneRoutes[currentId]}`;
       }
     }
 
