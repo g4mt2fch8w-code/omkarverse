@@ -143,8 +143,8 @@ export function FieldFeed({ initialDispatches }: FieldFeedProps) {
 
           {/* Content Container */}
           <div className="relative z-10 flex flex-col items-center max-w-4xl py-16">
-            {/* 1. Standby indicator */}
-            <div className="font-mono text-sm tracking-widest text-amber-400 font-semibold uppercase">
+            {/* 1. Standby indicator (Animated & Big) */}
+            <div className="standby-animated text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-amber-400 font-mono select-none uppercase mb-2">
               Standby !!!!!
             </div>
 

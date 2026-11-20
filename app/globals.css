@@ -7,3 +7,21 @@
     --muted-text: #8E98B8;
   }
 }
+
+@keyframes standbyPulse {
+  0%, 100% {
+    transform: scale(0.97);
+    filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.35));
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 40px rgba(245, 158, 11, 0.85)) drop-shadow(0 0 70px rgba(245, 158, 11, 0.4));
+    opacity: 1;
+  }
+}
+
+.standby-animated {
+  animation: standbyPulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  display: inline-block;
+}
