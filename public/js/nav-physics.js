@@ -71,6 +71,7 @@
       tab.addEventListener('click', (e) => {
         const navKey = tab.getAttribute('data-nav') || 'core';
         const isTigerPage = window.location.pathname.startsWith('/tiger');
+        const isFieldPage = window.location.pathname.startsWith('/field');
 
         if (navKey === 'tiger') {
           if (!isTigerPage) {
@@ -82,7 +83,17 @@
           return;
         }
 
-        if (isTigerPage) {
+        if (navKey === 'field') {
+          if (!isFieldPage) {
+            window.location.href = '/field';
+            return;
+          }
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+
+        if (isTigerPage || isFieldPage) {
           if (navKey === 'core') {
             window.location.href = '/';
             return;
@@ -92,16 +103,19 @@
           } else if (navKey === 'forest') {
             window.location.href = '/#s3';
             return;
-          } else if (navKey === 'field') {
-            window.location.href = '/#s5';
-            return;
           }
         }
 
         e.preventDefault();
         const route = tab.getAttribute('data-route') || (navTargets[navKey] ? navTargets[navKey].route : '/');
         const targetId = navTargets[navKey] ? navTargets[navKey].targetId : 's1';
-        const target = document.getElementById(targetId) || document.querySelector(tab.getAttribute('href'));
+        const href = tab.getAttribute('href');
+        let target = document.getElementById(targetId);
+        if (!target && href && href.startsWith('#')) {
+          try {
+            target = document.querySelector(href);
+          } catch (err) {}
+        }
 
         if (target) {
           target.scrollIntoView({ behavior: 'smooth' });

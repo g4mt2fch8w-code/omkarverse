@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useMemo, useEffect, useRef } from "react";
+import Link from "next/link";
+import { DotPhysicsHeader } from "@/components/DotPhysicsHeader";
 
 export interface Dispatch {
   id: string;
@@ -121,21 +123,86 @@ export function FieldFeed({ initialDispatches }: FieldFeedProps) {
     ? initialDispatches.findIndex((d) => d.id === selectedDispatch.id)
     : -1;
 
+  // =========================================================================
+  // CINEMATIC FIELD OUTPOST STANDBY STATE (When dispatches.length === 0)
+  // =========================================================================
+  if (initialDispatches.length === 0) {
+    return (
+      <div className="flex flex-col gap-8">
+        {/* Massive Commanding Header with Interactive Dot Physics */}
+        <DotPhysicsHeader />
+
+        {/* Cinematic Standby Outpost */}
+        <div className="relative min-h-[55vh] flex flex-col justify-center items-center text-center px-6 overflow-hidden rounded-xl border border-white/5 bg-[#041329]/50">
+          {/* Subtle moody background photo with vignette fade */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-15 pointer-events-none"
+            style={{ backgroundImage: `url('/media/museum_tigers/05_Wagdoh_T38_Tadoba.jpg')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#041329] via-[#041329]/80 to-[#041329] pointer-events-none" />
+
+          {/* Content Container */}
+          <div className="relative z-10 flex flex-col items-center max-w-4xl py-12">
+            {/* 1. Tactical Outpost Status Badge (108.supply style) */}
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-amber-400 bg-amber-400/10 border border-amber-400/30 px-4 py-2 rounded-full tracking-wider uppercase">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#f59e0b]" />
+              <span>OUTPOST 01: TADOBA CORE · FREQUENCY 142.850 MHz · STANDBY</span>
+            </div>
+
+            {/* 2. Bold Editorial Headline (rejouice.com style) */}
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-8 mb-4 max-w-3xl leading-[1.15] uppercase">
+              EXPEDITION ARCHIVE IN PROGRESS // CHRONICLES UNDER FIELD CURATION
+            </h2>
+
+            {/* 3. Authentic Editorial Statement */}
+            <p className="text-slate-400 text-base md:text-lg max-w-2xl leading-relaxed font-sans mb-8">
+              Field telemetry, RAW photographic contact sheets, and GPS patrol logs from Central Indian forest corridors are currently being compiled from Sony A7IV buffers and Garmin 66sr waypoints. Incoming dispatches will transmit directly to this frequency.
+            </p>
+
+            {/* 4. Station Telemetry Spec Box (HAVEN style minimal strip) */}
+            <div className="font-mono text-xs text-slate-500 flex flex-wrap justify-center items-center gap-x-6 gap-y-2 mb-10 py-3 px-6 border-y border-white/5 uppercase tracking-wider">
+              <span>ZONE: TADOBA CORE (20.246° N, 79.312° E)</span>
+              <span className="text-white/10 hidden sm:inline">|</span>
+              <span>OPTICS: SONY A7IV + 200-600MM</span>
+              <span className="text-white/10 hidden sm:inline">|</span>
+              <span>ARCHIVIST: ONKAR BHOPLE PATIL</span>
+            </div>
+
+            {/* 5. Quick Gateways (Zero Dead Ends) */}
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="/tiger"
+                className="font-mono text-xs text-white border border-white/20 hover:border-amber-400 hover:text-amber-400 px-6 py-3.5 rounded-sm transition-all tracking-wider uppercase"
+              >
+                [ ↗ EXPLORE 3D TIGER MUSEUM ]
+              </a>
+              <a
+                href="/"
+                className="font-mono text-xs text-white border border-white/20 hover:border-amber-400 hover:text-amber-400 px-6 py-3.5 rounded-sm transition-all tracking-wider uppercase"
+              >
+                [ ↗ VIEW SATELLITE CORE ]
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-10">
+      {/* Massive Commanding Header with Interactive Dot Physics */}
+      <DotPhysicsHeader />
+
       {/* =========================================================================
-          1. MINIMALIST TACTICAL HEADER (Pure National Geographic × 108.supply)
+          CONTROL & FILTER BAR (108.supply style)
           ========================================================================= */}
       <header className="border-b border-white/10 pb-6">
-        {/* Top Line: Dispatch Origin & Coordinates */}
+        {/* Top Line: Filter count & 108.supply View Toggle */}
         <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
           <div className="flex items-center gap-3">
             <span className="text-amber-400 tracking-widest font-semibold uppercase">
-              FIELD DISPATCHES // TADOBA ARCHIVE
-            </span>
-            <span className="text-white/20">/</span>
-            <span className="text-slate-400 tracking-wider hidden sm:inline">
-              20.246° N, 79.312° E · TADOBA CORE
+              ● SHOWING: {filteredDispatches.length.toString().padStart(2, "0")} / {initialDispatches.length.toString().padStart(2, "0")} DISPATCHES
             </span>
           </div>
 
