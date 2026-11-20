@@ -164,13 +164,69 @@
     window.addEventListener('resize', () => movePillTo(getActiveBtn(), true), { passive: true });
   }
 
+  function initGlobeClickScroll() {
+    const hint1 = document.getElementById('hint1');
+    const s2 = document.getElementById('s2');
+
+    function scrollToNext() {
+      if (s2) {
+        s2.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+      }
+    }
+
+    if (hint1) {
+      hint1.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToNext();
+      });
+    }
+
+    // Globe click detection on canvas / stage 1
+    // Differentiate between clicking (trigger scroll) vs dragging to rotate the globe
+    let startX = 0;
+    let startY = 0;
+    let startTime = 0;
+    let isDown = false;
+
+    window.addEventListener('pointerdown', (e) => {
+      // Ignore if clicking on interactive UI controls
+      if (e.target && e.target.closest && e.target.closest('a, button, input, summary, select, .top, .nav-capsule, .looks, .stage-cta, #stage01Cta')) {
+        isDown = false;
+        return;
+      }
+      startX = e.clientX;
+      startY = e.clientY;
+      startTime = Date.now();
+      isDown = true;
+    }, { passive: true });
+
+    window.addEventListener('pointerup', (e) => {
+      if (!isDown) return;
+      isDown = false;
+      const dx = Math.hypot(e.clientX - startX, e.clientY - startY);
+      const dt = Date.now() - startTime;
+
+      // If user moved less than 12px within 450ms, it is a click, not a rotation drag
+      if (dx < 12 && dt < 450) {
+        // Only trigger scroll when in the top hero/globe section
+        if (window.scrollY < window.innerHeight * 0.75) {
+          scrollToNext();
+        }
+      }
+    }, { passive: true });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initNavCapsule();
       initLooksToggle();
+      initGlobeClickScroll();
     });
   } else {
     initNavCapsule();
     initLooksToggle();
+    initGlobeClickScroll();
   }
 })();
