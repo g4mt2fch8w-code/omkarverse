@@ -1,0 +1,164 @@
+====================================================================================================
+                        TIGERS OF SATPURA: OFFICIAL DEMOGRAPHIC DOSSIER,
+              LONGITUDINAL MONITORING REGISTERS, BREEDING MATRILINES & FIELD IDENTIFICATIONS
+====================================================================================================
+
+PREPARED FOR: Tiger Monitoring Repository & Biosphere Carnivore Research Archive
+LOCATION: Satpura Tiger Reserve & Pachmarhi Biosphere Reserve, Madhya Pradesh, Central India
+CORE AREA: 1,339.264 sq. km (Kamti, Bori, Churna, East Pachmarhi, West Pachmarhi, Matkuli Ranges)
+BUFFER AREA: 794.040 sq. km (Hoshangabad, Rampur Bhatodi Project, and West Chhindwara Divisions)
+STATUS: Central India's Mountain Tiger Stronghold & Founder Donor for Regional Reintroduction
+
+
+====================================================================================================
+DEMOGRAPHIC CENSUS SUMMARY: THE RECOVERY TIMELINE (2014–2026)
+====================================================================================================
+  * AITE 2014 (Cycle 3): 16 Unique Adult Tigers identified (early post-village relocation baseline).
+  * AITE 2018 (Cycle 4): 40 Adult Individuals identified from 911 camera-trap detections (SECR Density: 
+    1.39 ± 0.20 tigers / 100 sq. km). Highest densities recorded in Bori and Kamti ranges.
+  * AITE 2022 (Cycle 5): **50 Unique Adult Tigers** captured (830 camera stations, 26,761 trap nights; 
+    SECR Density surged to **2.01 ± 0.28 tigers / 100 sq. km**).
+  * 2024–2026 Contemporary Status: Total resident population exceeds **65–70+ Wild Tigers** across core 
+    and buffer zones, with active multi-female breeding in Churna, Mallupura, Bori, and Madhai.
+
+
+====================================================================================================
+PART 1: FAMOUS RESIDENT BREEDING MONARCHS & MATRIARCHS (2020–2026 COHORT)
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+1. LAILA — The Undisputed Queen of Mallupura
+----------------------------------------------------------------------------------------------------
+  * Code: LAILA / SATP_F01
+  * Sex: Female (F)
+  * Estimated Age (2026): ~7.5 Years
+  * Provenance: Wild-born in Satpura core; daughter of an earlier Bori resident matriarch.
+  * Territory & Beats: Mallupura Safari Zone, Tawa Reservoir backwaters, and southern Bagda buffer.
+  * Reproductive Record: Reared multiple litters; delivered **3 healthy cubs in early 2024** 
+    (LAILA_C1, LAILA_C2, LAILA_C3), frequently sighted playing along the reservoir mudflats and sand spits.
+  * Physical Markers: Slender, athletic build; distinctive asymmetrical wishbone mark over left eye; 
+    extremely calm around safari vehicles. Regularly accompanied by dominant male R2.
+
+----------------------------------------------------------------------------------------------------
+2. MACHHLI SATPURA — The Churna Matriarch
+----------------------------------------------------------------------------------------------------
+  * Code: MACHHLI_SATP / SATP_F02
+  * Sex: Female (F)
+  * Estimated Age (2026): ~8.0 Years
+  * Territory & Beats: Churna Core Zone, Bori River basin, and Churna meadow clearings.
+  * Reproductive Record: Successfully reared **3 sub-adult cubs in 2023–2024** (MACH_C1, MACH_C2, MACH_C3). 
+    Known as an extraordinary huntress of adult Gaur and Sambar in the dense mixed teak-bamboo forests.
+  * Physical Markers: Robust, heavy-set tigress; deep orange coat with fish-shaped stripe cluster on 
+    upper right flank; bold white facial bib.
+
+----------------------------------------------------------------------------------------------------
+3. SHANKARA — The Churna Titan
+----------------------------------------------------------------------------------------------------
+  * Code: SHANKARA / SATP_M01
+  * Sex: Male (M)
+  * Estimated Age (2026): ~9.0 Years
+  * Estimated Weight: ~230–245 kg (One of the largest males ever photographed in the Satpura range)
+  * Territory & Beats: Dominates over 250 sq. km encompassing the central Churna valley, Dhain meadows, 
+    and Bori sanctuary core. Primary breeding sire of Machhli Satpura and Heartface litters.
+  * Physical Markers: Massive skull with pronounced sagittal ridge; torn right ear tip from territorial 
+    skirmishes; wide-spaced double horizontal stripes across nasal bridge.
+
+----------------------------------------------------------------------------------------------------
+4. RUDRA — The Churna Challenger
+----------------------------------------------------------------------------------------------------
+  * Code: RUDRA / SATP_M02
+  * Sex: Male (M)
+  * Estimated Age (2026): ~6.5 Years
+  * Territory & Beats: Churna northern ridges, Malani River gorge, and Pachmarhi foothills.
+  * Physical Markers: Sleek, long-bodied male; prominent trident marking on lower left flank.
+
+----------------------------------------------------------------------------------------------------
+5. HEARTFACE — The Churna Matriarch
+----------------------------------------------------------------------------------------------------
+  * Code: HEARTFACE / SATP_F03
+  * Sex: Female (F)
+  * Estimated Age (2026): ~6.0 Years
+  * Territory & Beats: Churna interior, Sukha Nala, and rocky sandstone gorges.
+  * Identifying Marks: Striking heart-shaped black loop on forehead above the nasal bridge; delivered 
+    **2 cubs in 2024** (HEART_C1, HEART_C2).
+
+----------------------------------------------------------------------------------------------------
+6. KARNIKA & KAKRI — Churna Core Queens
+----------------------------------------------------------------------------------------------------
+  * **Karnika (SATP_F04)**: Veteran resident breeding tigress of Churna; legendary for her bold, 
+    inquisitive nature along the main road.
+  * **Kakri (SATP_F05)**: Resident breeding tigress of Churna core; delivered **2 cubs in 2024** 
+    (KAKRI_C1, KAKRI_C2); holds territory bordering Bori.
+
+----------------------------------------------------------------------------------------------------
+7. FIRELINE — The Madhai Core Matriarch
+----------------------------------------------------------------------------------------------------
+  * Code: FIRELINE / SATP_F06
+  * Sex: Female (F)
+  * Territory & Beats: Madhai Core Zone, Denwa River causeway, and Kamti Range main firebreak.
+  * Reproductive Record: Sighted regularly escorting her **3 healthy cubs** (FIRE_C1, FIRE_C2, FIRE_C3) 
+    along the Kamti fire lines and Denwa shoreline.
+
+----------------------------------------------------------------------------------------------------
+8. R2 & SHIVA — Mallupura Dominant Males
+----------------------------------------------------------------------------------------------------
+  * **R2 (SATP_M03)**: Mature territorial male of Mallupura buffer; regular breeding partner of Laila.
+  * **Shiva (SATP_M04)**: Powerful prime male first recorded in Mallupura on November 5, 2024; expanding 
+    his patrol perimeter along the Tawa backwaters.
+
+----------------------------------------------------------------------------------------------------
+9. JHALAI — The Mallupura Buffer Tigress
+----------------------------------------------------------------------------------------------------
+  * Code: JHALAI / SATP_F07
+  * Sex: Female (F)
+  * Territory: Jhalai beat, southern Tawa reservoir margin; reared **1 cub in 2024** (JHALAI_C1).
+
+
+====================================================================================================
+PART 2: FOUNDER DONOR ROLE: MALE MT-1 AND THE MADHAV REINTRODUCTION
+====================================================================================================
+
+On **March 10, 2023**, Satpura Tiger Reserve played a historic role in national wildlife restoration:
+  * **Tiger MT-1 (The Satpura Sultan)**: A 4-year-old prime wild male was safely captured in Satpura's core, 
+    fitted with a satellite telemetry collar, and air-lifted/translocated to **Madhav National Park (Shivpuri)**.
+  * Historic Success: Released into Madhav alongside females from Bandhavgarh, MT-1 established complete dominance, 
+    fathering the landmark September 2024 litter of wild cubs that resurrected tigers in northern MP after 
+    27 years of extinction.
+
+
+====================================================================================================
+PART 3: AITE NATIONAL CAMERA-TRAP PHOTO-ID REGISTER (SATP_1 to SATP_50)
+====================================================================================================
+
+The National Tiger Conservation Authority (NTCA) photo-ID database catalogues 50 unique individuals 
+captured during the 5th All India Tiger Estimation cycle:
+  * **SATP_1 to SATP_15**: Core breeding cohort of Bori and Kamti ranges.
+  * **SATP_16 to SATP_30**: Resident tigers of Churna and Dhain valley meadows.
+  * **SATP_31 to SATP_42**: Pachmarhi Wildlife Sanctuary and high Mahadeo sandstone plateau tracts.
+  * **SATP_43 to SATP_50**: Buffer zone residents of Mallupura, Tawa, and West Chhindwara interfaces.
+
+
+====================================================================================================
+PART 4: REGIONAL CORRIDORS & DISPERSAL AMBASSADORS
+====================================================================================================
+
+  * **T-DISP-1 (Satpura–Melghat Corridor Disperser)**: Tracked dispersing across the Betul-Khandwa forest 
+    continuum into Maharashtra's Melghat Tiger Reserve.
+  * **T-DISP-2 (Satpura–Pench Corridor Disperser)**: Monitored navigating the West Chhindwara forest matrix 
+    towards Pench Tiger Reserve.
+  * **T-DISP-3 (North Betul Disperser)**: Sub-adult male recorded traversing the Tawa river crossings into 
+    North Betul territorial division.
+
+
+====================================================================================================
+PART 5: HISTORICAL & FORESTRY ARCHIVES (CAPTAIN FORSYTH ERA)
+====================================================================================================
+
+  * **T-HIST-1 (Captain Forsyth Bori Male - 1865)**: Documented by Captain James Forsyth during the creation 
+    of India's first forest reserve in Bori.
+  * **T-HIST-2 (Pachmarhi Plateau Resident - 1910s)**: Historical shikar logs record large solitary tigers 
+    inhabiting the high ravines below Dhoopgarh.
+  * **T-HIST-3 (Denwa Valley Matriarch - 1980s)**: Resident tigress that roamed the Denwa river prior to the 
+    construction of the Tawa Dam reservoir.
+
+====================================================================================================

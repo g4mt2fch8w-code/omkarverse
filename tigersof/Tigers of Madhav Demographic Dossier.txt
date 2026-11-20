@@ -1,0 +1,199 @@
+====================================================================================================
+                        TIGERS OF MADHAV: OFFICIAL DEMOGRAPHIC DOSSIER,
+              REINTRODUCTION GENEALOGY, BREEDING REGISTERS & FIELD IDENTIFICATIONS
+====================================================================================================
+
+PREPARED FOR: Tiger Monitoring Repository & Landscape Research Archive
+LOCATION: Madhav Tiger Reserve, Shivpuri District, Madhya Pradesh, Central India
+CORE AREA: 375.233 sq. km (Sakhya Sagar, George Castle, Maniyari Basin, Churrat Valley)
+BUFFER AREA: 1,276.154 sq. km (Pohari, Shivpuri North, Shivpuri South, Kolaras Ranges)
+STATUS: Central India's Newest Tiger Reintroduction & Metapopulation Restoration Stronghold
+
+
+====================================================================================================
+DEMOGRAPHIC CENSUS SUMMARY (2023–2026 REINTRODUCTION COHORT)
+====================================================================================================
+  * Total Resident Tigers (Post-Reintroduction 2026): 7+ Individuals
+      - Adult Territorial Males: 1 (MT-1) + 1 Proposed Phase II Male (MT-5)
+      - Adult Breeding Females: 3 (MT-2, MT-3, MT-4)
+      - Sub-Adult Tigers (First Wild Litter 2024): 2 (MT-3_C1, MT-3_C2)
+      - Young Cubs (Second Wild Litter 2026): 1–2 (MT-4_C1, MT-4_C2)
+  * Cumulative Reintroduction Translocations: 4 Founder Tigers (1M, 3F)
+  * Confirmed Wild Breeding Litters: 2 Litters (September 2024 and May/August 2026)
+  * Tiger Mortality: Zero (0) mortalities recorded among founder adults or wild cubs.
+
+
+====================================================================================================
+PART 1: THE FOUNDING ANCESTORS (MARCH 10, 2023 TRANSLOCATION COHORT)
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+1. MT-1 (The Satpura Sultan - Dominant Founder Patriarch)
+----------------------------------------------------------------------------------------------------
+  * Code: MT-1 / MDHV_1 / T-101
+  * Sex: Male (M)
+  * Age at Capture: Approximately 4.0 years (Prime Adult)
+  * Provenance: Wild-born in Satpura Tiger Reserve (Hoshangabad/Narmadapuram, MP).
+  * Capture & Release Date: Captured early March 2023; translocated and formally released into 
+    Soft-Release Enclosure-1 on March 10, 2023 by CM Shivraj Singh Chouhan & Union Minister Jyotiraditya Scindia.
+  * Telemetry Equipment: Fitted with an advanced VHF/GPS-satellite tracking collar.
+  * Morphological Keys: Massive, muscular frame; deep rich orange coat; prominent symmetrical "V-shaped" 
+    marking above the right eye; three bold vertical stripes on the left ribcage merging into a Y-fork; 
+    thick black tail tip with 7 distinct rings.
+  * Territorial Range: Commands an expansive territory of ~180 sq. km encompassing the George Castle 
+    plateau, Sakhya Sagar lake perimeter, Churrat valley, and extending south along the Maniyari river.
+  * Reproductive Contribution: Confirmed sire of MT-3's landmark September 2024 litter (2 cubs) and 
+    MT-4's 2026 litter, establishing the foundational genetic pedigree of the revived Madhav population.
+
+----------------------------------------------------------------------------------------------------
+2. MT-2 (The Churrat Tigress - Founder Female 1)
+----------------------------------------------------------------------------------------------------
+  * Code: MT-2 / MDHV_2 / T-102
+  * Sex: Female (F)
+  * Age at Capture: Approximately 3.5 years (Young Adult)
+  * Provenance: Wild-born in Bandhavgarh Tiger Reserve (Umaria, MP).
+  * Capture & Release Date: Translocated March 2023; released into Enclosure-2 on March 10, 2023.
+  * Telemetry Equipment: Fitted with a satellite-GPS collar; monitored by dedicated forest patrol vehicle.
+  * Morphological Keys: Slender, athletic build; distinct double-bar stripe above left eyebrow; narrow, 
+    closely-spaced flank stripes; clean white lower belly with minimal spotting.
+  * Territorial Range: Concentrated primarily in the southern core compartments, Churrat valley, and the 
+    dense Kardhai-dominated hills bordering the Kolaras buffer range.
+  * Status: Healthy resident breeding tigress; exhibits solitary, elusive behavior with established home 
+    range and frequent interactions with male MT-1.
+
+----------------------------------------------------------------------------------------------------
+3. MT-3 (Madhav Rani - Founder Female 2 / Breeding Matriarch)
+----------------------------------------------------------------------------------------------------
+  * Code: MT-3 / MDHV_3 / T-103
+  * Sex: Female (F)
+  * Age at Capture: Approximately 2.5–3.0 years
+  * Provenance: Wild-born in Bandhavgarh Tiger Reserve (Umaria, MP).
+  * Capture & Release Date: Released into Enclosure-3 in March 2023; hard-released into wild core following 
+    acclimatization.
+  * Telemetry Equipment: VHF/GPS radio-collar (monitored twice daily by ground patrol units).
+  * Morphological Keys: Prominent heart-shaped spot pattern on upper left shoulder; bold inverted-U 
+    marking over right brow; extremely calm, confident demeanor around field monitoring vehicles.
+  * Territorial Range: Occupies the prime biological core of the reserve around Sakhya Sagar lake, 
+    Madhav Sagar shores, and the fertile Ballarpur grassland meadows.
+  * Historical Significance: **The First Mother of Modern Madhav**. Successfully conceived, gestated, 
+    and birthed two wild cubs in September 2024, ending a 27-year hiatus of wild tiger reproduction.
+
+
+====================================================================================================
+PART 2: THE FIRST WILD-BORN GENERATION (SEPTEMBER 2024 LITTER)
+====================================================================================================
+
+In September 2024, motion-triggered camera traps within a secluded sandstone ravine bordering Sakhya 
+Sagar photographed tigress MT-3 escorting two young cubs, confirmed to be approximately 2 to 2.5 months old. 
+Subsequent field tracking confirmed their paternity by resident male MT-1.
+
+----------------------------------------------------------------------------------------------------
+4. MT-3_C1 (Sakhya Junior 1 - First Generation Wild Male)
+----------------------------------------------------------------------------------------------------
+  * Code: MT-3_C1 / MDHV_5 / T-105
+  * Sex: Male (M - Sub-adult)
+  * Date of Birth: Approximately July/August 2024 (First photographed September 17, 2024)
+  * Lineage: Sire: MT-1 (Satpura) | Dam: MT-3 (Bandhavgarh)
+  * Morphological Keys: Robust, broad paws; distinctive bold twin stripes on right hip; inherited MT-1's 
+    facial brow structure.
+  * Status: Fully weaned; mastering hunting skills on chital and wild pig along the lake margins; preparing 
+    for natural natal dispersal.
+
+----------------------------------------------------------------------------------------------------
+5. MT-3_C2 (Sakhya Junior 2 - First Generation Wild Female)
+----------------------------------------------------------------------------------------------------
+  * Code: MT-3_C2 / MDHV_6 / T-106
+  * Sex: Female (F - Sub-adult)
+  * Date of Birth: Approximately July/August 2024 (First photographed September 17, 2024)
+  * Lineage: Sire: MT-1 (Satpura) | Dam: MT-3 (Bandhavgarh)
+  * Morphological Keys: Fine, dense lateral flank striping; pristine white chin; cautious, highly alert temperament.
+  * Status: Thriving alongside mother MT-3 in the Sakhya Sagar and George Castle foothills.
+
+
+====================================================================================================
+PART 3: PHASE II AUGMENTATION & SUBSEQUENT BREEDING (2025–2026)
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+6. MT-4 (The Panna Princess - Founder Female 3)
+----------------------------------------------------------------------------------------------------
+  * Code: MT-4 / MDHV_4 / T-104
+  * Sex: Female (F)
+  * Age at Capture: Approximately 3.0 years
+  * Provenance: Wild-born in Panna Tiger Reserve (Ken River Landscape, MP).
+  * Translocation Date: March 10, 2025 (commemorating the 2nd anniversary of the reintroduction launch).
+  * Purpose: Introducing Bundelkhand/Panna genetic stock to maximize genetic heterozygosity and prevent 
+    founder inbreeding depression.
+  * Breeding Success (2026): On August 15, 2026 (Independence Day), forest department remote camera traps 
+    captured images of MT-4 with her first litter of cubs (~3 months old), sired by MT-1.
+  * Status: Active breeding matriarch dominating the Bhadaiya Kund and Madhav Sagar eastern sectors.
+
+----------------------------------------------------------------------------------------------------
+7. MT-4_C1 & MT-4_C2 (Maniyari Second Generation Cubs)
+----------------------------------------------------------------------------------------------------
+  * Code: MT-4_C1 / MDHV_7 / T-107 and MT-4_C2 / MDHV_8
+  * Sex: Unknown / Under Observation
+  * Date of Birth: Approximately May 2026 (Photographed August 15, 2026)
+  * Lineage: Sire: MT-1 (Satpura) | Dam: MT-4 (Panna)
+  * Status: Young cubs secluded in rocky sandstone caves near Bhadaiya Kund gorge.
+
+----------------------------------------------------------------------------------------------------
+8. MT-5 & MT-6 (Proposed Phase II Translocation Founders)
+----------------------------------------------------------------------------------------------------
+  * Code: MT-5 / MDHV_9 (Male) and MT-6 / MDHV_10 (Female)
+  * Status: Formally approved under the NTCA 5-Tiger Founder Protocol (target: 2 males, 3 females) to 
+    provide an alternate breeding male and establish dual male territorial competition.
+
+
+====================================================================================================
+PART 4: REGIONAL DISPERSALS & METAPOPULATION CORRIDOR TRANSIENTS
+====================================================================================================
+
+  1. T-DISP-1 (Kuno-Pohari Transient Tiger):
+     - In late 2021 and early 2022, prior to the reintroduction launch, field teams recorded pugmarks 
+       and scat of a dispersing male tiger moving through the Pohari territorial forest corridor 
+       connecting Kuno National Park to northern Madhav.
+  2. T-DISP-2 (Ranthambore-Chambal Migrant):
+     - Photo-documented during AITE 4th/5th cycles dispersing across the Chambal ravines into the 
+       Sheopur-Shivpuri forest continuum, demonstrating natural corridor permeability.
+
+
+====================================================================================================
+PART 5: HISTORICAL TIGERS OF MADHAV (PRE-EXTIRPATION ARCHIVES)
+====================================================================================================
+
+  1. T-HIST-1 (The George Castle Royal Hunt Tiger - December 1911):
+     - Documented in the royal hunting logs of the Scindia Court during the visit of King George V. 
+       A massive prime male recorded in the Sultanpur/George Castle forest tract.
+  2. T-HIST-2 (Sakhya Sagar Historic Matriarch - Circa 1980s):
+     - Resident breeding tigress that reared multiple litters along the Sakhya Sagar reedbeds during 
+       the early years of Madhav National Park.
+  3. T-HIST-3 (Madhav Sagar Resident Male - Circa 1990s):
+     - Prime male that defended the lake basin through the late 1990s; one of the last stable territorial 
+       males before the poaching and fragmentation crisis.
+  4. T-HIST-6 (The Last Resident Wild Tiger - Extirpated ~2010–2012):
+     - Solitary male whose pugmarks and scrapes were documented by forest guards until 2011/2012, after 
+       which no resident signs were detected until the 2023 reintroduction.
+
+
+====================================================================================================
+PART 6: PHOTOGRAPHIC & STRIPE IDENTIFICATION KEYS
+====================================================================================================
+
+Identification of tigers in Madhav follows the standard camera-trap stripe pattern matching protocol 
+(utilizing ExtractCompare software):
+  * Left Flank Analysis:
+      - MT-1: 3 bold parallel vertical stripes above flank, fork at lower third.
+      - MT-2: Continuous thin diagonal stripes sloping toward rear flank.
+      - MT-3: Double loop enclosing a distinct pale island on mid-flank.
+      - MT-4: Dense chevron pattern above right hip; wide abdominal gaps.
+  * Facial Brow Markings:
+      - MT-1: Prominent V-notch over right supraorbital eye patch.
+      - MT-3: Symmetrical inverted double-crescent above forehead midline.
+  * Collar Specifications:
+      - MT-1: Blue collar strap with Argos/GPS antenna.
+      - MT-2: Black collar strap with VHF whip antenna.
+      - MT-3: Black collar strap with satellite beacon.
+      - MT-4: Brown leather collar strap with solar-assisted GPS beacon.
+
+====================================================================================================

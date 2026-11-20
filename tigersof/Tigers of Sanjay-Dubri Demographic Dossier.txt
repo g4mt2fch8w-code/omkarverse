@@ -1,0 +1,248 @@
+====================================================================================================
+                       TIGERS OF SANJAY-DUBRI: OFFICIAL DEMOGRAPHIC DOSSIER,
+       BREEDING REGISTERS, THE MAUSI MAA ADOPTION CHRONICLE & LONGITUDINAL MONITORING PROFILES
+====================================================================================================
+
+PREPARED FOR: Tiger Monitoring Repository & Longitudinal Carnivore Research Archive
+LANDSCAPE: Sanjay-Dubri Tiger Reserve & Greater Transboundary Ecosystem, Madhya Pradesh, Central India
+CORE AREA: 812.581 sq. km (Sanjay National Park & Dubri Wildlife Sanctuary)
+BUFFER AREA: 861.930 sq. km (Sidhi, Singrauli & Shahdol Forest Divisions)
+STATUS: Dynamic Population Recovery; Pioneer Rewilding and Transboundary Connectivity Corridor
+
+
+====================================================================================================
+DEMOGRAPHIC TIMELINE: THE POPULATION RECOVERY TRAJECTORY (2000–2026)
+====================================================================================================
+  * 2000: Post-Bifurcation Nadir. State reorganisation split undivided Sanjay National Park (1,938 km²); 
+    the MP portion was left with 466.88 km² in Sanjay NP and 345.70 km² in Dubri WLS. Heavy biotic 
+    pressures, cattle grazing, and poaching reduced tigers to sporadic, unmonitored individuals.
+  * 2008: Statutory Tiger Reserve Notification (812.58 km² core). Systematic anti-poaching wireless 
+    networks, foot patrolling beats, and protection chowkis established.
+  * 2014 (AITE 3rd Cycle): Only 6 photographic detections from 27 camera pairs; breeding status uncertain; 
+    classified as an under-stocked sink habitat reliant on occasional dispersers from Bandhavgarh.
+  * 2018 (AITE 4th Cycle): 375 camera trap stations, 13,853 trap nights. 5 adult tigers identified 
+    (SECR Density: 0.23 ± 0.10 / 100 km²; female-biased sex ratio). High abundance of Nilgai (10.08 / km²) 
+    and Chital (9.67 / km²).
+  * 2021: The 'Mausi Maa' (T-28) Milestone. Tigress T-28 adopted 4 orphaned cubs of her deceased sister, 
+    successfully rearing 7 cubs simultaneously in Dubri core—igniting national media attention and 
+    accelerating recruitment.
+  * 2022 (AITE 5th Cycle): 573 camera trap stations, 17,011 trap nights. 874 tiger photo-detections; 
+    16 unique adult tigers (>1 yr) identified. SECR Density surged to 0.78 ± 0.20 / 100 km² (over 3-fold increase).
+  * 2022–2024: Prey Augmentation Revolution. Reintroduction of wild Gaur from Kanha and Satpura; translocation 
+    of Chital from Bandhavgarh using the Boma method; voluntary village relocations creating large inviolate meadows.
+  * 2024–2026: Consolidation & Transboundary Dispersal. Estimated 20–25+ resident adult tigers. High breeding 
+    activity across Dubri, Bastua, and Badkadha, with resident subadults colonizing Guru Ghasidas NP in Chhattisgarh.
+
+
+====================================================================================================
+PART 1: THE LEGENDARY MATRIARCH — T-28 ('MAUSI MAA') & THE 7-CUB ADOPTION SAGA
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+1. T-28 / 'MAUSI MAA' (The Iconic Matriarch of Dubri Core)
+----------------------------------------------------------------------------------------------------
+  * Code: T-28 / SNJY_F28 / DUBRI_F01
+  * Sex: Female (F)
+  * Estimated Birth: Circa 2015–2016 (Wild-born in Dubri core)
+  * Dominant Territory: Central Dubri Wildlife Sanctuary (Dubri Lake, Chamraval meadow, Bastua beat junction, 
+    and tourist safari circuit)
+  * Identifying Field Marks: Bold, symmetrical 'wishbone' mark above the right eye, clean white underbelly 
+    flank, highly relaxed demeanor around departmental patrol vehicles and tourist gypsies.
+
+  * The Historic 2021 Adoption Saga:
+    In late 2020, T-28 gave birth to a healthy biological litter of three cubs (2 females, 1 male; sired by T-26). 
+    Simultaneously, her biological sister—another resident breeding tigress occupying an overlapping home range 
+    along the Banas river edge—gave birth to a litter of four cubs.
+    Tragedy struck when the sister mysteriously went missing (presumed dead due to natural conflict or snakebite), 
+    leaving her four ~2-month-old cubs stranded, emaciated, and vulnerable to infanticide.
+    In an event unprecedented in recorded carnivore biology, T-28 encountered the orphaned cubs and, instead of 
+    displaying territorial aggression or infanticide, gently accepted them into her den. She allowed all four 
+    orphans to suckle alongside her own three biological cubs, grooming, protecting, and leading the massive 
+    super-litter of 7 cubs across the Dubri sal forests.
+    
+    The local forest staff and naturalists christened her 'Mausi Maa' (Hindi for Maternal Aunt / Mother). 
+    For over 18 months, T-28 faced immense metabolic demands, executing near-daily kills of adult nilgai, wild boar, 
+    and chital to satiate the voracious appetites of seven rapidly growing cubs. Against all statistical odds, 
+    under intensive 24/7 protection by dedicated MP Forest Department tracking teams, ALL SEVEN CUBS SURVIVED 
+    to independent sub-adulthood!
+    
+  * Reproductive & Demographic Legacy:
+      - 2021 Super-Litter (7 Cubs Raised to Independence):
+          * T-28_C1 (Male, biological son; dispersed to western Dubri buffer).
+          * T-28_C2 (Female, biological daughter; resident in Chamraval).
+          * T-28_C3 (Female, biological daughter; now T-30, resident breeding female).
+          * T-28_AC1 (Male, adopted nephew; dispersed into Shahdol forest division).
+          * T-28_AC2 (Female, adopted niece; now T-32, resident in Bastua range).
+          * T-28_AC3 (Male, adopted nephew; transboundary dispersal into Guru Ghasidas NP).
+          * T-28_AC4 (Female, adopted niece; resident along Gopad river).
+      - 2024 Litter (2 Cubs):
+          * T-28_24C1 (Male cub, ~1.5 years old, flourishing).
+          * T-28_24C2 (Female cub, ~1.5 years old, flourishing).
+  * Ecological Impact: Mausi Maa's miraculous foster-rearing single-handedly transformed the demographic 
+    vitality of Sanjay-Dubri, elevating the park into an internationally recognized bastion of carnivore conservation.
+
+
+====================================================================================================
+PART 2: RESIDENT MATRIARCHS & CORE BREEDING MATRILINES
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+2. T-29 (Co-Dominant Breeding Tigress of Dubri Core)
+----------------------------------------------------------------------------------------------------
+  * Code: T-29 / SNJY_F29 / DUBRI_F02
+  * Sex: Female (F)
+  * Estimated Birth: Circa 2017 (Wild-born in Dubri range)
+  * Territory: Dubri tourism zone, Kodmar nallah, and eastern grasslands
+  * Field Characteristics: Distinct 'double inverted V' flank stripes on left flank; exceptionally confident 
+    temperament; frequently photographed on forest roads during morning safari patrols.
+  * Breeding Record:
+      - 2022 Litter (3 Cubs; Sired by T-17): T-29_C1 (M), T-29_C2 (F), T-29_C3 (M). All three reached 
+        maturity and established home ranges in the park periphery.
+      - 2024 Litter (2 Cubs; Sired by T-26): T-29_24C1 (F), T-29_24C2 (M), actively monitored.
+
+----------------------------------------------------------------------------------------------------
+3. T-18 (The Bastua–Pondi Ridge Matriarch)
+----------------------------------------------------------------------------------------------------
+  * Code: T-18 / SNJY_F18 / BST_F01
+  * Sex: Female (F)
+  * Estimated Birth: Circa 2015
+  * Territory: Rugged sandstone hills of Bastua range extending north into Pondi beat
+  * Field Characteristics: Sleek build, elongated tail with three bold terminal rings; elusive demeanor, 
+    specialist in hunting sambar and wild pig on steep rocky slopes.
+  * Breeding Record: Produced 2 documented litters; mother of resident subadults T-18_C1 and T-18_C2.
+
+----------------------------------------------------------------------------------------------------
+4. T-20 (Badkadha Transboundary Frontier Female)
+----------------------------------------------------------------------------------------------------
+  * Code: T-20 / SNJY_F20 / BDK_F01
+  * Sex: Female (F)
+  * Territory: Badkadha range, along the southern interstate boundary with Guru Ghasidas National Park
+  * Significance: Acts as a genetic anchor along the interstate corridor; frequent cross-border movements 
+    between MP and Chhattisgarh; mother of cubs T-20_C1 (F) and T-20_C2 (M).
+
+----------------------------------------------------------------------------------------------------
+5. T-25 (Mohan Range Female)
+----------------------------------------------------------------------------------------------------
+  * Code: T-25 / SNJY_F25 / MHN_F01
+  * Sex: Female (F)
+  * Territory: Mohan forest range (named after the historic 1951 white tiger cub Mohan)
+  * Status: Prime adult female occupying mixed sal-teak open woodlands; camera-trapped regularly in 2022 AITE.
+
+----------------------------------------------------------------------------------------------------
+6. T-27 (Gopad River Matriarch)
+----------------------------------------------------------------------------------------------------
+  * Code: T-27 / SNJY_F27 / GPD_F01
+  * Sex: Female (F)
+  * Territory: Riparian sal and bamboo belts flanking the Gopad River
+  * Status: Critical breeding tigress securing the central riverine corridor of Sanjay National Park.
+
+----------------------------------------------------------------------------------------------------
+7. T-30 (Daughter of Mausi Maa — Second Generation Dubri Matriarch)
+----------------------------------------------------------------------------------------------------
+  * Code: T-30 / SNJY_F30 (Biological daughter of T-28, born 2021)
+  * Sex: Female (F)
+  * Territory: Dubri buffer and Chamraval periphery
+  * Status: Established independent territory adjacent to her mother's range in early 2023; prime young breeding female.
+
+
+====================================================================================================
+PART 3: DOMINANT TERRITORIAL MALES & LANDSCAPE ENGINES
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+8. T-26 (The Reigning Monarch of Dubri Core)
+----------------------------------------------------------------------------------------------------
+  * Code: T-26 / SNJY_M26 / DUBRI_M01
+  * Sex: Male (M)
+  * Estimated Birth: Circa 2014–2015
+  * Dominant Territory: Commands the entire central core of Dubri Wildlife Sanctuary (~150 sq. km), 
+    overlapping the territories of T-28 (Mausi Maa) and T-29.
+  * Field Characteristics: Massive physical stature (>230 kg), profound cranial width, distinctive scar 
+    over left shoulder sustained in territorial clash with T-17; deep, reverberating roar audible across Dubri camp.
+  * Siring Record: Sired T-28's 2021 biological cubs and 2024 litter; sired T-29's 2024 litter. Undisputed 
+    alpha male maintaining territorial stability in Dubri tourism zone.
+
+----------------------------------------------------------------------------------------------------
+9. T-17 (The Safari Pride Male)
+----------------------------------------------------------------------------------------------------
+  * Code: T-17 / SNJY_M17 / DUBRI_M02
+  * Sex: Male (M)
+  * Territory: Western and central Dubri safari trails, extending towards Banas river flats
+  * Field Characteristics: Highly relaxed temperament; veteran tourist favorite who regularly walks down 
+    the main safari tracks in broad daylight; distinctive 'loop' stripe on right ribcage.
+  * Siring Record: Sired T-29's 2022 litter. Coexists on uneasy peripheral boundaries with T-26.
+
+----------------------------------------------------------------------------------------------------
+10. T-24 (Banas River Corridor Male)
+----------------------------------------------------------------------------------------------------
+  * Code: T-24 / SNJY_M24 / BNS_M01
+  * Sex: Male (M)
+  * Territory: Banas river basin, linking Dubri core to the Shahdol buffer forest division
+  * Significance: Critical corridor guardian, patrolling the primary dispersal corridor connecting Sanjay-Dubri 
+    with Bandhavgarh Tiger Reserve.
+
+----------------------------------------------------------------------------------------------------
+11. T-22 (The Shahdol Dispersal Male)
+----------------------------------------------------------------------------------------------------
+  * Code: T-22 / SNJY_M22 / SHD_M01
+  * Sex: Male (M)
+  * Territory: Jaisinghnagar–Beohari territorial forests (Shahdol buffer)
+  * Status: High-mobility male frequently captured on corridor camera traps between Bandhavgarh and Sanjay-Dubri.
+
+----------------------------------------------------------------------------------------------------
+12. T-38 (The Transboundary Guru Ghasidas Male)
+----------------------------------------------------------------------------------------------------
+  * Code: T-38 / SNJY_M38 / GGNP_M01
+  * Sex: Male (M)
+  * Territory: Transboundary sal forests spanning southern Sanjay NP and northern Guru Ghasidas NP
+  * Significance: Living proof of functional interstate tiger movement between Madhya Pradesh and Chhattisgarh.
+
+
+====================================================================================================
+PART 4: NATIONAL ALL INDIA TIGER ESTIMATION (PHASE IV) PHOTO-ID DATABASE
+====================================================================================================
+
+The Wildlife Institute of India (WII) and NTCA maintain the definitive national stripe-pattern matching 
+database for Sanjay-Dubri under the 'SNJY' nomenclature:
+
+  * SNJY_1: Adult Female | Phase IV Camera-Trapped (2018, 2022) | Dubri Core
+  * SNJY_2: Adult Female | Phase IV Camera-Trapped (2018, 2022) | Dubri–Banas River
+  * SNJY_3: Adult Male   | Phase IV Camera-Trapped (2018) | Bastua Range
+  * SNJY_4: Adult Male   | Phase IV Camera-Trapped (2018, 2022) | Dubri Central
+  * SNJY_5: Adult Female | Phase IV Camera-Trapped (2018, 2022) | Badkadha Sector
+  * SNJY_6: Adult Male   | Phase IV Camera-Trapped (2018) | Sanjay NP Core
+  * SNJY_7: Adult Female | Phase IV Camera-Trapped (2018, 2022) | Pondi Range
+  * SNJY_8: Adult Male   | Phase IV Camera-Trapped (2018, 2022) | Gopad Basin
+  * SNJY_9: Adult Female | Phase IV Camera-Trapped (2022) | Dubri Grasslands (T-28 / Mausi Maa)
+  * SNJY_10: Adult Male  | Phase IV Camera-Trapped (2022) | Dubri Core (T-26)
+  * SNJY_11: Adult Female| Phase IV Camera-Trapped (2022) | Dubri Tourism (T-29)
+  * SNJY_12: Adult Male  | Phase IV Camera-Trapped (2022) | Safari Track (T-17)
+  * SNJY_13: Adult Female| Phase IV Camera-Trapped (2022) | Bastua Hills (T-18)
+  * SNJY_14: Adult Male  | Phase IV Camera-Trapped (2022) | Banas River (T-24)
+  * SNJY_15: Adult Female| Phase IV Camera-Trapped (2022) | Mohan Range (T-25)
+  * SNJY_16: Adult Male  | Phase IV Camera-Trapped (2022) | Badkadha–Guru Ghasidas (T-38)
+  * SNJY_17 to SNJY_25: Recruits identified during 2023–2026 annual Phase IV camera trapping, representing 
+    offspring of Mausi Maa, T-29, T-18, and corridor immigrants.
+
+
+====================================================================================================
+PART 5: HISTORICAL FOUNDATION & THE WHITE TIGER PHENOMENON
+====================================================================================================
+
+5.1 The Historic May 1951 Event in Bargadi Forest:
+On May 27, 1951, a hunting expedition led by Maharaja Martand Singh of Rewa in the Bargadi forest tract 
+(near Govindgarh, Sidhi district, within the present-day Sanjay-Dubri landscape) resulted in the shooting 
+of a normal-coloured tigress accompanied by four cubs. Three cubs were normal orange, but one male cub was 
+pure white with blackish-brown stripes and icy blue eyes.
+The Maharaja spared and captured the 9-month-old cub, naming him 'Mohan'. Mohan was brought to the Govindgarh 
+Palace, where a dedicated courtyard enclosure was constructed for his maintenance.
+
+5.2 Genetics of the Rewa White Tigers:
+Mohan was initially mated with a normal wild-caught orange tigress named 'Begum', producing normal orange 
+offspring (including 'Radha'). In 1958, Mohan was backcrossed with his orange daughter Radha. On October 30, 1958, 
+Radha gave birth to four cubs—all four were white! This confirmed that the white phenotype is inherited as an 
+autosomal recessive trait.
+Modern molecular genomics has confirmed that the white coat mutation is caused by an amino acid substitution 
+in the SLC45A2 transporter gene, which selectively blocks the synthesis of yellow/red pheomelanin without 
+disrupting dark eumelanin stripe synthesis. The moist and dry sal ecosystems of Sanjay-Dubri provided the original 
+evolutionary crucible for this recessive allele in the wild population.
