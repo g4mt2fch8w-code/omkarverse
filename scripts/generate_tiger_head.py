@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
 scripts/generate_tiger_head.py
-Direct High-Fidelity 3D Bengal Tiger Point-Cloud synthesized from Reference Image
-media_1795196414354_002c0c02.png (100% Front-Facing, 0° Yaw, Iconic Symmetrical View).
-Target: exactly 14,500 points.
+Full-Density, Solid 3D Bengal Tiger Point Cloud from Reference Image.
+All 14,500 points allocated directly to the frontal facial topology.
+No hollow rear hemisphere; full lush orange coat, bold black stripes,
+fanned white whiskers/ruffs, and piercing cyan-blue eyes.
 """
 
 import zlib
@@ -14,12 +15,12 @@ import base64
 import json
 
 HOTSPOTS = [
-  { 'id': 'ocelli', 'organ': 'OCELLI & PINNAE', 'a': [0.56, 0.72, 0.22], 'r': 0.22, 'side': True },
-  { 'id': 'vibrissae', 'organ': 'VIBRISSAE ARRAY', 'a': [0.36, -0.16, 0.82], 'r': 0.24, 'side': True },
-  { 'id': 'jacobson', 'organ': "JACOBSON'S ORGAN", 'a': [0.00, -0.06, 0.96], 'r': 0.20, 'side': False },
-  { 'id': 'stripes', 'organ': 'FOREHEAD STRIPES', 'a': [0.00, 0.48, 0.70], 'r': 0.25, 'side': False },
-  { 'id': 'canines', 'organ': 'MANDIBULAR CANINE LOCK', 'a': [0.00, -0.42, 0.78], 'r': 0.22, 'side': False },
-  { 'id': 'tapetum', 'organ': 'TAPETUM LUCIDUM', 'a': [0.22, 0.18, 0.75], 'r': 0.18, 'side': True }
+  { 'id': 'ocelli', 'organ': 'Kaan (Ears / Pinnae & Ocelli)', 'a': [0.56, 0.72, 0.22], 'r': 0.22, 'side': True },
+  { 'id': 'vibrissae', 'organ': 'Mishi / Whiskers (Vibrissae Array)', 'a': [0.36, -0.16, 0.82], 'r': 0.24, 'side': True },
+  { 'id': 'jacobson', 'organ': 'Naak / Snout (Jacobson’s Organ)', 'a': [0.00, -0.06, 0.96], 'r': 0.20, 'side': False },
+  { 'id': 'stripes', 'organ': 'Forehead Stripes (Biometric Cutaneous Matrix)', 'a': [0.00, 0.48, 0.70], 'r': 0.25, 'side': False },
+  { 'id': 'canines', 'organ': 'Daant / Jabda (Canines & Bite Force)', 'a': [0.00, -0.42, 0.78], 'r': 0.22, 'side': False },
+  { 'id': 'tapetum', 'organ': 'Aakhein (Eyes / Tapetum Lucidum Gaze)', 'a': [0.22, 0.18, 0.75], 'r': 0.18, 'side': True }
 ]
 
 def read_png_rgba(filepath):
@@ -76,58 +77,59 @@ def generate():
     ref_path = '/Users/onkarbhople/.gemini/antigravity/brain/51818a2e-ef68-4503-911a-ad7b50d1ec04/.user_uploaded/media_1795196414354_002c0c02.png'
     w, h, pix = read_png_rgba(ref_path)
     
-    # Collect all valid foreground pixels
     eye_pixels = []
     stripe_pixels = []
     white_pixels = []
     orange_pixels = []
-    other_pixels = []
 
     for y in range(h):
         for x in range(w):
             idx = (y * w + x) * 4
             r, g, b, a = pix[idx:idx+4]
-            if a < 40: continue
-            if r > 245 and g > 245 and b > 245: continue
+            if a < 35: continue
+            if r > 246 and g > 246 and b > 246: continue # background
             
-            # Normalize to 3D space: x in [-0.92, 0.92], y in [-0.85, 0.85]
-            # Center of reference is at (180, 185)
+            # Center at (180, 185)
             nx = (x - 180.0) / 175.0 * 0.90
             ny = -(y - 185.0) / 175.0 * 0.90
             
-            # Classify feature
+            # High-precision classification
             if b > 110 and b > r + 30 and g > 70:
                 eye_pixels.append((nx, ny, 'eye'))
             elif r < 65 and g < 65 and b < 75:
                 stripe_pixels.append((nx, ny, 'stripe'))
             elif r > 185 and g > 185 and b > 185:
                 white_pixels.append((nx, ny, 'white'))
-            elif r > 150 and g > 60:
-                orange_pixels.append((nx, ny, 'orange'))
             else:
-                other_pixels.append((nx, ny, 'other'))
+                orange_pixels.append((nx, ny, 'orange'))
 
-    print(f"Candidate pools: eyes={len(eye_pixels)}, stripes={len(stripe_pixels)}, whites={len(white_pixels)}, oranges={len(orange_pixels)}")
+    print(f"Pool sizes: eyes={len(eye_pixels)}, stripes={len(stripe_pixels)}, whites={len(white_pixels)}, oranges={len(orange_pixels)}")
 
-    # Sample budget for frontal 3D face: 11,200 points
-    target_eyes = 700
+    # Full face allocation: exactly 14,500 points
+    target_eyes = 800
     target_stripes = 3800
-    target_whites = 2200
-    target_oranges = 4500
+    target_whites = 2900
+    target_oranges = 7000
 
     def sample_pool(pool, count):
         if len(pool) <= count:
-            return pool[:]
+            # Upsample with micro-jitter
+            res = pool[:]
+            needed = count - len(pool)
+            for _ in range(needed):
+                item = random.choice(pool)
+                res.append((item[0] + random.gauss(0, 0.005), item[1] + random.gauss(0, 0.005), item[2]))
+            return res
         step = len(pool) / float(count)
         return [pool[int(i * step)] for i in range(count)]
 
-    frontal_samples = []
-    frontal_samples.extend(sample_pool(eye_pixels, target_eyes))
-    frontal_samples.extend(sample_pool(stripe_pixels, target_stripes))
-    frontal_samples.extend(sample_pool(white_pixels, target_whites))
-    frontal_samples.extend(sample_pool(orange_pixels, target_oranges))
+    samples = []
+    samples.extend(sample_pool(eye_pixels, target_eyes))
+    samples.extend(sample_pool(stripe_pixels, target_stripes))
+    samples.extend(sample_pool(white_pixels, target_whites))
+    samples.extend(sample_pool(orange_pixels, target_oranges))
 
-    print(f"Total sampled frontal points: {len(frontal_samples)}")
+    print(f"Total sampled points: {len(samples)}")
 
     points = []
     normals = []
@@ -135,49 +137,37 @@ def generate():
     w_list = []
     eye_indices = []
 
-    def compute_front_z_and_normal(x, y):
-        # Anatomical depth computation:
-        # 1. Base convex head dome
+    def compute_z_and_normal(x, y):
         r2 = (x / 0.92)**2 + (y / 0.88)**2
-        z_base = 0.35 + 0.32 * math.sqrt(max(0.0, 1.0 - min(1.0, r2)))
+        z_base = 0.38 + 0.35 * math.sqrt(max(0.0, 1.0 - min(1.0, r2)))
         
-        # 2. Snout & muzzle projection (prominent at center bottom)
+        # Snout projection forward
         snout_dist2 = (x / 0.30)**2 + ((y + 0.12) / 0.28)**2
         z_snout = 0.32 * math.exp(-snout_dist2)
         
-        # 3. Eye orbital rims (slight indentation for socket, forward eyeball)
+        # Eye orbits
         eye_dist_l = math.sqrt((x + 0.22)**2 + (y - 0.18)**2)
         eye_dist_r = math.sqrt((x - 0.22)**2 + (y - 0.18)**2)
         min_eye = min(eye_dist_l, eye_dist_r)
         z_eye = 0.06 * math.exp(-(min_eye / 0.10)**2)
         
-        # 4. Forehead ridge
+        # Forehead plane
         z_forehead = 0.08 * max(0.0, 1.0 - abs(x) / 0.30) if (0.30 < y < 0.65) else 0.0
         
-        # 5. Cheek ruffs taper backwards
-        z_ruffs = -0.15 * (abs(x) / 0.85)**2 if abs(x) > 0.50 else 0.0
+        # Cheek ruffs
+        z_ruffs = -0.12 * (abs(x) / 0.85)**2 if abs(x) > 0.50 else 0.0
         
         z = z_base + z_snout + z_eye + z_forehead + z_ruffs
         
-        # Compute analytical normal
-        eps = 0.01
-        z_px = z_base + 0.32 * math.exp(-((x+eps)/0.30)**2 - ((y+0.12)/0.28)**2)
-        z_mx = z_base + 0.32 * math.exp(-((x-eps)/0.30)**2 - ((y+0.12)/0.28)**2)
-        dz_dx = (z_px - z_mx) / (2.0 * eps)
-        
-        z_py = z_base + 0.32 * math.exp(-(x/0.30)**2 - ((y+eps+0.12)/0.28)**2)
-        z_my = z_base + 0.32 * math.exp(-(x/0.30)**2 - ((y-eps+0.12)/0.28)**2)
-        dz_dy = (z_py - z_my) / (2.0 * eps)
-        
-        nx = -dz_dx
-        ny = -dz_dy
+        # Normals face forward (+Z)
+        nx = x * 0.4
+        ny = y * 0.4
         nz = 1.0
         mag = math.sqrt(nx*nx + ny*ny + nz*nz)
         return z, nx/mag, ny/mag, nz/mag
 
-    # Add all frontal sample points
-    for (x, y, ftype) in frontal_samples:
-        z, nx, ny, nz = compute_front_z_and_normal(x, y)
+    for (x, y, ftype) in samples:
+        z, nx, ny, nz = compute_z_and_normal(x, y)
         idx = len(points)
         points.append((x, y, z))
         normals.append((nx, ny, nz))
@@ -187,42 +177,14 @@ def generate():
             ao_list.append(255)
             w_list.append(255)
         elif ftype == 'stripe':
-            ao_list.append(40) # Black stripe flag (< 0.15 in AO^2)
-            w_list.append(210)
+            ao_list.append(40) # Stripe marker
+            w_list.append(220)
         elif ftype == 'white':
-            ao_list.append(255) # Pure white whiskers / canines / ruffs (> 0.82 in AO^2)
+            ao_list.append(250) # White fur marker
             w_list.append(240)
         else: # orange
-            ao_list.append(160) # Royal Bengal Orange (mid AO)
+            ao_list.append(160) # Orange coat marker
             w_list.append(180)
-
-    print(f"Frontal face points added: {len(points)}, Eye vertices: {len(eye_indices)}")
-
-    # Add Posterior / Volumetric Skull Points: 3,300 points
-    # Rear cranium, occipital ridge, back of ears, jaw hinge & neck
-    needed_rear = 14500 - len(points)
-    print(f"Synthesizing {needed_rear} posterior volumetric skull points...")
-
-    for _ in range(needed_rear):
-        theta = random.uniform(0.15 * math.pi, 0.85 * math.pi)
-        phi = random.uniform(-0.95 * math.pi, -0.05 * math.pi) # facing backward (-Z)
-        rx = 0.50
-        ry = 0.40
-        rz = 0.38
-        
-        px = rx * math.sin(theta) * math.cos(phi)
-        py = 0.15 + ry * math.cos(theta)
-        pz = -0.05 + rz * math.sin(phi) # rear hemisphere
-        
-        nx = px / rx
-        ny = (py - 0.15) / ry
-        nz = (pz + 0.05) / rz
-        mag = math.sqrt(nx*nx + ny*ny + nz*nz)
-        
-        points.append((px, py, pz))
-        normals.append((nx/mag, ny/mag, nz/mag))
-        ao_list.append(150)
-        w_list.append(160)
 
     total_count = len(points)
     print(f"Final Bengal Tiger point count: {total_count}")
@@ -238,7 +200,7 @@ def generate():
             dist = math.hypot(px - hx, y - hy, z - hz)
             if dist < hr:
                 count += 1
-        print(f"  -> Hotspot {h['organ']} ({h['id']}): {count} vertices (radius {hr})")
+        print(f"  -> Hotspot {h['organ']}: {count} vertices (radius {hr})")
 
     # Quantize and encode to Base64
     pos_bytes = bytearray()
@@ -270,13 +232,13 @@ def generate():
         'ao': ao_b64,
         'w': w_b64,
         'eye': eye_indices,
-        'c': 0.0 # Perfectly centered front face
+        'c': 0.0
     }
 
     with open('scripts/tiger_head_data.json', 'w') as f:
         json.dump(tiger_head_payload, f)
     
-    print("Exported scripts/tiger_head_data.json with 100% reference fidelity!")
+    print("Exported scripts/tiger_head_data.json with full 14,500 face points!")
 
 if __name__ == '__main__':
     generate()
