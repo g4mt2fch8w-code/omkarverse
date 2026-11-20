@@ -38,7 +38,9 @@
       this.rumbleVolume = 0.55;  // ~55% volume
       this.fadeInDuration = 1.2;  // 1.2s fade-in
       this.fadeOutDuration = 0.8; // 0.8s fade-out
-      this.audioPath = '/audio/rumble-instrumental.mp3';
+      
+      const isTiger = typeof window !== 'undefined' && window.location.pathname.startsWith('/tiger');
+      this.audioPath = isTiger ? '/audio/stellar_fission.m4a' : '/audio/rumble-instrumental.mp3';
 
       this.isMuted = true;
       this.isInitialized = false;
@@ -369,6 +371,14 @@
     const sndBtn = document.getElementById('snd');
     if (!sndBtn) return;
 
+    function updateButtonUI(isActive) {
+      sndBtn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      sndBtn.textContent = isActive ? 'sound ●' : 'sound ○';
+      try {
+        localStorage.setItem('ins.sound', isActive ? '1' : '0');
+      } catch (e) {}
+    }
+
     function syncState() {
       const isPressed = sndBtn.getAttribute('aria-pressed') === 'true' || sndBtn.textContent.includes('●');
       if (isPressed && audio.isMuted) {
@@ -384,14 +394,23 @@
     });
     observer.observe(sndBtn, { attributes: true, attributeFilter: ['aria-pressed'], childList: true, characterData: true });
 
-    // Also listen to click directly
-    sndBtn.addEventListener('click', () => {
-      setTimeout(syncState, 10);
+    // Handle clicks smoothly on all pages
+    sndBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isCurrentlyActive = sndBtn.getAttribute('aria-pressed') === 'true' || sndBtn.textContent.includes('●');
+      const nextActive = !isCurrentlyActive;
+      updateButtonUI(nextActive);
+      if (nextActive) {
+        audio.unmute();
+      } else {
+        audio.mute();
+      }
     });
 
     // Check initial state from localStorage or button attribute
     const savedState = localStorage.getItem('ins.sound') || localStorage.getItem('insert.sound');
     if (savedState === '1' || sndBtn.getAttribute('aria-pressed') === 'true') {
+      updateButtonUI(true);
       const unlockAudio = () => {
         audio.unmute();
         window.removeEventListener('pointerdown', unlockAudio);

@@ -33,6 +33,36 @@
       min-height: 100vh;
       overflow-x: hidden;
       padding-top: 88px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Day Look Overrides */
+    html[data-look="day"] {
+      --bg: #F5F5F7;
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --bg-card-hover: rgba(255, 255, 255, 0.95);
+      --ink: #001445;
+      --dim: #55607F;
+      --gold: #D97706;
+      --gold-dim: rgba(217, 119, 6, 0.25);
+      --line: rgba(0, 20, 69, 0.14);
+    }
+
+    html[data-look="day"] body {
+      background-color: #F5F5F7;
+      color: #001445;
+    }
+
+    html[data-look="day"] .tiger-title {
+      color: #001445 !important;
+    }
+
+    html[data-look="day"] .narrative-text {
+      color: #1E293B !important;
+    }
+
+    html[data-look="day"] .spec-table td:last-child {
+      color: #001445 !important;
     }
 
     .dossier-container {
@@ -96,6 +126,10 @@
       background: #041329;
       color: #F8F8F8;
     }
+    html[data-look="day"] .tiger-select-dropdown option {
+      background: #F5F5F7;
+      color: #001445;
+    }
 
     .nav-arrow-btn {
       background: var(--bg-card);
@@ -139,7 +173,7 @@
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 20px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(16px);
     }
 
@@ -189,10 +223,14 @@
     }
 
     .meta-box {
-      background: rgba(4, 19, 41, 0.6);
+      background: rgba(4, 19, 41, 0.5);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 8px;
       padding: 10px 14px;
+    }
+    html[data-look="day"] .meta-box {
+      background: rgba(245, 245, 247, 0.7);
+      border-color: rgba(0, 20, 69, 0.1);
     }
 
     .meta-label {
@@ -345,6 +383,7 @@
 <body>
   <!-- Header Bar -->
   <header class="top">
+    <!-- Zone 1: Left Zone -->
     <div class="top-zone top-zone-left">
       <a href="/" class="brand-group brand-logo" aria-label="THE OMKAR DEN, back to home">
         <span class="pugmark-icon" aria-hidden="true">
@@ -354,42 +393,77 @@
                 <stop offset="0%" stop-color="#FFB800" />
                 <stop offset="100%" stop-color="#E5A93C" />
               </linearGradient>
+              <linearGradient id="pugmarkClawGold" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFDF0" />
+                <stop offset="35%" stop-color="#FFB800" />
+                <stop offset="100%" stop-color="#92400E" />
+              </linearGradient>
+              <linearGradient id="pugmarkGoldDay" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#D97706" />
+                <stop offset="100%" stop-color="#B45309" />
+              </linearGradient>
+              <linearGradient id="pugmarkClawGoldDay" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FEF3C7" />
+                <stop offset="35%" stop-color="#D97706" />
+                <stop offset="100%" stop-color="#78350F" />
+              </linearGradient>
             </defs>
-            <path class="pug-pad" d="M 16.0 16.2 C 12.0 16.2, 8.4 18.2, 7.6 22.0 C 6.8 25.8, 9.4 29.5, 12.8 30.8 C 14.2 31.3, 17.8 31.3, 19.2 30.8 C 22.6 29.5, 25.2 25.8, 24.4 22.0 C 23.6 18.2, 20.0 16.2, 16.0 16.2 Z" fill="url(#pugmarkGold)" />
-            <ellipse class="pug-toe toe-1" cx="6.0" cy="12.8" rx="2.6" ry="3.8" transform="rotate(-28 6.0 12.8)" fill="url(#pugmarkGold)" />
-            <ellipse class="pug-toe toe-2" cx="12.2" cy="8.8" rx="2.8" ry="4.4" transform="rotate(-10 12.2 8.8)" fill="url(#pugmarkGold)" />
-            <ellipse class="pug-toe toe-3" cx="19.8" cy="8.8" rx="2.8" ry="4.4" transform="rotate(10 19.8 8.8)" fill="url(#pugmarkGold)" />
-            <ellipse class="pug-toe toe-4" cx="26.0" cy="12.8" rx="2.6" ry="3.8" transform="rotate(28 26.0 12.8)" fill="url(#pugmarkGold)" />
+            <g class="pugmark-claws">
+              <path class="pugmark-claw claw-1" d="M 5.0 12.0 L 4.0 6.0 L 5.5 2.5 L 6.8 5.5 L 7.0 12.0 Z" fill="url(#pugmarkClawGold)" />
+              <path class="pugmark-claw claw-2" d="M 11.2 7.5 L 11.0 1.5 L 12.5 0.2 L 13.8 2.5 L 13.6 7.5 Z" fill="url(#pugmarkClawGold)" />
+              <path class="pugmark-claw claw-3" d="M 18.4 7.5 L 18.2 2.5 L 19.5 0.2 L 21.0 1.5 L 20.8 7.5 Z" fill="url(#pugmarkClawGold)" />
+              <path class="pugmark-claw claw-4" d="M 25.0 12.0 L 25.2 5.5 L 26.5 2.5 L 28.0 6.0 L 27.0 12.0 Z" fill="url(#pugmarkClawGold)" />
+            </g>
+            <g class="pugmark-toes" fill="url(#pugmarkGold)">
+              <polygon class="pugmark-toe toe-1" points="4.2,14.5 5.2,11.8 7.8,11.0 9.2,13.2 8.8,16.0 6.5,17.0 4.8,16.0" />
+              <polygon class="pugmark-toe toe-2" points="10.2,9.5 12.0,6.5 14.5,7.2 15.5,10.5 14.8,13.5 12.5,14.5 10.5,12.5" />
+              <polygon class="pugmark-toe toe-3" points="17.5,7.2 20.0,6.5 21.8,9.5 21.5,12.5 19.5,14.5 17.2,13.5 16.5,10.5" />
+              <polygon class="pugmark-toe toe-4" points="24.2,11.0 26.8,11.8 27.8,14.5 27.2,16.0 25.5,17.0 23.2,16.0 22.8,13.2" />
+            </g>
+            <g class="pugmark-heel" fill="url(#pugmarkGold)">
+              <polygon points="16,19.5 20.5,19.0 23.5,21.0 25.0,24.5 24.2,27.8 22.5,30.5 19.8,31.8 18.0,31.2 16.0,30.2 14.0,31.2 12.2,31.8 9.5,30.5 7.8,27.8 7.0,24.5 8.5,21.0 11.5,19.0" />
+            </g>
           </svg>
         </span>
-        <span class="brand-text">
+        <span class="brand-stack">
           <span class="brand-the">THE</span>
-          <span class="brand-name">OMKAR</span>
+          <span class="brand-omkar">OMKAR</span>
           <span class="brand-den">DEN</span>
         </span>
       </a>
     </div>
 
+    <!-- Zone 2: Navigation Capsule -->
     <div class="top-zone top-zone-center">
-      <nav class="nav-capsule" aria-label="Primary Sections">
-        <div class="capsule-shell">
-          <span class="capsule-pill" aria-hidden="true"></span>
-          <a href="/" class="nav-tab" data-nav="core" data-section="s1">Core</a>
-          <a href="/#s3" class="nav-tab" data-nav="telemetry" data-section="s3">Telemetry</a>
-          <a href="/#s4" class="nav-tab" data-nav="forest" data-section="s4">Forest</a>
-          <a href="/tiger" class="nav-tab is-active active" data-nav="tiger" data-section="tiger"><span class="tab-dot" aria-hidden="true"></span>Tiger</a>
-          <a href="/#s5" class="nav-tab" data-nav="field" data-section="s5">Field</a>
-        </div>
+      <nav class="nav-capsule mono" id="navCapsule" role="navigation" aria-label="Core Navigation">
+        <span class="nav-pill-bg" id="navPillBg" aria-hidden="true"></span>
+        <a href="/" class="nav-tab" data-nav="core" data-route="/">
+          <span class="arrow">↗</span> <span>Core</span>
+        </a>
+        <a href="/telemetry" class="nav-tab" data-nav="telemetry" data-route="/telemetry">
+          <span class="arrow">↗</span> <span>Telemetry</span>
+        </a>
+        <a href="/forest" class="nav-tab" data-nav="forest" data-route="/forest">
+          <span class="arrow">↗</span> <span>Forest</span>
+        </a>
+        <a href="/tiger" class="nav-tab active" data-nav="tiger" data-route="/tiger">
+          <span class="reticle" aria-hidden="true">◉</span> <span>Tiger</span>
+        </a>
+        <a href="/field" class="nav-tab" data-nav="field" data-route="/field">
+          <span class="arrow">↗</span> <span>Field</span>
+        </a>
       </nav>
     </div>
 
+    <!-- Zone 3: Controls -->
     <div class="top-zone top-zone-right">
-      <div class="look-toggle" role="group" aria-label="Theme">
-        <span class="look-pill" aria-hidden="true"></span>
-        <button type="button" class="look-btn is-active" data-look="night">night</button>
-        <button type="button" class="look-btn" data-look="day">day</button>
-      </div>
-      <a href="https://github.com/onkarbhople" class="top-link" target="_blank" rel="noopener noreferrer">github</a>
+      <span class="looks mono" id="looksToggle" role="group" aria-label="Colours">
+        <span class="looks-pill-bg" id="looksPillBg" aria-hidden="true"></span>
+        <button type="button" data-look="night" aria-pressed="true">night</button>
+        <button type="button" data-look="day" aria-pressed="false">day</button>
+      </span>
+      <button class="snd mono" type="button" id="snd" aria-pressed="false" title="Toggle audio">sound ○</button>
+      <a class="cta mono" href="https://github.com/g4mt2fch8w-code/omkarverse" target="_blank" rel="noopener">↗ github</a>
     </div>
   </header>
 
@@ -595,6 +669,7 @@
     // Initial render
     renderTiger(getSelectedTiger());
   </script>
+  <script src="/js/sound-manager.js" defer></script>
   <script src="/js/nav-physics.js" defer></script>
 </body>
 </html>
