@@ -6,13 +6,13 @@
 .top-zone-right{gap:14px;flex-shrink:0}
 
 /* Left Zone: Brand Stack */
-.brand-logo{display:inline-flex;flex-direction:column;justify-content:center;align-items:flex-start;text-decoration:none;font-family:var(--f-sans);text-transform:uppercase;user-select:none;line-height:0.88;gap:1px;transition:opacity .2s ease,transform .2s ease}
+.brand-logo{display:inline-flex;flex-direction:column;justify-content:center;align-items:flex-start;text-decoration:none;font-family:var(--f-mono);text-transform:uppercase;user-select:none;line-height:0.92;gap:2px;transition:opacity .2s ease,transform .2s ease}
 .brand-logo:hover{opacity:.88;transform:translateY(-1px)}
-.brand-the{font-size:15px;font-weight:700;letter-spacing:.34em;color:#94A3B8;line-height:0.88}
+.brand-the{font-size:13px;font-weight:600;letter-spacing:.36em;color:#94A3B8;line-height:0.92}
 html[data-look=day] .brand-the{color:#64748B}
-.brand-omkar{font-size:26px;font-weight:900;letter-spacing:.02em;color:#FFFFFF;line-height:0.88}
+.brand-omkar{font-size:24px;font-weight:800;letter-spacing:.04em;color:#FFFFFF;line-height:0.92}
 html[data-look=day] .brand-omkar{color:#001445}
-.brand-den{font-size:26px;font-weight:900;letter-spacing:.12em;background:linear-gradient(135deg,#FFB800 0%,#E5A93C 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:0.88;filter:drop-shadow(0 0 10px rgba(255,184,0,0.35))}
+.brand-den{font-size:24px;font-weight:900;letter-spacing:.14em;background:linear-gradient(135deg,#FFB800 0%,#E5A93C 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:0.92;filter:drop-shadow(0 0 10px rgba(255,184,0,0.35))}
 html[data-look=day] .brand-den{background:linear-gradient(135deg,#D97706 0%,#B45309 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:none}
 
 /* Route Badge next to Brand */
