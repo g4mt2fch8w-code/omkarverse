@@ -9,8 +9,10 @@ style_idx = raw.find(',\\"style\\":\\"rotunda\\"')
 with open("public/media/museum_tigers/immortals_manifest.json") as f:
     manifest = json.load(f)
 
+# ALL 28 TIGERS AS INDIVIDUAL BAYS:
+# Each tiger has 1 title plate + 1 portrait photo = 56 items total (28 plates + 28 photos)
 bays = []
-for i in range(12):
+for i in range(28):
     t = manifest[i]
     reserve = t['reserve']
     state = t['state']
@@ -30,32 +32,6 @@ for i in range(12):
             "src": t["image"],
             "title": f"{t['name']} ({t['code']}) — {t['title']}"
         }]
-    })
-
-groups = [
-    ("TADOBA FOREST TITANS", "tadoba-dynasty", "Heavyweight rulers of Central India teak forests.", manifest[12:18]),
-    ("VIDARBHA CORRIDOR SOVEREIGNS", "vidarbha-legends", "Legendary territorial monarchs of Vidarbha corridors.", manifest[18:24]),
-    ("KANHA & BANDHAVGARH SOVEREIGNS", "central-sun-kings", "The Sun Monarchs and wanderers of Kanha and Bandhavgarh.", manifest[24:28])
-]
-
-for title, slug, desc, slice_tigers in groups:
-    prints = []
-    for t in slice_tigers:
-        prints.append({
-            "href": f"/tiger/dossier?id={t['id']}",
-            "key": f"tiger-{t['number']}",
-            "large": t["image"],
-            "ratio": 1.5,
-            "src": t["image"],
-            "title": f"{t['name']} ({t['code']})"
-        })
-    bays.append({
-        "count": len(prints),
-        "description": desc,
-        "href": f"/tiger/dossier?id={slice_tigers[0]['id']}",
-        "slug": slug,
-        "title": title,
-        "prints": prints
     })
 
 new_bays_json_escaped = json.dumps(bays, separators=(",", ":")).replace('"', '\\"')
