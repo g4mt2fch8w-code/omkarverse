@@ -55,7 +55,47 @@
           <span class="stage-cta-arrow" aria-hidden="true">↓</span>
         </a>
       </div>
-      <p class="mono hint" id="hint1">click the globe · scroll ↓</p>
+      <div class="recon-dock">
+        <!-- 1. The Square Map Card (Blinkit-style 1:1 Aspect Ratio) -->
+        <div class="radar-card" id="radarCard" aria-label="Recon Map">
+          <img class="radar-map-img" id="radarMapImg" alt="" aria-hidden="true" />
+          <div class="radar-grid" aria-hidden="true">
+            <span class="radar-ring r1"></span>
+            <span class="radar-ring r2"></span>
+            <span class="radar-crosshair-h"></span>
+            <span class="radar-crosshair-v"></span>
+            <span class="radar-sweep"></span>
+          </div>
+          <div class="radar-anchor" aria-hidden="true">
+            <span class="radar-ripple"></span>
+            <div class="pin-jump-wrapper">
+              <svg class="radar-pin" viewBox="0 0 24 32" width="22" height="28" fill="none">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 8.5 10.5 18.8 11.2 19.5a1.1 1.1 0 0 0 1.6 0C13.5 30.8 24 20.5 24 12 24 5.37 18.63 0 12 0z" fill="url(#pinGoldGrad)"/>
+                <circle cx="12" cy="11.5" r="4.2" fill="#041329"/>
+                <circle cx="12" cy="11.5" r="2.2" fill="#FFFFFF"/>
+                <defs>
+                  <linearGradient id="pinGoldGrad" x1="0" y1="0" x2="24" y2="32" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#FFB800"/>
+                    <stop offset="100%" stop-color="#E5A93C"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <span class="radar-pin-shadow"></span>
+          </div>
+        </div>
+
+        <!-- 2. Docked Telemetry Data Pill -->
+        <div class="geo-pill mono" id="geoPill">
+          <span class="geo-led" aria-hidden="true"></span>
+          <span class="geo-label">RECON NODE:</span>
+          <span class="geo-city" id="geoCity">TARU CORE</span>
+          <span class="geo-sep">//</span>
+          <span class="geo-coords" id="geoCoords">20.2460° N, 79.3120° E</span>
+        </div>
+
+        <p class="mono hint" id="hint1">click the globe · scroll ↓</p>
+      </div>
     </div>
   </section>
   <section class="scene" id="s2" data-scene="2">
