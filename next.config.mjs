@@ -7,7 +7,6 @@ const nextConfig = {
       { source: '/core', destination: '/' },
       { source: '/telemetry', destination: '/' },
       { source: '/forest', destination: '/' },
-      { source: '/tiger', destination: '/' },
       { source: '/field', destination: '/' },
     ];
   },
