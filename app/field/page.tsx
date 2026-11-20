@@ -6,8 +6,8 @@ import { GlobalNav } from "@/components/GlobalNav";
 import { FieldFeed, Dispatch } from "@/components/FieldFeed";
 
 export const metadata = {
-  title: "FIELD DISPATCHES // TADOBA ARCHIVE — THE OMKAR DEN",
-  description: "Tactical field intelligence and apex predator chronicles from Central Indian forest corridors.",
+  title: "FIELD DISPATCHES — THE OMKAR DEN",
+  description: "Expedition photography and field dispatches.",
 };
 
 export default function FieldPage() {

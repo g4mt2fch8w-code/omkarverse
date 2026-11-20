@@ -192,29 +192,11 @@ export function DotPhysicsHeader() {
       <div className="absolute inset-0 bg-radial-gradient from-amber-500/10 via-transparent to-transparent pointer-events-none" />
 
       {/* Foreground Content */}
-      <div className="relative z-10 flex flex-col items-start gap-4">
-        {/* Tactical Monospace Reticle Line */}
-        <div className="flex items-center gap-2.5 font-mono text-xs tracking-widest text-amber-400 uppercase">
-          <span className="relative flex h-2.5 w-2.5 items-center justify-center">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_8px_#f59e0b]" />
-          </span>
-          <span>LIVE FIELD TELEMETRY // CENTRAL INDIAN CORRIDORS</span>
-        </div>
-
+      <div className="relative z-10 flex flex-col items-start">
         {/* Big Bold Commanding Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase leading-[0.95] drop-shadow-sm font-sans">
+        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight text-white uppercase leading-[0.9] drop-shadow-sm font-sans">
           FIELD DISPATCHES
         </h1>
-
-        {/* Subtitle / Coordinates Spec */}
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-1 font-mono text-xs text-slate-400 tracking-wider uppercase pt-2">
-          <span>TADOBA CORE (20.246° N, 79.312° E)</span>
-          <span className="text-white/20 hidden sm:inline">/</span>
-          <span>ARCHIVE STATUS: STANDBY</span>
-          <span className="text-white/20 hidden sm:inline">/</span>
-          <span>OPTICS: SONY 600MM G OSS</span>
-        </div>
       </div>
     </div>
   );

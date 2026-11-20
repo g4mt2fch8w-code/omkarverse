@@ -142,33 +142,23 @@ export function FieldFeed({ initialDispatches }: FieldFeedProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-[#041329] via-[#041329]/80 to-[#041329] pointer-events-none" />
 
           {/* Content Container */}
-          <div className="relative z-10 flex flex-col items-center max-w-4xl py-12">
-            {/* 1. Tactical Outpost Status Badge (108.supply style) */}
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-amber-400 bg-amber-400/10 border border-amber-400/30 px-4 py-2 rounded-full tracking-wider uppercase">
-              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#f59e0b]" />
-              <span>OUTPOST 01: TADOBA CORE · FREQUENCY 142.850 MHz · STANDBY</span>
+          <div className="relative z-10 flex flex-col items-center max-w-4xl py-16">
+            {/* 1. Standby indicator */}
+            <div className="font-mono text-sm tracking-widest text-amber-400 font-semibold uppercase">
+              Standby !!!!!
             </div>
 
-            {/* 2. Bold Editorial Headline (rejouice.com style) */}
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-8 mb-4 max-w-3xl leading-[1.15] uppercase">
-              EXPEDITION ARCHIVE IN PROGRESS // CHRONICLES UNDER FIELD CURATION
+            {/* 2. Headline */}
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4 max-w-2xl leading-[1.15] uppercase">
+              EXPEDITION ARCHIVE IN PROGRESS
             </h2>
 
-            {/* 3. Authentic Editorial Statement */}
-            <p className="text-slate-400 text-base md:text-lg max-w-2xl leading-relaxed font-sans mb-8">
-              Field telemetry, RAW photographic contact sheets, and GPS patrol logs from Central Indian forest corridors are currently being compiled from Sony A7IV buffers and Garmin 66sr waypoints. Incoming dispatches will transmit directly to this frequency.
+            {/* 3. Statement */}
+            <p className="text-slate-400 text-base md:text-lg max-w-xl leading-relaxed font-sans mb-10">
+              Field dispatches, contact sheets, and photography logs are currently being compiled.
             </p>
 
-            {/* 4. Station Telemetry Spec Box (HAVEN style minimal strip) */}
-            <div className="font-mono text-xs text-slate-500 flex flex-wrap justify-center items-center gap-x-6 gap-y-2 mb-10 py-3 px-6 border-y border-white/5 uppercase tracking-wider">
-              <span>ZONE: TADOBA CORE (20.246° N, 79.312° E)</span>
-              <span className="text-white/10 hidden sm:inline">|</span>
-              <span>OPTICS: SONY A7IV + 200-600MM</span>
-              <span className="text-white/10 hidden sm:inline">|</span>
-              <span>ARCHIVIST: ONKAR BHOPLE PATIL</span>
-            </div>
-
-            {/* 5. Quick Gateways (Zero Dead Ends) */}
+            {/* 4. Quick Gateways (Zero Dead Ends) */}
             <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="/tiger"
@@ -261,7 +251,7 @@ export function FieldFeed({ initialDispatches }: FieldFeedProps) {
       {filteredDispatches.length === 0 ? (
         <div className="py-24 text-center border border-dashed border-white/10 rounded">
           <p className="font-mono text-xs uppercase tracking-widest text-slate-400">
-            NO DISPATCHES FILED IN SELECTED SECTOR
+            NO DISPATCHES FOUND IN THIS CATEGORY
           </p>
         </div>
       ) : viewMode === "grid" ? (
