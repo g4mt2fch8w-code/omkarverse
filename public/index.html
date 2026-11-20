@@ -15,19 +15,49 @@
 
 <canvas id="cv" aria-hidden="true"></canvas>
 <header class="top">
-  <a href="#s1" class="brand-logo" aria-label="THE OMKAR DEN, back to top">
-    <span class="brand-the">THE</span>
-    <span class="brand-omkar">OMKAR</span>
-    <span class="brand-den">DEN</span>
-  </a>
-  <button type="button" class="ins-here" id="insHere" aria-expanded="false" aria-controls="insMenu" aria-label="Menu · home"><span class="ins-bg" aria-hidden="true"><b></b><s></s><s></s></span><span class="lbl"><i>/</i>home</span></button>
-  <nav>
-    <span class="looks mono" role="group" aria-label="Colours"><button type="button" data-look="night" aria-pressed="true">night</button><button type="button" data-look="day" aria-pressed="false">day</button></span>
-    <button class="watch mono" type="button" id="watch"><span class="wl">Telemetry</span> <span class="arrow">↗</span></button>
-    <button class="snd mono" type="button" id="snd" aria-pressed="false">sound ○</button>
+  <!-- Zone 1: Left Zone (Brand Stack & Route Indicator) -->
+  <div class="top-zone top-zone-left">
+    <a href="#s1" class="brand-logo" aria-label="THE OMKAR DEN, back to top">
+      <span class="brand-the">THE</span>
+      <span class="brand-omkar">OMKAR</span>
+      <span class="brand-den">DEN</span>
+    </a>
+    <button type="button" class="ins-here route-badge mono" id="insHere" aria-expanded="false" aria-controls="insMenu" aria-label="Menu · home">
+      <span class="ins-bg" aria-hidden="true"><b></b><s></s><s></s></span>
+      <span class="lbl" id="routeTag"><i>/</i>home</span>
+    </button>
+  </div>
+
+  <!-- Zone 2: Center/Right Zone (The Unified Navigation Capsule) -->
+  <div class="top-zone top-zone-center">
+    <nav class="nav-capsule mono" id="navCapsule" role="navigation" aria-label="Core Navigation">
+      <span class="nav-pill-bg" id="navPillBg" aria-hidden="true"></span>
+      <a href="#s1" class="nav-tab active" data-nav="s1">
+        <span class="arrow">↗</span> <span>Telemetry</span>
+      </a>
+      <a href="#s2" class="nav-tab" data-nav="s2">
+        <span class="arrow">↗</span> <span>Forest</span>
+      </a>
+      <a href="#s3" class="nav-tab" data-nav="s3">
+        <span class="arrow">↗</span> <span>Tiger</span>
+      </a>
+      <a href="#s4" class="nav-tab" data-nav="s4">
+        <span class="arrow">↗</span> <span>Field</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Zone 3: Far-Right Zone (Controls & Utilities) -->
+  <div class="top-zone top-zone-right">
+    <span class="looks mono" id="looksToggle" role="group" aria-label="Colours">
+      <span class="looks-pill-bg" id="looksPillBg" aria-hidden="true"></span>
+      <button type="button" data-look="night" aria-pressed="true">night</button>
+      <button type="button" data-look="day" aria-pressed="false">day</button>
+    </span>
+    <button class="snd mono" type="button" id="snd" aria-pressed="false" title="Toggle audio">sound ○</button>
     <button class="ins-share" type="button" aria-label="Share this page" title="Share"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3.5M8 7.5l4-4 4 4"></path><path d="M8.5 10.5H7a2 2 0 0 0-2 2V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6.5a2 2 0 0 0-2-2h-1.5"></path></svg></button>
     <a class="cta mono" href="https://github.com/g4mt2fch8w-code/omkarverse" target="_blank" rel="noopener">↗ github</a>
-  </nav>
+  </div>
 </header>
 <p class="prog mono" id="prog" aria-hidden="true">01 / 05</p>
 <main>
@@ -37,7 +67,11 @@
       <div class="copy">
         <p class="mono muted" id="back" hidden>you came back</p>
         <p class="say">In every coordinate, <b class="telemetry">encrypted telemetry.</b></p>
-        <button class="watchBig" type="button" id="watchBig"><span class="pl" aria-hidden="true"></span><span><b class="wb">watch the video</b> <span class="ws">73″</span></span></button>
+        <a href="#s2" class="stage-cta mono" id="stage01Cta" aria-label="Explore Core Telemetry">
+          <span class="stage-cta-pulse" aria-hidden="true"></span>
+          <span class="stage-cta-label">Explore Telemetry</span>
+          <span class="stage-cta-arrow" aria-hidden="true">↓</span>
+        </a>
       </div>
       <p class="mono hint" id="hint1">rotate the globe · scroll ↓</p>
     </div>
@@ -99,5 +133,6 @@
   <script src="/js/globe-data.js"></script>
   <script src="/js/webgl-engine.js"></script>
   <script src="/js/interaction.js"></script>
+  <script src="/js/nav-physics.js"></script>
 </body>
 </html>
