@@ -6,7 +6,7 @@
 .top-zone-right{gap:14px;flex-shrink:0}
 
 /* Left Zone: Brand Lockup with Geometric Tiger Pugmark & Retractable Claws */
-.brand-group{display:inline-flex;align-items:center;gap:11px;text-decoration:none;user-select:none;padding:2px 4px;border-radius:12px;transition:opacity .2s ease,transform .2s ease}
+.brand-group{display:inline-flex;flex-direction:row;align-items:center;gap:12px;text-decoration:none;user-select:none;padding:2px 4px;border-radius:12px;transition:opacity .2s ease,transform .2s ease}
 .brand-group:hover{transform:translateY(-1px)}
 .pugmark-icon{display:inline-flex;align-items:center;justify-content:center;width:26px;height:29px;flex-shrink:0;transform:rotate(-14deg);transform-origin:center center;transition:filter .25s cubic-bezier(0.34,1.56,0.64,1),transform .25s cubic-bezier(0.34,1.56,0.64,1)}
 .brand-group:hover .pugmark-icon{filter:drop-shadow(0 0 8px rgba(255,184,0,0.65));transform:rotate(-8deg) translateY(-1px) scale(1.05)}
@@ -27,7 +27,7 @@ html[data-look=day] .brand-group:hover .pugmark-icon{filter:drop-shadow(0 0 8px 
 .brand-group:hover .claw-4{transition-delay:.02s}
 
 /* Stacked Wordmark Typography */
-.brand-stack,.brand-logo{display:inline-flex;flex-direction:column;justify-content:center;align-items:flex-start;line-height:0.88;gap:2px;font-family:var(--f-mono);text-transform:uppercase}
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;align-items:flex-start;line-height:0.88;gap:2px;font-family:var(--f-mono);text-transform:uppercase}
 .brand-the{font-size:11px;font-weight:600;letter-spacing:0.2em;color:#94A3B8;line-height:0.88}
 html[data-look=day] .brand-the{color:#64748B}
 .brand-omkar{font-size:20px;font-weight:800;letter-spacing:0.03em;color:#FFFFFF;line-height:0.88}
@@ -42,11 +42,8 @@ html[data-look=day] .pugmark-toes,
 html[data-look=day] .pugmark-heel{fill:url(#pugmarkGoldDay)}
 html[data-look=day] .pugmark-claw{fill:url(#pugmarkClawGoldDay)}
 
-/* Route Tag next to Brand */
-.route-tag{display:inline-flex;align-items:center;font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:#94A3B8;padding:3.5px 8.5px;border-radius:9999px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);margin-left:5px;align-self:center;user-select:none;transition:color .2s ease,border-color .2s ease,background .2s ease}
-html[data-look=day] .route-tag{color:#475569;background:rgba(0,20,69,0.04);border-color:rgba(0,20,69,0.1)}
-.brand-group:hover .route-tag{border-color:rgba(255,184,0,0.35);color:#FFB800}
-html[data-look=day] .brand-group:hover .route-tag{border-color:rgba(217,119,6,0.35);color:#D97706}
+/* Route Tag next to Brand (Removed per request) */
+.route-tag{display:none !important}
 
 /* Center Zone: Unified Navigation Capsule with 108.supply Fluid Magnetic Physics */
 .nav-capsule{position:relative;display:inline-flex;align-items:center;padding:3px 4px;border-radius:9999px;background:rgba(255,255,255,0.04);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.09);box-shadow:0 4px 20px -2px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.08);user-select:none}
