@@ -532,13 +532,3 @@ html[data-look=day] .lidar-tag-fact,
 html:not(.night) .lidar-tag-fact {
   color: #0f172a;
 }
-
-/* Stage 03 Desktop Layout: 3D dot canopy is on the left, copy on the right */
-@media (min-width: 769px) {
-  #s3 .row {
-    justify-content: flex-end;
-  }
-  #s3 .copy {
-    margin-left: auto;
-  }
-}
