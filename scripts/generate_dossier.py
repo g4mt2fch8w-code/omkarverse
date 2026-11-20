@@ -507,7 +507,7 @@ html = f"""<!DOCTYPE html>
             <div id="metaStatusShort" class="meta-value">-</div>
           </div>
           <div class="meta-box">
-            <div class="meta-label">Gender / Code</div>
+            <div class="meta-label">Gender</div>
             <div id="metaCodeGender" class="meta-value">-</div>
           </div>
           <div class="meta-box">
@@ -519,12 +519,6 @@ html = f"""<!DOCTYPE html>
 
       <!-- Right Column: Full Telemetry & Historical Chronicle -->
       <section class="intel-pane">
-        <div class="header-badge-row">
-          <span class="tag-pill gold" id="badgeNumber">TIGER #01 OF 28</span>
-          <span class="tag-pill" id="badgeCode">CODE: -</span>
-          <span class="tag-pill" id="badgeState">STATE: -</span>
-        </div>
-
         <div>
           <h1 id="tigerName" class="tiger-title">-</h1>
           <div id="tigerMoniker" class="tiger-subtitle">-</div>
@@ -591,12 +585,8 @@ html = f"""<!DOCTYPE html>
 
       document.getElementById('metaReserveShort').textContent = tiger.reserve.split(' ')[0];
       document.getElementById('metaStatusShort').textContent = isDead ? 'Fallen' : 'Active';
-      document.getElementById('metaCodeGender').textContent = `${{tiger.code}} · ${{tiger.gender}}`;
+      document.getElementById('metaCodeGender').textContent = tiger.gender;
       document.getElementById('metaLifespan').textContent = tiger.lifespan.split('(')[0].trim();
-
-      document.getElementById('badgeNumber').textContent = `TIGER #${{String(tiger.number).padStart(2, '0')}} OF 28`;
-      document.getElementById('badgeCode').textContent = `CODE: ${{tiger.code}}`;
-      document.getElementById('badgeState').textContent = `STATE: ${{tiger.state}}`;
 
       document.getElementById('tigerName').textContent = tiger.name;
       document.getElementById('tigerMoniker').textContent = tiger.title;
