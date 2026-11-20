@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { soundEngine } from "@/components/audio/soundManager";
 
 interface BlinkitMiniMapProps {
@@ -14,7 +15,7 @@ export default function BlinkitMiniMap({ onExpand }: BlinkitMiniMapProps) {
   const rafRef = useRef<number | null>(null);
   const lastRef = useRef<number>(0);
 
-  // Radar sweep at ω=1.4 rad/s — same spec as main radar
+  // Radar sweep rotation (ω=1.4 rad/s)
   useEffect(() => {
     const animate = (ts: number) => {
       const dt = Math.min((ts - lastRef.current) / 1000, 0.05);
@@ -22,28 +23,34 @@ export default function BlinkitMiniMap({ onExpand }: BlinkitMiniMapProps) {
       setSweepAngle((a) => (a + 1.4 * dt * (180 / Math.PI)) % 360);
       rafRef.current = requestAnimationFrame(animate);
     };
-    rafRef.current = requestAnimationFrame((ts) => { lastRef.current = ts; rafRef.current = requestAnimationFrame(animate); });
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+    rafRef.current = requestAnimationFrame((ts) => {
+      lastRef.current = ts;
+      rafRef.current = requestAnimationFrame(animate);
+    });
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
-  // Coordinate flicker every 2s
+  // Coordinate toggle
   useEffect(() => {
-    const id = setInterval(() => setTick((t) => t + 1), 2000);
+    const id = setInterval(() => setTick((t) => t + 1), 2200);
     return () => clearInterval(id);
   }, []);
 
-  const coords = tick % 2 === 0 ? "20.246°N" : "79.312°E";
+  const coords = tick % 2 === 0 ? "20.336°N" : "79.299°E";
 
   const handleClick = () => {
     soundEngine?.playRadarPing?.();
     if (onExpand) {
       onExpand();
     } else {
-      window.open("https://geoglobe3d.vercel.app", "_blank");
+      // Open exact Google Maps location for Tadoba Temple
+      window.open("https://maps.app.goo.gl/c3B6dLV5q9VDyHp57", "_blank");
     }
   };
 
-  const SIZE = 110;
+  const SIZE = 114;
   const CX = SIZE / 2;
   const CY = SIZE / 2;
 
@@ -54,117 +61,108 @@ export default function BlinkitMiniMap({ onExpand }: BlinkitMiniMapProps) {
       onMouseLeave={() => setIsHovered(false)}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") handleClick(); }}
-      className={`relative overflow-hidden cursor-pointer rounded-xl border transition-all duration-300 bg-[#060a0f] shadow-2xl ${
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") handleClick();
+      }}
+      className={`relative overflow-hidden cursor-pointer rounded-2xl border transition-all duration-300 bg-[#060a0f] shadow-2xl group select-none ${
         isHovered
-          ? "border-amber-400/60 shadow-[0_0_20px_rgba(229,169,60,0.2)] scale-105"
-          : "border-white/15"
+          ? "border-amber-400/80 shadow-[0_0_24px_rgba(229,169,60,0.35)] scale-105"
+          : "border-white/20 hover:border-amber-400/50"
       }`}
       style={{ width: SIZE, height: SIZE }}
-      title="Click to inspect Taru Core in GeoGlobe 3D"
+      title="Click to view Tadoba Temple on Google Maps"
     >
-      {/* SVG canvas — all tactical elements drawn precisely */}
+      {/* 1. Pure High-Res Satellite Image (Non-hybrid, real terrain & canopy) */}
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src="/images/tadoba_satellite.jpg"
+          alt="Tadoba Satellite Imagery"
+          fill
+          sizes="114px"
+          priority
+          className="object-cover scale-110 filter contrast-110 brightness-90 group-hover:scale-125 transition-transform duration-700 ease-out"
+        />
+        {/* Obsidian tactical vignette overlay for aesthetic depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050709]/80 via-transparent to-[#050709]/40 pointer-events-none" />
+      </div>
+
+      {/* 2. Tactical Overlay SVG (Concentric Radar Rings, Subtle Crosshair, & Sweep) */}
       <svg
         viewBox={`0 0 ${SIZE} ${SIZE}`}
         width={SIZE}
         height={SIZE}
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
       >
-        {/* Tactical grid */}
         <defs>
-          <pattern id="mmGrid" width="8" height="8" patternUnits="userSpaceOnUse">
-            <path d="M 8 0 L 0 0 0 8" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="0.5" />
-          </pattern>
-          {/* Radar sweep gradient */}
-          <radialGradient id="sweepGrad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#e5a93c" stopOpacity="0.5" />
+          <radialGradient id="miniRadarSweepGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#e5a93c" stopOpacity="0.4" />
             <stop offset="100%" stopColor="#e5a93c" stopOpacity="0" />
           </radialGradient>
-          <clipPath id="circleClip">
-            <circle cx={CX} cy={CY} r={CX - 1} />
+          <clipPath id="miniMapClip">
+            <rect width={SIZE} height={SIZE} rx="16" />
           </clipPath>
         </defs>
 
-        {/* Background grid */}
-        <rect width={SIZE} height={SIZE} fill="url(#mmGrid)" />
+        {/* Tactical Crosshair axis lines */}
+        <line x1={CX} y1={6} x2={CX} y2={SIZE - 6} stroke="rgba(255,255,255,0.18)" strokeWidth="0.6" strokeDasharray="2,3" />
+        <line x1={6} y1={CY} x2={SIZE - 6} y2={CY} stroke="rgba(255,255,255,0.18)" strokeWidth="0.6" strokeDasharray="2,3" />
 
-        {/* Topographic contour rings — Taru Core elevation model */}
-        <circle cx={CX} cy={CY} r={42} fill="none" stroke="#e5a93c" strokeWidth="0.4" strokeDasharray="3 3" opacity={0.25} />
-        <circle cx={CX} cy={CY} r={30} fill="none" stroke="#68d391" strokeWidth="0.4" opacity={0.2} />
-        <circle cx={CX} cy={CY} r={18} fill="none" stroke="#e5a93c" strokeWidth="0.6" opacity={0.3} />
-        <circle cx={CX} cy={CY} r={8}  fill="none" stroke="#e5a93c" strokeWidth="0.8" opacity={0.5} />
+        {/* Concentric telemetry rings */}
+        <circle cx={CX} cy={CY} r={44} fill="none" stroke="rgba(229,169,60,0.25)" strokeWidth="0.6" strokeDasharray="3,3" />
+        <circle cx={CX} cy={CY} r={28} fill="none" stroke="rgba(104,211,145,0.22)" strokeWidth="0.5" />
+        <circle cx={CX} cy={CY} r={14} fill="none" stroke="rgba(229,169,60,0.3)" strokeWidth="0.75" />
 
-        {/* Cross-hair axis */}
-        <line x1={CX} y1={4} x2={CX} y2={SIZE - 4} stroke="rgba(255,255,255,0.08)" strokeWidth="0.5" />
-        <line x1={4} y1={CY} x2={SIZE - 4} y2={CY} stroke="rgba(255,255,255,0.08)" strokeWidth="0.5" />
-
-        {/* Radar sweep — conic wedge, rotating */}
-        <g clipPath="url(#circleClip)">
+        {/* Rotating Radar Sweep Wedge */}
+        <g clipPath="url(#miniMapClip)">
           <g transform={`rotate(${sweepAngle}, ${CX}, ${CY})`}>
-            {/* Trailing glow wedge */}
             <path
-              d={`M ${CX} ${CY} L ${CX + 50 * Math.cos(-40 * Math.PI / 180)} ${CY + 50 * Math.sin(-40 * Math.PI / 180)} A 50 50 0 0 1 ${CX + 50} ${CY} Z`}
-              fill="url(#sweepGrad)"
-              opacity={0.35}
+              d={`M ${CX} ${CY} L ${CX + 54 * Math.cos((-35 * Math.PI) / 180)} ${
+                CY + 54 * Math.sin((-35 * Math.PI) / 180)
+              } A 54 54 0 0 1 ${CX + 54} ${CY} Z`}
+              fill="url(#miniRadarSweepGrad)"
+              opacity={0.4}
             />
-            {/* Leading sweep line */}
-            <line x1={CX} y1={CY} x2={CX + 50} y2={CY} stroke="#e5a93c" strokeWidth="1" opacity={0.7} />
+            <line x1={CX} y1={CY} x2={CX + 54} y2={CY} stroke="#e5a93c" strokeWidth="1.2" opacity={0.8} />
           </g>
         </g>
-
-        {/* Outer radar ring */}
-        <circle cx={CX} cy={CY} r={CX - 1} fill="none" stroke="rgba(229,169,60,0.2)" strokeWidth="1" />
-
-        {/* Satellite nodes at known positions (simulated nearby reserves) */}
-        {[
-          { angle: 35,  r: 36, color: "#68d391", label: "MOHARLI",  size: 1.8 },
-          { angle: 160, r: 32, color: "#68d391", label: "KOLSA",    size: 1.6 },
-          { angle: 290, r: 40, color: "#e5a93c", label: "NAVEGAON", size: 1.5 },
-        ].map(({ angle, r, color, label, size }) => {
-          const rad = angle * Math.PI / 180;
-          const x = CX + r * Math.cos(rad);
-          const y = CY + r * Math.sin(rad);
-          return (
-            <g key={label}>
-              <circle cx={x} cy={y} r={size} fill={color} opacity={0.7} />
-              <circle cx={x} cy={y} r={size + 2} fill="none" stroke={color} strokeWidth="0.5" opacity={0.3} />
-            </g>
-          );
-        })}
-
-        {/* Taru Core — central target */}
-        <circle cx={CX} cy={CY} r={3} fill="#e5a93c" />
-        <circle cx={CX} cy={CY} r={6} fill="none" stroke="#e5a93c" strokeWidth="1" opacity={0.6} />
-        <circle
-          cx={CX} cy={CY} r={9}
-          fill="none"
-          stroke="#e5a93c"
-          strokeWidth="0.5"
-          opacity={0.3}
-          strokeDasharray="2 2"
-        />
       </svg>
 
-      {/* LIVE badge */}
-      <div className="absolute top-1.5 left-2 flex items-center gap-1 font-mono text-[8px] text-emerald-400 tracking-wider">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-        <span>LIVE</span>
+      {/* 3. Aesthetic Jumping Tactical Pin at exact center (Tadoba Temple) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {/* Animated ground pulse rings */}
+        <span className="absolute w-8 h-8 rounded-full border border-amber-400/50 animate-ping opacity-75" />
+        <span className="absolute w-4 h-4 rounded-full bg-amber-400/20 blur-[2px]" />
+
+        {/* Jumping Pin Marker */}
+        <div className="relative flex flex-col items-center animate-bounce duration-700 -translate-y-2">
+          {/* Glowing Pin Head */}
+          <div className="relative flex items-center justify-center">
+            <span className="w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 shadow-[0_0_12px_#e5a93c] border border-white" />
+            <span className="absolute w-1.5 h-1.5 rounded-full bg-slate-950" />
+          </div>
+          {/* Pin Pointer Needle */}
+          <div className="w-0.5 h-2 bg-gradient-to-b from-amber-400 to-transparent shadow-[0_0_4px_#e5a93c]" />
+          {/* Ground Contact Shadow */}
+          <div className="w-2.5 h-1 rounded-full bg-black/60 blur-[1px] mt-0.5" />
+        </div>
       </div>
 
-      {/* Coordinate flicker */}
-      <div className="absolute top-1.5 right-2 font-mono text-[8px] text-amber-400/70 tabular-nums">
+      {/* 4. Top Header Coordinates chip */}
+      <div className="absolute top-1.5 right-2 px-1.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 font-mono text-[8px] text-amber-300 font-semibold tracking-wider tabular-nums">
         {coords}
       </div>
 
-      {/* Bottom HUD */}
-      <div className="absolute bottom-1.5 inset-x-1.5 py-0.5 px-1.5 rounded-md glass-panel flex items-center justify-between font-mono text-[8px] text-slate-300">
-        <span className="text-amber-400 font-semibold">TARU 87PX+7FV</span>
-        <span className="text-slate-500">{Math.round(sweepAngle)}°</span>
+      {/* 5. Bottom HUD Badge */}
+      <div className="absolute bottom-1.5 inset-x-1.5 py-1 px-1.5 rounded-lg bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-between font-mono text-[8px] text-slate-200">
+        <span className="text-amber-400 font-semibold tracking-wider truncate">
+          TADOBA TEMPLE
+        </span>
+        <span className="text-emerald-400 font-medium ml-1">MAP ↗</span>
       </div>
 
-      {/* Hover glow ring */}
+      {/* 6. Border Focus Glow */}
       {isHovered && (
-        <div className="absolute inset-0 rounded-xl border-2 border-amber-400/60 pointer-events-none" />
+        <div className="absolute inset-0 rounded-2xl border-2 border-amber-400 pointer-events-none shadow-[inset_0_0_12px_rgba(229,169,60,0.3)]" />
       )}
     </div>
   );
