@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pugmark Test · THE OMKAR DEN</title>
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body {
+      background: #030712;
+      color: #F8FAFC;
+      font-family: var(--f-mono, monospace);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      gap: 32px;
+    }
+    .preview-box {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 40px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: #94A3B8;
+    }
+    .slider {
+      accent-color: #FFB800;
+      cursor: pointer;
+    }
+    .degree-val {
+      color: #FFB800;
+      font-weight: bold;
+      width: 48px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preview-box">
+    <div style="font-size: 11px; letter-spacing: 0.15em; color: #64748B; text-transform: uppercase;">
+      Hover below to trigger retractable claws
+    </div>
+
+    <!-- The Exact Brand Lockup with Tilted Pugmark -->
+    <a href="/" class="brand-group brand-logo" id="brandTarget" aria-label="THE OMKAR DEN">
+      <span class="pugmark-icon" id="pugmarkIcon" aria-hidden="true">
+        <svg class="pugmark-svg" viewBox="0 0 32 36" width="30" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="pugmarkGold" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFB800" />
+              <stop offset="100%" stop-color="#E5A93C" />
+            </linearGradient>
+            <linearGradient id="pugmarkClawGold" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FFFDF0" />
+              <stop offset="35%" stop-color="#FFB800" />
+              <stop offset="100%" stop-color="#92400E" />
+            </linearGradient>
+          </defs>
+
+          <!-- RETRACTABLE CLAWS -->
+          <g class="pugmark-claws">
+            <path class="pugmark-claw claw-1" d="M 5.0 12.0 L 4.0 6.0 L 5.5 2.5 L 6.8 5.5 L 7.0 12.0 Z" fill="url(#pugmarkClawGold)" />
+            <path class="pugmark-claw claw-2" d="M 11.2 7.5 L 11.0 1.5 L 12.5 0.2 L 13.8 2.5 L 13.6 7.5 Z" fill="url(#pugmarkClawGold)" />
+            <path class="pugmark-claw claw-3" d="M 18.4 7.5 L 18.2 2.5 L 19.5 0.2 L 21.0 1.5 L 20.8 7.5 Z" fill="url(#pugmarkClawGold)" />
+            <path class="pugmark-claw claw-4" d="M 25.0 12.0 L 25.2 5.5 L 26.5 2.5 L 28.0 6.0 L 27.0 12.0 Z" fill="url(#pugmarkClawGold)" />
+          </g>
+
+          <!-- 4 TOE PADS -->
+          <g class="pugmark-toes" fill="url(#pugmarkGold)">
+            <ellipse cx="6.0" cy="16.5" rx="2.5" ry="3.6" transform="rotate(-20 6.0 16.5)" />
+            <ellipse cx="12.4" cy="11.8" rx="2.8" ry="4.2" transform="rotate(-6 12.4 11.8)" />
+            <ellipse cx="19.6" cy="11.8" rx="2.8" ry="4.2" transform="rotate(6 19.6 11.8)" />
+            <ellipse cx="26.0" cy="16.5" rx="2.5" ry="3.6" transform="rotate(20 26.0 16.5)" />
+          </g>
+
+          <!-- MAIN HEEL PAD -->
+          <path class="pugmark-heel" d="M 7.2 25.0 C 6.5 23.0 7.8 20.2 10.5 19.5 C 12.2 19.0 14.0 20.2 16.0 20.2 C 18.0 20.2 19.8 19.0 21.5 19.5 C 24.2 20.2 25.5 23.0 24.8 25.0 C 24.0 27.2 22.2 31.0 18.5 31.2 C 17.0 31.3 16.5 29.8 16.0 29.8 C 15.5 29.8 15.0 31.3 13.5 31.2 C 9.8 31.0 8.0 27.2 7.2 25.0 Z" fill="url(#pugmarkGold)" />
+        </svg>
+      </span>
+
+      <div class="brand-stack">
+        <span class="brand-the">THE</span>
+        <span class="brand-omkar">OMKAR</span>
+        <span class="brand-den">DEN</span>
+      </div>
+      <span class="brand-route mono">[ /home ]</span>
+    </a>
+
+    <!-- Live Tilt Controller -->
+    <div class="controls">
+      <span>Tilt Angle:</span>
+      <input type="range" class="slider" id="tiltSlider" min="-45" max="45" value="-14" step="1">
+      <span class="degree-val" id="degreeVal">-14°</span>
+    </div>
+  </div>
+
+  <script>
+    const slider = document.getElementById('tiltSlider');
+    const degreeVal = document.getElementById('degreeVal');
+    const icon = document.getElementById('pugmarkIcon');
+
+    slider.addEventListener('input', (e) => {
+      const val = e.target.value;
+      degreeVal.textContent = val + '°';
+      icon.style.transform = `rotate(${val}deg)`;
+    });
+  </script>
+
+</body>
+</html>
