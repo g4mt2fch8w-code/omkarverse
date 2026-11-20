@@ -39,8 +39,15 @@
       this.fadeInDuration = 1.2;  // 1.2s fade-in
       this.fadeOutDuration = 0.8; // 0.8s fade-out
       
-      const isTiger = typeof window !== 'undefined' && window.location.pathname.startsWith('/tiger');
-      this.audioPath = isTiger ? '/audio/stellar_fission.m4a' : '/audio/rumble-instrumental.mp3';
+      const isTiger = typeof window !== 'undefined' && (
+        window.location.pathname.startsWith('/tiger') ||
+        window.__OMKAR_TRACK__ === '/audio/stellar_fission.m4a' ||
+        window.__TIGER_MODE__ === true ||
+        document.title.includes('TIGER')
+      );
+      this.audioPath = (typeof window !== 'undefined' && window.__OMKAR_TRACK__)
+        ? window.__OMKAR_TRACK__
+        : (isTiger ? '/audio/stellar_fission.m4a' : '/audio/rumble-instrumental.mp3');
 
       this.isMuted = true;
       this.isInitialized = false;

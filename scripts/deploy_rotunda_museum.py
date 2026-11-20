@@ -3,6 +3,8 @@
 deploy_rotunda_museum.py
 Cleanly splices the 28 Deceased Tiger Immortals into the authentic Shutabug 3D Rotunda Room.
 Validates that line 3b RSC JSON parses with 0 errors.
+Removes all Mayowa Alabi references.
+Enforces uniform exhibition layout (Zero intermediate plates - pure continuous 28 immortal gallery).
 """
 
 import subprocess
@@ -17,60 +19,30 @@ def main():
     with open("public/media/museum_tigers/immortals_manifest.json", "r", encoding="utf-8") as f:
         manifest = json.load(f)
 
-    # 15 Bays for the 3D Rotunda Room
-    bays = []
-
-    # Bay 0..11: Top 12 Apex Tigers
-    for i in range(12):
-        t = manifest[i]
-        reserve = t['reserve']
-        state = t['state']
-        lifespan = t['lifespan']
-        death = t['death_cause']
-        bays.append({
-            "count": 1,
-            "description": f"{reserve}, {state} · {lifespan}. Fallen: {death}.",
+    # UNIFORM LAYOUT: 1 Single continuous grand collection of all 28 tigers
+    # This eliminates all intermediate white boards/plates between tigers,
+    # ensuring all 28 portraits flow consecutively and uniformly across the circular rotunda.
+    prints = []
+    for t in manifest:
+        prints.append({
             "href": f"/tiger/dossier?id={t['id']}",
-            "slug": t["id"],
-            "title": f"{t['name']} ({t['code']})",
-            "prints": [{
-                "href": f"/tiger/dossier?id={t['id']}",
-                "key": f"tiger-{t['number']}",
-                "large": t["image"],
-                "ratio": 1.5,
-                "src": t["image"],
-                "title": f"{t['name']} ({t['code']}) — {t['title']}"
-            }]
+            "key": f"tiger-{t['number']}",
+            "large": t["image"],
+            "ratio": 1.5,
+            "src": t["image"],
+            "title": f"{t['name']} ({t['code']}) — {t['reserve']}"
         })
 
-    # Bays 12..14: Regional Tiger Coalitions
-    groups = [
-        ("TADOBA FOREST TITANS", "tadoba-dynasty", "Heavyweight rulers of Central India teak forests (Khali, Shiva, Samrat, Neera, Narsimha, Natraj).", manifest[12:18]),
-        ("VIDARBHA CORRIDOR SOVEREIGNS", "vidarbha-legends", "Legendary territorial monarchs of Vidarbha corridors (Tyson, Madhuri, Tarachand, Raavan, Saturn, Shivaji).", manifest[18:24]),
-        ("KANHA & BANDHAVGARH SOVEREIGNS", "central-sun-kings", "The Sun Monarchs and wanderers of Kanha and Bandhavgarh (Chhota Munna, Umarpani, Baisanghat, Surya).", manifest[24:28])
-    ]
+    bays = [{
+        "count": len(prints),
+        "description": "Tactical 3D Sensory Museum celebrating the 28 Fallen Apex Predators of India (1984 – 2023) · Central Provinces, Ranthambore, Tadoba & Kanha.",
+        "href": "/tiger/dossier",
+        "slug": "the-28-immortals",
+        "title": "THE 28 IMMORTALS",
+        "prints": prints
+    }]
 
-    for title, slug, desc, slice_tigers in groups:
-        prints = []
-        for t in slice_tigers:
-            prints.append({
-                "href": f"/tiger/dossier?id={t['id']}",
-                "key": f"tiger-{t['number']}",
-                "large": t["image"],
-                "ratio": 1.5,
-                "src": t["image"],
-                "title": f"{t['name']} ({t['code']})"
-            })
-        bays.append({
-            "count": len(prints),
-            "description": desc,
-            "href": f"/tiger/dossier?id={slice_tigers[0]['id']}",
-            "slug": slug,
-            "title": title,
-            "prints": prints
-        })
-
-    print(f"Generated {len(bays)} bays covering all 28 tigers.")
+    print(f"Generated single uniform bay with {len(prints)} tigers (0 intermediate plates).")
 
     print("[3/5] Splicing collections JSON into RSC payload...")
     idx_start = 56621
@@ -81,12 +53,24 @@ def main():
     new_bays_json_escaped = json.dumps(bays, separators=(",", ":")).replace('"', '\\"')
     spliced = raw[:idx_start] + new_bays_json_escaped + raw[style_idx:]
 
+    # Replace "artist":"Mayowa Alabi" with "artist":"THE OMKAR DEN" in RSC
+    spliced = spliced.replace('\\"artist\\":\\"Mayowa Alabi\\"', '\\"artist\\":\\"THE OMKAR DEN\\"')
+
     # Validate line 3b in Script 32
     scripts = re.findall(r"<script[^>]*>(.*?)</script>", spliced, re.DOTALL)
-    s32 = scripts[32]
-    m = re.match(r"self\.__next_f\.push\(\[1,\"(.*)\"\]\)", s32, re.DOTALL)
+    # Find script with flight data
+    flight_script = None
+    for s in scripts:
+        if "self.__next_f.push([1," in s and "collections" in s:
+            flight_script = s
+            break
+
+    if not flight_script:
+        raise ValueError("Could not find flight data script!")
+
+    m = re.search(r'self\.__next_f\.push\(\[1,\"(.*)\"\]\)', flight_script, re.DOTALL)
     if not m:
-        raise ValueError("Could not match self.__next_f.push in script 32!")
+        raise ValueError("Could not match self.__next_f.push in flight script!")
 
     inner = m.group(1)
     validated = False
@@ -95,16 +79,29 @@ def main():
             colon = line.find(":")
             json_str = line[colon+1:].replace('\\"', '"').replace('\\\\', '\\')
             parsed = json.loads(json_str)
-            if len(parsed[3]["collections"]) == 15 and parsed[3]["style"] == "rotunda":
+            if len(parsed[3]["collections"]) == 1 and parsed[3]["style"] == "rotunda":
                 validated = True
-                print("✓ RSC Flight payload successfully verified: 15 bays, valid JSON syntax!")
+                print("✓ RSC Flight payload successfully verified: 1 uniform bay (28 tigers), valid JSON syntax!")
+                print(f"  Artist field verified: {parsed[3].get('artist')}")
             break
 
     if not validated:
         raise ValueError("Failed to validate spliced RSC payload!")
 
-    print("[4/5] Injecting CSS overrides and scripts...")
-    # Inject clean UI CSS to ensure canvas is visible and shutabug remnants hidden
+    print("[4/5] Scrubbing Mayowa Alabi and injecting clean styling & scripts...")
+    # Global replacement of Mayowa Alabi and Shutabug descriptions
+    spliced = spliced.replace("Mayowa Alabi", "The Omkar Den")
+    spliced = spliced.replace("Shutabug | Black &amp; African Art Prints by Mayowa Alabi", "THE OMKAR DEN // 3D TIGER MUSEUM — THE 28 IMMORTALS")
+    spliced = spliced.replace("Shutabug | Black & African Art Prints by Mayowa Alabi", "THE OMKAR DEN // 3D TIGER MUSEUM — THE 28 IMMORTALS")
+    spliced = spliced.replace("Art prints celebrating Black and African culture, from Lagos to the diaspora. Original digital paintings by Mayowa Alabi. Ships worldwide.", "Tactical 3D Sensory Museum celebrating the 28 Fallen Apex Predators of India (1984 – 2023).")
+
+    # Set audio track to stellar fission
+    head_audio_script = """<script>
+window.__OMKAR_TRACK__ = '/audio/stellar_fission.m4a';
+window.__TIGER_MODE__ = true;
+</script>
+"""
+
     clean_css = """
 <style id="clean-tiger-ui">
 /* Completely remove Shutabug third party header, Postcards from Lagos newsletter, and Gallery/List switch */
@@ -143,7 +140,7 @@ html, body, main, #main, .scene, [class*="immersiveScene"], [class*="immersive"]
 <link rel="stylesheet" href="/css/omkar-navbar.css">
 """
     head_pos = spliced.find("<head>")
-    html_with_head = spliced[:head_pos + len("<head>")] + clean_css + spliced[head_pos + len("<head>"):]
+    html_with_head = spliced[:head_pos + len("<head>")] + head_audio_script + clean_css + spliced[head_pos + len("<head>"):]
 
     # Remove data-booting attribute
     html_with_head = re.sub(r"document\.documentElement\.dataset\.booting\s*=\s*['\"][^'\"]*['\"];?", "", html_with_head)
