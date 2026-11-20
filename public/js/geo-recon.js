@@ -3,7 +3,8 @@
  * 
  * - Silent background IP fetch (zero navigator.geolocation popups)
  * - Free zero-auth endpoint (ipwho.is with fallback)
- * - Fallback to TARU CORE (20.246° N, 79.312° E)
+ * - Fallback to TARU CORE (20.2460° N, 79.3120° E)
+ * - Zero-API Satellite Imagery (ArcGIS World Imagery public export / slippy tile)
  * - 96x96 Blinkit-style square radar card with jumping pin & radar ripple
  * - Docked telemetry pill: [ 🟢 RECON NODE: PUNE // 18.5204° N, 73.8567° E ]
  */
@@ -28,19 +29,24 @@
     return `${latStr}, ${lonStr}`;
   }
 
-  // Slippy map tile calculations
-  function getTileUrl(lat, lon, zoom) {
+  // Zero-API Public High-Res Satellite Imagery (ArcGIS World Imagery REST export)
+  // Centers the resolved coordinates precisely in the middle of a 256x256 satellite crop
+  function getSatelliteImageryUrl(lat, lon) {
+    const delta = 0.012; // ~1.3km tactical bounding box for ideal reconnaissance zoom
+    const minLon = (lon - delta).toFixed(5);
+    const maxLon = (lon + delta).toFixed(5);
+    const minLat = (lat - delta).toFixed(5);
+    const maxLat = (lat + delta).toFixed(5);
+    return `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=${minLon},${minLat},${maxLon},${maxLat}&bboxSR=4326&imageSR=4326&size=256,256&format=jpg&f=image`;
+  }
+
+  // Backup Zero-API Satellite Tile
+  function getSatelliteTileBackup(lat, lon, zoom = 14) {
     const n = Math.pow(2, zoom);
     const x = Math.floor(((lon + 180) / 360) * n);
     const latRad = (lat * Math.PI) / 180;
     const y = Math.floor(((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2) * n);
-    return {
-      url: `https://basemaps.cartocdn.com/dark_all/${zoom}/${x}/${y}.png`,
-      exactX: ((lon + 180) / 360) * n,
-      exactY: ((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2) * n,
-      tileX: x,
-      tileY: y,
-    };
+    return `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${zoom}/${y}/${x}`;
   }
 
   function updateWidgetUI(data) {
@@ -56,32 +62,34 @@
     if (coordsEl) coordsEl.textContent = coordsText;
 
     if (card) {
-      card.setAttribute('title', `Recon: ${cityName} [${coordsText}]`);
+      card.setAttribute('title', `Recon Satellite: ${cityName} [${coordsText}]`);
     }
 
-    // Update map tile background
+    // Load satellite imagery without any API key
     if (mapImg && typeof data.latitude === 'number' && typeof data.longitude === 'number') {
-      const zoom = 13;
-      const tileInfo = getTileUrl(data.latitude, data.longitude, zoom);
+      const primaryUrl = getSatelliteImageryUrl(data.latitude, data.longitude);
+      const backupUrl = getSatelliteTileBackup(data.latitude, data.longitude, 14);
 
-      // Preload image
       const img = new Image();
       img.onload = function () {
-        mapImg.src = tileInfo.url;
+        mapImg.src = primaryUrl;
         mapImg.classList.add('loaded');
-        // Center the exact coordinate within the 96px card
-        const subX = (tileInfo.exactX - tileInfo.tileX) * 256;
-        const subY = (tileInfo.exactY - tileInfo.tileY) * 256;
-        // The card is 96x96, tile is 256x256. Center point is (48, 48)
-        const offsetX = 48 - subX;
-        const offsetY = 48 - subY;
-        mapImg.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
       };
       img.onerror = function () {
-        // Fallback to high-contrast tactical SVG grid
-        mapImg.style.display = 'none';
+        // Fallback to slippy satellite tile
+        const backupImg = new Image();
+        backupImg.onload = function () {
+          mapImg.src = backupUrl;
+          mapImg.classList.add('loaded');
+        };
+        backupImg.onerror = function () {
+          // Local cached satellite fallback
+          mapImg.src = '/media/satellite-fallback.jpg';
+          mapImg.classList.add('loaded');
+        };
+        backupImg.src = backupUrl;
       };
-      img.src = tileInfo.url;
+      img.src = primaryUrl;
     }
   }
 
