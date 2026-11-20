@@ -35,18 +35,27 @@ export default function HeroOverlay({ stage, isBooted }: HeroOverlayProps) {
         transition={{ duration: 0.7, ease: [0.85, 0, 0.15, 1], delay: 0.1 }}
         className="absolute top-24 left-6 md:left-10"
       >
-        {/* Giant stencil letterforms */}
+        {/* Giant stencil letterforms — with enhanced visible intensity & subtle glow */}
         <div
           className="font-mono font-black tracking-tighter leading-none select-none"
           style={{
             fontSize: "clamp(3.5rem, 10vw, 9rem)",
-            WebkitTextStroke: "1px rgba(229,169,60,0.18)",
-            color: "transparent",
+            WebkitTextStroke: "1.5px rgba(229,169,60,0.65)",
+            color: "rgba(229,169,60,0.06)",
+            textShadow: "0 0 35px rgba(229,169,60,0.25)",
             lineHeight: 0.88,
           }}
         >
           OMKAR<br />
-          <span style={{ WebkitTextStroke: "1px rgba(104,211,145,0.18)" }}>VERSE</span>
+          <span
+            style={{
+              WebkitTextStroke: "1.5px rgba(104,211,145,0.65)",
+              color: "rgba(104,211,145,0.06)",
+              textShadow: "0 0 35px rgba(104,211,145,0.25)",
+            }}
+          >
+            VERSE
+          </span>
         </div>
 
         {/* Sub-label */}

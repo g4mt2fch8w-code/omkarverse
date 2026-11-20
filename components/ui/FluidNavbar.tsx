@@ -33,15 +33,33 @@ export default function FluidNavbar({ onToggle3D, is3DActive = true }: FluidNavb
   return (
     <>
       <header className="fixed top-5 inset-x-0 z-30 flex items-center justify-between px-4 md:px-8 max-w-7xl mx-auto pointer-events-none">
-        {/* Brand Identity */}
+        {/* Brand Identity: Replaced pill with small, high-intensity stencil logo */}
         <Link
           href="/"
-          className="pointer-events-auto flex items-center gap-2.5 px-3.5 py-2 rounded-full glass-pill border border-white/10 hover:border-amber-400/40 transition-colors group"
+          className="pointer-events-auto flex flex-col group select-none transition-transform hover:scale-105"
         >
-          <span className="text-base group-hover:rotate-12 transition-transform duration-300">🪐</span>
-          <span className="font-mono text-xs md:text-sm tracking-widest font-semibold text-slate-100 group-hover:text-amber-400 transition-colors">
-            OMKARVERSE
-          </span>
+          <div
+            className="font-mono font-black tracking-tight leading-none text-glow-amber"
+            style={{
+              fontSize: "clamp(1.1rem, 2vw, 1.4rem)",
+              WebkitTextStroke: "1px #e5a93c",
+              color: "rgba(229, 169, 60, 0.15)",
+              letterSpacing: "0.08em",
+            }}
+          >
+            OMKAR
+          </div>
+          <div
+            className="font-mono font-black tracking-tight leading-none text-glow-emerald -mt-0.5"
+            style={{
+              fontSize: "clamp(1.1rem, 2vw, 1.4rem)",
+              WebkitTextStroke: "1px #68d391",
+              color: "rgba(104, 211, 145, 0.15)",
+              letterSpacing: "0.08em",
+            }}
+          >
+            VERSE
+          </div>
         </Link>
 
         {/* Desktop Navigation (108.supply Physics) */}
