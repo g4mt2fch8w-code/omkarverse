@@ -38,10 +38,10 @@
 
     const navTargets = {
       core: { route: '/', targetId: 's1' },
-      telemetry: { route: '/telemetry', targetId: 'stage01Cta' },
-      forest: { route: '/forest', targetId: 's2' },
-      tiger: { route: '/tiger', targetId: 's3' },
-      field: { route: '/field', targetId: 's4' }
+      telemetry: { route: '/telemetry', targetId: 's4' },
+      forest: { route: '/forest', targetId: 's3' },
+      tiger: { route: '/tiger', targetId: 's2' },
+      field: { route: '/field', targetId: 's5' }
     };
 
     tabs.forEach(tab => {
@@ -102,19 +102,18 @@
       const s2 = document.getElementById('s2');
       const s3 = document.getElementById('s3');
       const s4 = document.getElementById('s4');
+      const s5 = document.getElementById('s5');
 
-      if (s4 && s4.offsetTop <= scrollPos) {
+      if (s5 && s5.offsetTop <= scrollPos) {
         currentNav = 'field';
+      } else if (s4 && s4.offsetTop <= scrollPos) {
+        currentNav = 'telemetry';
       } else if (s3 && s3.offsetTop <= scrollPos) {
-        currentNav = 'tiger';
-      } else if (s2 && s2.offsetTop <= scrollPos) {
         currentNav = 'forest';
-      } else if (s1) {
-        if (window.scrollY > 220 && window.scrollY < (s2 ? s2.offsetTop - 80 : 800)) {
-          currentNav = 'telemetry';
-        } else {
-          currentNav = 'core';
-        }
+      } else if (s2 && s2.offsetTop <= scrollPos) {
+        currentNav = 'tiger';
+      } else {
+        currentNav = 'core';
       }
 
       const matchingTab = tabs.find(t => t.getAttribute('data-nav') === currentNav);
@@ -245,15 +244,28 @@
     }, { passive: true });
   }
 
+  function initFieldDossierGateway() {
+    const dossierBtn = document.getElementById('openFieldDossier');
+    if (!dossierBtn) return;
+
+    dossierBtn.addEventListener('click', (e) => {
+      if (window.omkarverseAudio && typeof window.omkarverseAudio.playStellarFissionCue === 'function') {
+        window.omkarverseAudio.playStellarFissionCue();
+      }
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initNavCapsule();
       initLooksToggle();
       initGlobeClickScroll();
+      initFieldDossierGateway();
     });
   } else {
     initNavCapsule();
     initLooksToggle();
     initGlobeClickScroll();
+    initFieldDossierGateway();
   }
 })();

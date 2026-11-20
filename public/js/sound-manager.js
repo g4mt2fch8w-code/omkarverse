@@ -306,6 +306,58 @@
         return true;
       }
     }
+
+    /**
+     * Stellar Fission Audio Cue for Field Dossier
+     */
+    async playStellarFissionCue() {
+      await this.init();
+      if (!this.ctx) return;
+      if (this.ctx.state === 'suspended') {
+        await this.ctx.resume();
+      }
+
+      // Ensure audio is unmuted so cue and layers ring out
+      this.unmute();
+
+      try {
+        const now = this.ctx.currentTime;
+        const fissionGain = this.ctx.createGain();
+        fissionGain.gain.setValueAtTime(0.001, now);
+        fissionGain.gain.linearRampToValueAtTime(0.85, now + 0.04);
+        fissionGain.gain.exponentialRampToValueAtTime(0.001, now + 1.8);
+        fissionGain.connect(this.masterGain);
+
+        // Sub-bass sweep
+        const oscSub = this.ctx.createOscillator();
+        oscSub.type = 'sine';
+        oscSub.frequency.setValueAtTime(140, now);
+        oscSub.frequency.exponentialRampToValueAtTime(35, now + 1.2);
+
+        // Harmonic resonance sweep
+        const oscHarm = this.ctx.createOscillator();
+        oscHarm.type = 'sawtooth';
+        oscHarm.frequency.setValueAtTime(680, now);
+        oscHarm.frequency.exponentialRampToValueAtTime(80, now + 0.9);
+
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.Q.value = 5.5;
+        filter.frequency.setValueAtTime(1200, now);
+        filter.frequency.exponentialRampToValueAtTime(90, now + 1.1);
+
+        oscSub.connect(fissionGain);
+        oscHarm.connect(filter);
+        filter.connect(fissionGain);
+
+        oscSub.start(now);
+        oscHarm.start(now);
+        oscSub.stop(now + 1.9);
+        oscHarm.stop(now + 1.9);
+      } catch (err) {
+        console.warn('Stellar fission audio error:', err);
+      }
+    }
   }
 
   // Create singleton instance
