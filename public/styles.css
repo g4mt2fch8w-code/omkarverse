@@ -6,11 +6,11 @@
 .top-zone-right{gap:14px;flex-shrink:0}
 
 /* Left Zone: Brand Lockup with Geometric Tiger Pugmark & Retractable Claws */
-.brand-group{display:inline-flex;flex-direction:row;align-items:center;gap:12px;text-decoration:none;user-select:none;padding:2px 4px;border-radius:12px;transition:opacity .2s ease,transform .2s ease}
+.brand-group{display:inline-flex;flex-direction:row;align-items:center;gap:14px;text-decoration:none;user-select:none;padding:2px 4px;border-radius:12px;transition:opacity .2s ease,transform .2s ease}
 .brand-group:hover{transform:translateY(-1px)}
-.pugmark-icon{display:inline-flex;align-items:center;justify-content:center;width:26px;height:29px;flex-shrink:0;transform:rotate(-14deg);transform-origin:center center;transition:filter .25s cubic-bezier(0.34,1.56,0.64,1),transform .25s cubic-bezier(0.34,1.56,0.64,1)}
-.brand-group:hover .pugmark-icon{filter:drop-shadow(0 0 8px rgba(255,184,0,0.65));transform:rotate(-8deg) translateY(-1px) scale(1.05)}
-html[data-look=day] .brand-group:hover .pugmark-icon{filter:drop-shadow(0 0 8px rgba(217,119,6,0.5))}
+.pugmark-icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:38px;flex-shrink:0;transform:rotate(-14deg);transform-origin:center center;transition:filter .25s cubic-bezier(0.34,1.56,0.64,1),transform .25s cubic-bezier(0.34,1.56,0.64,1)}
+.brand-group:hover .pugmark-icon{filter:drop-shadow(0 0 10px rgba(255,184,0,0.7));transform:rotate(-8deg) translateY(-1px) scale(1.06)}
+html[data-look=day] .brand-group:hover .pugmark-icon{filter:drop-shadow(0 0 10px rgba(217,119,6,0.55))}
 .pugmark-svg{width:100%;height:100%;overflow:visible;display:block}
 
 /* Retractable Claws (nakhun-bahar physics) */
@@ -27,15 +27,15 @@ html[data-look=day] .brand-group:hover .pugmark-icon{filter:drop-shadow(0 0 8px 
 .brand-group:hover .claw-4{transition-delay:.02s}
 
 /* Stacked Wordmark Typography */
-.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;align-items:flex-start;line-height:0.88;gap:2px;font-family:var(--f-mono);text-transform:uppercase}
-.brand-the{font-size:11px;font-weight:600;letter-spacing:0.2em;color:#94A3B8;line-height:0.88}
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;align-items:flex-start;line-height:0.88;gap:3px;font-family:var(--f-mono);text-transform:uppercase}
+.brand-the{font-size:13px;font-weight:600;letter-spacing:0.2em;color:#94A3B8;line-height:0.88}
 html[data-look=day] .brand-the{color:#64748B}
-.brand-omkar{font-size:20px;font-weight:800;letter-spacing:0.03em;color:#FFFFFF;line-height:0.88}
+.brand-omkar{font-size:26px;font-weight:800;letter-spacing:0.03em;color:#FFFFFF;line-height:0.88}
 html[data-look=day] .brand-omkar{color:#001445}
-.brand-den{font-size:20px;font-weight:900;letter-spacing:0.12em;background:linear-gradient(135deg,#FFB800 0%,#E5A93C 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:0.88;filter:drop-shadow(0 0 10px rgba(255,184,0,0.35));transition:filter .25s ease}
+.brand-den{font-size:26px;font-weight:900;letter-spacing:0.12em;background:linear-gradient(135deg,#FFB800 0%,#E5A93C 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:0.88;filter:drop-shadow(0 0 12px rgba(255,184,0,0.38));transition:filter .25s ease}
 html[data-look=day] .brand-den{background:linear-gradient(135deg,#D97706 0%,#B45309 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:none}
-.brand-group:hover .brand-den{filter:drop-shadow(0 0 8px rgba(255,184,0,0.6))}
-html[data-look=day] .brand-group:hover .brand-den{filter:drop-shadow(0 0 8px rgba(217,119,6,0.5))}
+.brand-group:hover .brand-den{filter:drop-shadow(0 0 10px rgba(255,184,0,0.65))}
+html[data-look=day] .brand-group:hover .brand-den{filter:drop-shadow(0 0 10px rgba(217,119,6,0.55))}
 
 /* Day mode gradients for SVG elements */
 html[data-look=day] .pugmark-toes,
