@@ -187,3 +187,57 @@ html[data-look=day] .gateway-secondary{background:rgba(0,20,69,0.04);border-colo
 .outpost-micro-footer{display:inline-flex;align-items:center;gap:10px;margin-top:32px;padding:8px 16px;border-radius:9999px;background:rgba(255,255,255,0.03);border:1px solid var(--line);font-size:11px;letter-spacing:.08em;color:var(--muted);user-select:none}
 html[data-look=day] .outpost-micro-footer{background:rgba(0,20,69,0.03);border-color:rgba(0,20,69,0.12)}
 .outpost-led{width:6.5px;height:6.5px;border-radius:50%;background:#10B981;box-shadow:0 0 8px #10B981;animation:ledBlink 2s ease-in-out infinite;flex-shrink:0}
+
+/* TIGER TELEMETRY HUD SENSORY OVERLAYS */
+.tiger-telemetry-hud {
+  position: fixed;
+  z-index: 100;
+  background: rgba(4, 19, 41, 0.92);
+  border: 1px solid rgba(229, 169, 60, 0.65);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.75), 0 0 20px rgba(229, 169, 60, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 10px 14px;
+  max-width: 290px;
+  white-space: normal !important;
+  pointer-events: none;
+  font-family: var(--f-mono);
+  color: #fff;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.92);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tiger-telemetry-hud.on {
+  opacity: 0.98 !important;
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+.tiger-telemetry-hud .hud-tag {
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  color: #ffb800;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+  font-weight: 700;
+}
+.tiger-telemetry-hud .hud-organ {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  margin-bottom: 3px;
+  text-shadow: 0 0 10px rgba(255, 184, 0, 0.4);
+}
+.tiger-telemetry-hud .hud-metric {
+  font-size: 9.5px;
+  color: #00f0ff;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.tiger-telemetry-hud .hud-line {
+  font-size: 8.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.82);
+  letter-spacing: 0.02em;
+}
