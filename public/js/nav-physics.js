@@ -11,6 +11,14 @@
     if (!tabs.length) return;
 
     let activeTab = tabs.find(t => t.classList.contains('active')) || tabs[0];
+    if (window.location.pathname.startsWith('/tiger')) {
+      const tigerTab = tabs.find(t => t.getAttribute('data-nav') === 'tiger');
+      if (tigerTab) {
+        tabs.forEach(t => t.classList.remove('active'));
+        tigerTab.classList.add('active');
+        activeTab = tigerTab;
+      }
+    }
     let isHovering = false;
 
     function movePillTo(element, isImmediate) {
@@ -54,8 +62,36 @@
         movePillTo(tab);
       });
       tab.addEventListener('click', (e) => {
-        e.preventDefault();
         const navKey = tab.getAttribute('data-nav') || 'core';
+        const isTigerPage = window.location.pathname.startsWith('/tiger');
+
+        if (navKey === 'tiger') {
+          if (!isTigerPage) {
+            window.location.href = '/tiger';
+            return;
+          }
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+
+        if (isTigerPage) {
+          if (navKey === 'core') {
+            window.location.href = '/';
+            return;
+          } else if (navKey === 'telemetry') {
+            window.location.href = '/#s4';
+            return;
+          } else if (navKey === 'forest') {
+            window.location.href = '/#s3';
+            return;
+          } else if (navKey === 'field') {
+            window.location.href = '/#s5';
+            return;
+          }
+        }
+
+        e.preventDefault();
         const route = tab.getAttribute('data-route') || (navTargets[navKey] ? navTargets[navKey].route : '/');
         const targetId = navTargets[navKey] ? navTargets[navKey].targetId : 's1';
         const target = document.getElementById(targetId) || document.querySelector(tab.getAttribute('href'));
@@ -95,6 +131,7 @@
 
     // Auto-update active tab and route tag on page scroll
     function onScroll() {
+      if (window.location.pathname.startsWith('/tiger')) return;
       const scrollPos = window.scrollY + window.innerHeight * 0.35;
       let currentNav = 'core';
 
