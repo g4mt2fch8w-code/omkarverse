@@ -37,16 +37,6 @@ export default function Home() {
           {/* Editorial stencil title + live telemetry chips */}
           <HeroOverlay stage={sceneStage} isBooted={isBooted} />
 
-          {/* Top-Left Tactical Coordinates Overlay */}
-          <div className="absolute top-24 left-6 z-20 hidden md:flex flex-col gap-1 font-mono text-[11px] text-slate-400 glass-pill px-4 py-2.5 rounded-xl border border-white/10 pointer-events-none">
-            <div className="flex items-center gap-2 text-amber-400 font-semibold">
-              <Compass className="w-3.5 h-3.5" />
-              <span>OMKARVERSE // TACTICAL HUB</span>
-            </div>
-            <div className="text-slate-500">CORE: 20.246° N, 79.312° E</div>
-            <div className="text-emerald-400/90">ELEVATION: 208M AMSL // TARU</div>
-          </div>
-
           {/* Bottom-Right Blinkit Radar Mini-Map */}
           <div className="absolute bottom-6 right-6 z-20">
             <BlinkitMiniMap />
