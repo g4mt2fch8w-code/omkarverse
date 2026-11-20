@@ -137,25 +137,10 @@ html, body, main, #main, .scene, [class*="immersiveScene"], [class*="immersive"]
 .eqSSUG_sceneVeiled {
   opacity: 1 !important;
 }
-
-/* Pinned Omkar Den Navbar */
-header.top {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  height: 60px !important;
-  z-index: 99999 !important;
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  background: rgba(4, 19, 41, 0.85) !important;
-  backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(255, 184, 0, 0.22) !important;
-}
 </style>
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/css/omkar-navbar.css">
 """
     head_pos = spliced.find("<head>")
     html_with_head = spliced[:head_pos + len("<head>")] + clean_css + spliced[head_pos + len("<head>"):]
