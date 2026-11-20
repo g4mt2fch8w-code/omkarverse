@@ -50,7 +50,7 @@ export default function BlinkitMiniMap({ onExpand }: BlinkitMiniMapProps) {
     }
   };
 
-  const SIZE = 114;
+  const SIZE = 110;
   const CX = SIZE / 2;
   const CY = SIZE / 2;
 
@@ -78,7 +78,7 @@ export default function BlinkitMiniMap({ onExpand }: BlinkitMiniMapProps) {
           src="/images/tadoba_satellite.jpg"
           alt="Tadoba Satellite Imagery"
           fill
-          sizes="114px"
+          sizes="110px"
           priority
           className="object-cover scale-110 filter contrast-110 brightness-90 group-hover:scale-125 transition-transform duration-700 ease-out"
         />

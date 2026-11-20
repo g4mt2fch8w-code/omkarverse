@@ -10,6 +10,8 @@ import { soundEngine } from "@/components/audio/soundManager";
 interface FluidNavbarProps {
   onToggle3D?: () => void;
   is3DActive?: boolean;
+  onSkip?: () => void;
+  canSkip?: boolean;
 }
 
 const NAV_ITEMS = [
@@ -19,7 +21,12 @@ const NAV_ITEMS = [
   { name: "Field", path: "/field" },
 ];
 
-export default function FluidNavbar({ onToggle3D, is3DActive = true }: FluidNavbarProps) {
+export default function FluidNavbar({
+  onToggle3D,
+  is3DActive = true,
+  onSkip,
+  canSkip = false,
+}: FluidNavbarProps) {
   const pathname = usePathname();
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [isMuted, setIsMuted] = useState<boolean>(soundEngine?.getMuted?.() ?? false);
@@ -65,7 +72,7 @@ export default function FluidNavbar({ onToggle3D, is3DActive = true }: FluidNavb
         {/* Desktop Navigation (108.supply Physics) */}
         <nav
           onMouseLeave={() => setHoveredTab(null)}
-          className="pointer-events-auto relative hidden md:flex items-center p-1 rounded-full glass-panel border border-white/10 shadow-2xl"
+          className="pointer-events-auto relative hidden md:flex items-center gap-1 lg:gap-2 p-1.5 rounded-full glass-panel border border-white/10 shadow-2xl"
         >
           {NAV_ITEMS.map((item) => {
             const isActive =
@@ -81,15 +88,15 @@ export default function FluidNavbar({ onToggle3D, is3DActive = true }: FluidNavb
                   setHoveredTab(item.name);
                   soundEngine?.playTargetLock?.();
                 }}
-                className="relative px-4 py-1.5 font-mono text-xs tracking-wider transition-colors z-10 select-none"
+                className="relative px-5 py-2 font-mono text-xs tracking-wider transition-colors z-10 select-none whitespace-nowrap"
               >
                 <span
                   className={
                     isActive
-                      ? "text-amber-400 font-medium"
+                      ? "text-amber-400 font-semibold"
                       : isHovered
                       ? "text-slate-100"
-                      : "text-slate-400 hover:text-slate-200"
+                      : "text-slate-300 hover:text-white"
                   }
                 >
                   {item.name}
@@ -115,6 +122,19 @@ export default function FluidNavbar({ onToggle3D, is3DActive = true }: FluidNavb
 
         {/* Action Controls */}
         <div className="pointer-events-auto flex items-center gap-2">
+          {/* Unified SKIP / ESC Action Button inside Navbar */}
+          {canSkip && onSkip && (
+            <button
+              onClick={onSkip}
+              type="button"
+              aria-label="Skip 3D dive and proceed to dashboard"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full glass-pill border border-amber-400/40 hover:border-amber-400 text-amber-300 hover:text-amber-200 font-mono text-xs tracking-wider transition-all shadow-[0_0_12px_rgba(229,169,60,0.2)] active:scale-95"
+            >
+              <X className="w-3.5 h-3.5 text-amber-400" />
+              <span>SKIP</span>
+            </button>
+          )}
+
           {/* Sound Toggle */}
           <button
             onClick={handleSoundToggle}

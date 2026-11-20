@@ -51,10 +51,10 @@ export default function NotFound() {
           {glitch}
         </div>
 
-        <div className="font-mono text-xs md:text-sm text-slate-400 tracking-widest mb-2 uppercase">
+        <div className="font-mono text-xs md:text-sm text-slate-300 tracking-widest mb-2 uppercase">
           SECTOR COORDINATES NOT RESOLVED
         </div>
-        <p className="text-slate-500 text-sm leading-relaxed mb-10">
+        <p className="text-slate-300 text-sm leading-relaxed mb-10 max-w-md font-light">
           The requested patrol sector does not exist in the OMKARVERSE territorial grid.
           Return to the command hub and re-establish your bearing.
         </p>

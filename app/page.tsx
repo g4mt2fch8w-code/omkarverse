@@ -24,6 +24,8 @@ export default function Home() {
       <FluidNavbar
         is3DActive={is3DActive}
         onToggle3D={() => setIs3DActive(!is3DActive)}
+        onSkip={() => setSceneStage("settled")}
+        canSkip={sceneStage !== "settled"}
       />
 
       {/* Hero 3D WebGL Canvas Viewport */}
@@ -59,22 +61,22 @@ export default function Home() {
         {/* Tactical Metrics Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20 font-mono">
           <div className="p-4 rounded-xl glass-panel border border-white/10">
-            <div className="text-xs text-slate-400">NAMED WILD TIGERS</div>
-            <div className="text-2xl md:text-3xl font-bold text-amber-400 mt-1">105</div>
-            <div className="text-[10px] text-emerald-400 mt-1">CATALOGUED PROFILES</div>
+            <div className="text-xs text-slate-300">NAMED WILD TIGERS</div>
+            <div className="text-2xl md:text-3xl font-bold text-amber-400 mt-1">X</div>
+            <div className="text-[10px] text-emerald-400 mt-1">TIGERS CATALOGED</div>
           </div>
           <div className="p-4 rounded-xl glass-panel border border-white/10">
-            <div className="text-xs text-slate-400">HIGHWAY CORRIDOR</div>
+            <div className="text-xs text-slate-300">HIGHWAY CORRIDOR</div>
             <div className="text-2xl md:text-3xl font-bold text-slate-100 mt-1">5,846 KM</div>
             <div className="text-[10px] text-slate-400 mt-1">GOLDEN QUADRILATERAL</div>
           </div>
           <div className="p-4 rounded-xl glass-panel border border-white/10">
-            <div className="text-xs text-slate-400">LiDAR DENSITY</div>
+            <div className="text-xs text-slate-300">LiDAR DENSITY</div>
             <div className="text-2xl md:text-3xl font-bold text-emerald-400 mt-1">65K PTS</div>
-            <div className="text-[10px] text-amber-400/80 mt-1">HOOKIAN DAMPED MATRIX</div>
+            <div className="text-[10px] text-amber-400/90 mt-1">HOOKIAN DAMPED MATRIX</div>
           </div>
           <div className="p-4 rounded-xl glass-panel border border-white/10">
-            <div className="text-xs text-slate-400">SYSTEM ARCHITECTURE</div>
+            <div className="text-xs text-slate-300">SYSTEM ARCHITECTURE</div>
             <div className="text-2xl md:text-3xl font-bold text-slate-100 mt-1">60 FPS</div>
             <div className="text-[10px] text-emerald-400 mt-1">GPU ACCELERATED</div>
           </div>
@@ -95,11 +97,11 @@ export default function Home() {
                 <span>The Royal Stripes</span>
                 <ArrowUpRight className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </h3>
-              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+              <p className="text-xs text-slate-300 mt-2 leading-relaxed font-normal">
                 PIRS deep metric learning stripe re-identification engine trained on Panthera17K, alongside TIGRIS and M-STrIPES databases.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-white/5 font-mono text-[11px] text-amber-500/80">
+            <div className="mt-6 pt-4 border-t border-white/10 font-mono text-[11px] text-amber-400 font-medium">
               EXPLORE TIGER AI ➔
             </div>
           </Link>
@@ -117,11 +119,11 @@ export default function Home() {
                 <span>Geospatial Systems</span>
                 <ArrowUpRight className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </h3>
-              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+              <p className="text-xs text-slate-300 mt-2 leading-relaxed font-normal">
                 GeoGlobe 3D interactive telemetry sphere, 5,846 km Golden Quadrilateral GIS, and Vandrishti Junnar 7-forest-range GeoJSON vector networks.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-white/5 font-mono text-[11px] text-emerald-400/80">
+            <div className="mt-6 pt-4 border-t border-white/10 font-mono text-[11px] text-emerald-400 font-medium">
               INSPECT GIS DEPLOYMENTS ➔
             </div>
           </Link>
@@ -139,11 +141,11 @@ export default function Home() {
                 <span>Field Dispatches</span>
                 <ArrowUpRight className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </h3>
-              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+              <p className="text-xs text-slate-300 mt-2 leading-relaxed font-normal">
                 Apple-grade classified dispatches from the Tadoba core, real field acoustic telemetry, Sony A7IV and Garmin 66sr patrol route logs.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-white/5 font-mono text-[11px] text-amber-500/80">
+            <div className="mt-6 pt-4 border-t border-white/10 font-mono text-[11px] text-amber-400 font-medium">
               READ DISPATCHES ➔
             </div>
           </Link>
@@ -151,16 +153,16 @@ export default function Home() {
       </section>
 
       {/* Footer / Architectural Verification Notice */}
-      <footer className="relative border-t border-white/10 py-10 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-xs text-slate-500">
+      <footer className="relative border-t border-white/10 py-10 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-xs text-slate-400">
         <div>
-          ARCHITECT & AUTHOR: <span className="text-slate-300 font-semibold">ONKAR BHOPLE PATIL</span>
+          ARCHITECT & AUTHOR: <span className="text-slate-100 font-semibold">ONKAR BHOPLE PATIL</span>
         </div>
         <div className="flex items-center gap-4">
-          <span>SPEC-2026-V1</span>
-          <span>•</span>
-          <span>OMKARVERSE.VERCEL.APP</span>
-          <span>•</span>
-          <span className="text-emerald-400">60 FPS VERIFIED</span>
+          <span className="text-slate-300">SPEC-2026-V1</span>
+          <span className="text-slate-600">•</span>
+          <span className="text-slate-300">OMKARVERSE.VERCEL.APP</span>
+          <span className="text-slate-600">•</span>
+          <span className="text-emerald-400 font-medium">60 FPS VERIFIED</span>
         </div>
       </footer>
     </main>

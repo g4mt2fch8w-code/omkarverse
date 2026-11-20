@@ -128,19 +128,6 @@ export default function SceneOrchestrator({
         <PostFX isDiving={stage === "diving"} />
       </Canvas>
 
-      {/* Mandatory ESC/SKIP HUD (min 48px touch target on mobile) */}
-      {stage !== "settled" && (
-        <button
-          onClick={handleSkip}
-          type="button"
-          aria-label="Skip 3D intro to main dashboard"
-          className="absolute top-6 right-6 z-30 flex items-center gap-2 px-4 py-2.5 min-h-[48px] min-w-[48px] rounded-full glass-panel border border-white/20 hover:border-amber-400/50 text-slate-200 hover:text-amber-400 font-mono text-xs tracking-wider transition-all shadow-2xl active:scale-95"
-        >
-          <X className="w-4 h-4 text-amber-400" />
-          <span>SKIP / ESC</span>
-        </button>
-      )}
-
       {/* Act 1 Drone Recon Plunge Button */}
       {stage === "orbit" && (
         <div className="absolute bottom-10 inset-x-0 z-20 flex flex-col items-center justify-center gap-3 pointer-events-none px-4 text-center">
