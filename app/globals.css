@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-deep: #041329;
+    --ink-pure: #F8F8F8;
+    --muted-text: #8E98B8;
+  }
+}
