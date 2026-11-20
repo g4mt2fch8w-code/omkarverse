@@ -406,6 +406,82 @@ html, body, main, #main, .scene, [class*="immersiveScene"], [class*="immersive"]
     width: 100vw;
   }
 }
+
+/* =========================================================
+   LUXURY INTERACTION HINT (Apple Vision Pro style)
+   ========================================================= */
+.eqSSUG_walkHint, [class*="walkHint"] {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace !important;
+  font-size: 11px !important;
+  color: rgba(148, 163, 184, 0.65) !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  background: rgba(4, 19, 41, 0.45) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  padding: 8px 18px !important;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.eqSSUG_walkHint.fade-hint, [class*="walkHint"].fade-hint {
+  opacity: 0 !important;
+  transform: translateY(12px) scale(0.96) !important;
+  pointer-events: none !important;
+}
+
+/* =========================================================
+   LUXURY INTERACTION HINT (Apple Vision Pro style)
+   ========================================================= */
+.eqSSUG_walkHint, [class*="walkHint"] {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace !important;
+  font-size: 11px !important;
+  color: rgba(148, 163, 184, 0.65) !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  background: rgba(4, 19, 41, 0.45) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  padding: 8px 18px !important;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.eqSSUG_walkHint.fade-hint, [class*="walkHint"].fade-hint {
+  opacity: 0 !important;
+  transform: translateY(12px) scale(0.96) !important;
+  pointer-events: none !important;
+}
+
+/* =========================================================
+   LUXURY INTERACTION HINT (Apple Vision Pro style)
+   ========================================================= */
+.eqSSUG_walkHint, [class*="walkHint"] {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace !important;
+  font-size: 11px !important;
+  color: rgba(148, 163, 184, 0.65) !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  background: rgba(4, 19, 41, 0.45) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  padding: 8px 18px !important;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.eqSSUG_walkHint.fade-hint, [class*="walkHint"].fade-hint,
+body.user-has-interacted .eqSSUG_walkHint, body.user-has-interacted [class*="walkHint"] {
+  opacity: 0 !important;
+  transform: translateY(12px) scale(0.96) !important;
+  pointer-events: none !important;
+}
 </style>
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/styles.css">
