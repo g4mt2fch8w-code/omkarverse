@@ -145,17 +145,21 @@ header.top .brand-group:hover .claw-2 { transition-delay: 0.03s !important; }
 header.top .brand-group:hover .claw-3 { transition-delay: 0.04s !important; }
 header.top .brand-group:hover .claw-4 { transition-delay: 0.02s !important; }
 
-/* Constant Tiger Gold Gradients for Pugmark across all modes (Day & Night) */
+/* Constant Tiger Gold Gradients & Solid Fallback for Pugmark across all modes (Day & Night) */
 header.top .pugmark-toes,
 header.top .pugmark-heel,
+header.top .pugmark-toe,
+header.top .pugmark-toes polygon,
+header.top .pugmark-heel polygon,
 html[data-look="day"] header.top .pugmark-toes,
 html[data-look="day"] header.top .pugmark-heel {
-  fill: url(#navPugmarkGold) !important;
+  fill: #FFB800 !important;
 }
 
 header.top .pugmark-claw,
+header.top .pugmark-claw path,
 html[data-look="day"] header.top .pugmark-claw {
-  fill: url(#navPugmarkClawGold) !important;
+  fill: #FFB800 !important;
 }
 
 html[data-look="day"] header.top .brand-group:hover .pugmark-icon {
