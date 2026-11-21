@@ -167,6 +167,156 @@ html[data-look="day"] #home-featured-title {
   font-size: clamp(1rem, 1.35vw, 1.7rem) !important;
   line-height: 1.5 !important;
 }
+
+/* 7. Sovereign Theater Section */
+#end-section {
+  pointer-events: auto !important;
+  height: calc(var(--vh, 1vh) * 260) !important;
+}
+#end-section-outer,
+#end-section-inner,
+#end-section-content {
+  pointer-events: auto !important;
+}
+#end-section-content {
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  max-width: 100% !important;
+  padding: 0 20px !important;
+}
+
+#sovereign-theater-container {
+  position: relative;
+  width: 100%;
+  max-width: min(94vw, 1040px);
+  margin: 0 auto;
+  pointer-events: auto !important;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.theater-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.theater-title {
+  font-family: 'Aeonik', system-ui, -apple-system, sans-serif;
+  font-size: clamp(2.4rem, 4.6vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF5D0 30%, #FFB800 65%, #E5A93C 90%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 24px rgba(255, 184, 0, 0.55)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95));
+  margin: 0 0 10px 0;
+}
+html[data-look="day"] .theater-title {
+  background: linear-gradient(135deg, #78350F 0%, #B45309 30%, #D97706 60%, #FFB800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 20px rgba(217, 119, 6, 0.35));
+}
+
+.theater-desc {
+  font-size: clamp(0.85rem, 1.1vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.02em;
+}
+html[data-look="day"] .theater-desc {
+  color: rgba(0, 20, 69, 0.85);
+}
+
+.theater-video-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  padding: 8px;
+  background: rgba(15, 20, 35, 0.7);
+  border: 1px solid rgba(255, 184, 0, 0.35);
+  box-shadow: 0 0 60px rgba(255, 184, 0, 0.22), 0 25px 60px -15px rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(16px);
+  pointer-events: auto !important;
+}
+html[data-look="day"] .theater-video-wrapper {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  box-shadow: 0 0 50px rgba(217, 119, 6, 0.15), 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.theater-video-inner {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+}
+.theater-video-inner iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: auto !important;
+}
+
+.theater-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 4px;
+}
+
+.theater-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 184, 0, 0.15);
+  border: 1px solid rgba(255, 184, 0, 0.45);
+  color: #FFB800;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  pointer-events: auto !important;
+}
+.theater-pill-btn:hover {
+  background: #FFB800;
+  color: #050811;
+  box-shadow: 0 0 20px rgba(255, 184, 0, 0.6);
+  transform: translateY(-1px);
+}
+.theater-pill-btn.active {
+  background: #FFB800;
+  color: #050811;
+  box-shadow: 0 0 25px rgba(255, 184, 0, 0.4);
+}
+html[data-look="day"] .theater-pill-btn {
+  background: rgba(217, 119, 6, 0.12);
+  border-color: rgba(217, 119, 6, 0.4);
+  color: #B45309;
+}
+html[data-look="day"] .theater-pill-btn:hover {
+  background: #D97706;
+  color: #FFF;
+}
+html[data-look="day"] .theater-pill-btn.active {
+  background: #D97706;
+  color: #FFF;
+}
 </style></head> <body>
 <header class="top" id="topHeader">
   <div class="top-zone top-zone-left">
@@ -265,7 +415,46 @@ html[data-look="day"] #home-featured-title {
     </div>
     <div id="home-hero-scroll">scroll to explore</div>
   </div>
-</div> <div id="home-reel" class="section"> <h4 id="home-reel-title"> <div id="home-reel-title-inner"> <div id="home-reel-title-line-1">Things I Build.</div> <div id="home-reel-title-line-2">Tracks I Follow.</div> </div> </h4> <div id="home-reel-content"> <h2 id="home-reel-desc">Based in Pune, tracking apex predators across central india and eastern vidarbha tiger landscape, and engineering interactive 3D worlds on screen. A personal directory of deployed systems, field telemetry, and digital archives.</h2> <a id="home-reel-cta" href="#telemetry-table" role="button"> <span id="home-reel-cta-dot"></span> <span id="home-reel-cta-text">see my craft↓</span> <span id="home-reel-cta-arrow"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2.343v11.314m0 0L3.016 8.673M8 13.657l4.984-4.984"></path></svg> </span> </a> </div> <div id="home-reel-thumb-wrapper"><div id="home-reel-thumb"></div></div> <div id="home-reel-container"> <div id="home-reel-container-inner"> <div id="home-reel-video-container"> <div id="home-reel-video-container-decoration"> <div id="home-reel-video-container-top"> <div id="home-reel-video-container-crosses"> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> </div> <div class="home-reel-video-container-svgs"> <div class="home-reel-video-container-svg-wrapper"> <svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg> </div> </div> </div> <div id="home-reel-video-container-bottom"> <div id="home-reel-video-container-crosses"> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> </div> <div class="home-reel-video-container-svgs"> <div class="home-reel-video-container-svg-wrapper"> <svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg> </div> </div> </div> </div> <div id="home-reel-video-placeholder"> <div id="home-reel-video-title">Play Reel</div> </div> <button id="home-reel-video-watch-btn" aria-label="Watch reel button"> <div id="home-reel-video-watch-btn-base"></div> <div id="home-reel-video-watch-btn-background"></div> <svg id="home-reel-video-watch-btn-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 36 36"><path fill="currentColor" d="M7 7.29c0-1.5 1.59-2.466 2.92-1.776l20.656 10.71c1.439.747 1.439 2.805 0 3.552L9.92 30.486C8.589 31.176 7 30.21 7 28.71V7.29Z"></path></svg> </button> </div> </div> </div> </div> <div id="telemetry-table" style="position:relative;top:-70px;"></div> <div id="home-featured" class="section"> <div id="home-featured-title-top"> <div id="home-featured-title-wrapper"> <h4 id="home-featured-title">my works</h4> </div> <div id="home-featured-disclaimer">A selection of immersive digital experiences created for ambitious brands and forward thinking teams.</div> </div> <div class="project-list"> <a class="project-item project-type-website" href="/projects/oryzo_ai" data-id="oryzo_ai" data-color-bg="#1a1411" data-color-text="#ffedd7" data-color-shadow="0.9"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">concept • web • design • development • 3d • animation</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Oryzo AI</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/atlas_motion" data-id="atlas_motion" data-color-bg="#181818" data-color-text="#FFFDE0" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">concept • web • design • development • 3d • animation</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Atlas Motion</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/devin_ai" data-id="devin_ai" data-color-bg="#121414" data-color-text="#ffffff" data-color-shadow="0.9"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Devin AI</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/of_the_oak" data-id="of_the_oak" data-color-bg="#111a13" data-color-text="#d9f3de" data-color-shadow="0.9"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d • animation</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Of The Oak</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/everswap" data-id="everswap" data-color-bg="#E3E3F8" data-color-text="#000" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">concept • web • design • development • 3d • animation</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Everswap</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/porsche_dream_machine" data-id="porsche_dream_machine" data-color-bg="#EFD5D3" data-color-text="#000000" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">concept • 3D illustration • mograph • video</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Porsche: Dream Machine</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/synthetic_human" data-id="synthetic_human" data-color-bg="#9d8aff" data-color-text="#ffffff" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Synthetic Human</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/spatial_fusion" data-id="spatial_fusion" data-color-bg="#D6C8ED" data-color-text="#000000" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Meta: Spatial Fusion</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/spaace" data-id="spaace" data-color-bg="#010a16" data-color-text="#ffece2" data-color-shadow="0.85"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d • web3</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Spaace - NFT Marketplace</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/ddd_2024" data-id="ddd_2024" data-color-bg="#261c46" data-color-text="#ffffff" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">DDD 2024</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/choo_choo_world" data-id="choo_choo_world" data-color-bg="#E8EEF8" data-color-text="#000000" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">concept • web • game design • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Choo Choo World</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/soda_experience" data-id="soda_experience" data-color-bg="#E1E2E4" data-color-text="#000000" data-color-shadow="0.85"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">AR • development • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Soda Experience</div> </div> </div> </a> </div> <a id="home-featured-cta" href="/projects" target="_blank"> <span id="home-featured-cta-dot"></span> <span id="home-featured-cta-text">See all projects</span> <span id="home-featured-cta-arrow"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.343 8h11.314m0 0L8.673 3.016M13.657 8l-4.984 4.984"></path></svg> </span> </a> </div> <div id="home-goal" class="section"> <div id="home-goal-context"> <div id="home-goal-context-inner"> <div id="home-goal-title">Where Creative Ideas Become Immersive Experiences</div> <div id="home-goal-texts"> <div class="home-goal-texts-paragraph">We do not chase trends or produce work that looks like everyone else. We focus on creating visually distinctive digital experiences that reflect your brand, engage your audience, and make people remember what they saw.</div> <div class="home-goal-texts-paragraph">Our process blends creative direction, 3D craft, and interactive development to build tailored digital journeys that feel original, polished, and built for impact.</div> </div> </div> </div> <div id="home-goal-tunnel-title"> <div class="home-goal-tunnel-title-line">Step into a new world</div> <div class="home-goal-tunnel-title-line">and let your</div> <div class="home-goal-tunnel-title-line">imagination run wild</div> </div> <div id="home-goal-image-in-outer"> <div id="home-goal-image-in-inner"> <div id="home-goal-image-in"></div> </div> </div> <div id="home-goal-image-out-outer"> <div id="home-goal-image-out-inner"> <div id="home-goal-image-out"></div> </div> </div> </div> </div> </div> <div id="page-extra-sections"> <div id="end-section" class="section"> <div id="end-section-outer"> <div id="end-section-inner"> <div id="end-section-content"> <div id="end-section-content-crosses"> <div class="end-section-content-cross"></div> <div class="end-section-content-cross"></div> <div class="end-section-content-cross"></div> <div class="end-section-content-cross"></div> <div class="end-section-content-cross"></div> </div> <div id="end-section-subtitle"> <div id="end-section-subtitle-text">Is Your Big Idea Ready to Go Wild?</div> </div> <div id="end-section-title"> <div id="end-section-title-link">Let's work <br> together!</div> <span id="end-section-title-top-decoration"></span> <span id="end-section-title-bottom-left-decoration"></span> <span id="end-section-title-bottom-right-decoration"></span> </div> </div> <div id="end-bottom"> <div class="end-bottom-arrow-container"> <div class="end-bottom-arrow"></div> <div class="end-bottom-arrow"></div> </div> <div id="end-bottom-text-container"> <div id="end-bottom-text">CONTINUE TO SCROLL</div> <div id="end-bottom-text">CONTINUE TO SCROLL</div> </div> <div class="end-bottom-arrow-container"> <div class="end-bottom-arrow"></div> <div class="end-bottom-arrow"></div> </div> </div> </div> </div> </div> <div id="footer-section" class="section"> <div id="footer-bg"></div> <div id="footer-top"></div> <div id="footer-middle"> <div id="footer-middle-contact"> <a id="footer-contact-address" href="https://goo.gl/maps/x9evc1NxZocjrM947" target="_blank"> <div class="footer-address-line">Suite 2</div> <div class="footer-address-line">9 Marsh Street</div> <div class="footer-address-line">Bristol, BS1 4AA</div> <div class="footer-address-line">United Kingdom</div> </a> <div id="footer-contact-socials"> <a class="footer-socials-line" href="https://twitter.com/lusionltd/" target="_blank"> <svg class="footer-socials-line-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#000" fill-rule="evenodd" d="M6.948 18.113a.75.75 0 0 1-1.06-1.06l9.885-9.886H8.65a.75.75 0 1 1 0-1.5h9.682v9.682a.75.75 0 0 1-1.5 0v-7.12l-9.884 9.884Z" clip-rule="evenodd"></path></svg> <span class="footer-socials-text">Twitter / X</span> </a> <a class="footer-socials-line" href="https://www.instagram.com/lusionltd/" target="_blank"> <svg class="footer-socials-line-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#000" fill-rule="evenodd" d="M6.948 18.113a.75.75 0 0 1-1.06-1.06l9.885-9.886H8.65a.75.75 0 1 1 0-1.5h9.682v9.682a.75.75 0 0 1-1.5 0v-7.12l-9.884 9.884Z" clip-rule="evenodd"></path></svg> <span class="footer-socials-text">Instagram</span> </a> <a class="footer-socials-line" href="https://www.linkedin.com/company/lusionltd/" target="_blank"> <svg class="footer-socials-line-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#000" fill-rule="evenodd" d="M6.948 18.113a.75.75 0 0 1-1.06-1.06l9.885-9.886H8.65a.75.75 0 1 1 0-1.5h9.682v9.682a.75.75 0 0 1-1.5 0v-7.12l-9.884 9.884Z" clip-rule="evenodd"></path></svg> <span class="footer-socials-text">Linkedin</span> </a> </div> <div id="footer-contact-enquires"> <div id="footer-enquires-header">General enquires</div> <a id="footer-enquires-link" href="mailto:hello@lusion.co">hello@lusion.co</a> </div> <div id="footer-contact-business"> <div id="footer-business-header">New business</div> <a id="footer-business-link" href="mailto:business@lusion.co">business@lusion.co</a> </div> </div> <div id="footer-middle-newsletter"> <div id="footer-newsletter-header"> <span class="footer-newsletter-line">Subscribe to</span> <span class="footer-newsletter-line">our newsletter</span> </div> <div id="footer-newsletter-input"> <div id="footer-newsletter-bg"></div> <form id="footer-newsletter-form"> <input id="footer-newsletter-input-field" type="email" name="EMAIL" autocomplete="email" placeholder="Your email"> <button type="submit" id="footer-newsletter-input-arrow" aria-label="Send newsletter form button"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M1.9999 11.9998C1.9999 12.552 2.44762 12.9997 2.9999 12.9997H18.9757C18.8901 13.148 18.7838 13.2876 18.657 13.4144L12.2931 19.7784C11.9025 20.1689 11.9025 20.8021 12.2931 21.1926C12.6836 21.5831 13.3168 21.5831 13.7073 21.1926L22.1926 12.7073C22.5831 12.3168 22.5831 11.6836 22.1926 11.2931L22.1924 11.293L13.7071 2.80767C13.3166 2.41715 12.6834 2.41715 12.2929 2.80767C11.9024 3.1982 11.9024 3.83136 12.2929 4.22189L18.657 10.586C18.7836 10.7126 18.8896 10.8518 18.9752 10.9998H2.9999C2.44762 10.9997 1.9999 11.4475 1.9999 11.9998Z" fill="black"></path> </svg> </button> </form> <div id="footer-newsletter-feedback-message"></div> </div> </div> </div> <div id="footer-bottom"> <div id="footer-bottom-copyright">©2026 LUSION Creative Studio</div> <a id="footer-bottom-labs" href="https://labs.lusion.co" target="_blank"> R&D: labs.lusion.co</a> <div id="footer-bottom-tagline">Built by Lusion with ❤️</div> <div id="footer-bottom-up"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#fff" fill-rule="evenodd" d="M12 22a1 1 0 0 1-1-1V5.857l-6.223 6.224a1 1 0 0 1-1.415-1.415l7.9-7.9a1 1 0 0 1 1.414 0v.001l7.9 7.9a1 1 0 0 1-1.414 1.414L13 5.919V21a1 1 0 0 1-1 1Z" clip-rule="evenodd"></path></svg> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#fff" fill-rule="evenodd" d="M12 22a1 1 0 0 1-1-1V5.857l-6.223 6.224a1 1 0 0 1-1.415-1.415l7.9-7.9a1 1 0 0 1 1.414 0v.001l7.9 7.9a1 1 0 0 1-1.414 1.414L13 5.919V21a1 1 0 0 1-1 1Z" clip-rule="evenodd"></path></svg> </div> </div> </div> <div id="scroll-nav-section" class="section" data-path="/about"> <div id="scroll-nav-content"> <div id="scroll-nav-subtitle">Keep Scrolling<br>to Learn More</div> <div id="scroll-nav-main"> <div id="scroll-nav-text">About Us</div> <div id="scroll-nav-next"> <div id="scroll-nav-next-text">Next Page</div> <div id="scroll-nav-next-bar"><div id="scroll-nav-next-bar-inner"></div></div> <div id="scroll-nav-next-arrow"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M1.9999 11.9998C1.9999 12.552 2.44762 12.9997 2.9999 12.9997H18.9757C18.8901 13.148 18.7838 13.2876 18.657 13.4144L12.2931 19.7784C11.9025 20.1689 11.9025 20.8021 12.2931 21.1926C12.6836 21.5831 13.3168 21.5831 13.7073 21.1926L22.1926 12.7073C22.5831 12.3168 22.5831 11.6836 22.1926 11.2931L22.1924 11.293L13.7071 2.80767C13.3166 2.41715 12.6834 2.41715 12.2929 2.80767C11.9024 3.1982 11.9024 3.83136 12.2929 4.22189L18.657 10.586C18.7836 10.7126 18.8896 10.8518 18.9752 10.9998H2.9999C2.44762 10.9997 1.9999 11.4475 1.9999 11.9998Z" fill="#fff"></path> </svg> </div> </div> </div> <div id="scroll-nav-cross-line"> <div class="scroll-nav-cross"></div> <div class="scroll-nav-cross"></div> <div class="scroll-nav-cross"></div> <div class="scroll-nav-cross"></div> <div class="scroll-nav-cross"></div> </div> </div> </div> </div> </div> </div> <div id="scroll-indicator"> <div id="scroll-indicator-bar"></div> </div> <div id="input-blocker"></div> <div id="video-overlay"> <div id="video-overlay__vimeo-video"></div> <div id="video-overlay__mobile-close-btn"> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3.75781 3.75732L12.2431 12.2426" stroke="white" stroke-width="2" stroke-linecap="round"></path> <path d="M12.2422 3.75732L3.75691 12.2426" stroke="white" stroke-width="2" stroke-linecap="round"></path> </svg> </div> <div id="video-overlay__controls"> <button id="video-overlay__play-btn">PLAY</button> <div id="video-overlay__progress-container"> <div id="video-overlay__progress-active"></div> <div id="video-overlay__progress-bg"></div> </div> <button id="video-overlay__mute-btn">MUTE</button> </div> <div id="video-overlay-cursor"> <svg id="video-overlay-cursor-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 36 36"><path stroke="#020022" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M31 31 17.928 18 31 5M5 5l13.072 13L5 31"></path></svg> </div> </div> <canvas id="transition-overlay"></canvas> <div id="preloader"> <div id="preloader-percent-digits"> <div class="preloader-percent-digit"> <div class="preloader-percent-digit-num">0</div> <div class="preloader-percent-digit-num">0</div> </div> <div class="preloader-percent-digit"> <div class="preloader-percent-digit-num">0</div> <div class="preloader-percent-digit-num">0</div> </div> <div class="preloader-percent-digit"> <div class="preloader-percent-digit-num">0</div> <div class="preloader-percent-digit-num">0</div> </div> </div> </div>   <script src="/js/sound-manager.js" defer></script><script src="/js/nav-physics.js" defer></script><script>
+</div> <div id="home-reel" class="section"> <h4 id="home-reel-title"> <div id="home-reel-title-inner"> <div id="home-reel-title-line-1">Things I Build.</div> <div id="home-reel-title-line-2">Tracks I Follow.</div> </div> </h4> <div id="home-reel-content"> <h2 id="home-reel-desc">Based in Pune, tracking apex predators across central india and eastern vidarbha tiger landscape, and engineering interactive 3D worlds on screen. A personal directory of deployed systems, field telemetry, and digital archives.</h2> <a id="home-reel-cta" href="#telemetry-table" role="button"> <span id="home-reel-cta-dot"></span> <span id="home-reel-cta-text">see my craft↓</span> <span id="home-reel-cta-arrow"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2.343v11.314m0 0L3.016 8.673M8 13.657l4.984-4.984"></path></svg> </span> </a> </div> <div id="home-reel-thumb-wrapper"><div id="home-reel-thumb"></div></div> <div id="home-reel-container"> <div id="home-reel-container-inner"> <div id="home-reel-video-container"> <div id="home-reel-video-container-decoration"> <div id="home-reel-video-container-top"> <div id="home-reel-video-container-crosses"> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> </div> <div class="home-reel-video-container-svgs"> <div class="home-reel-video-container-svg-wrapper"> <svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg> </div> </div> </div> <div id="home-reel-video-container-bottom"> <div id="home-reel-video-container-crosses"> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> <div class="home-reel-video-container-cross"></div> </div> <div class="home-reel-video-container-svgs"> <div class="home-reel-video-container-svg-wrapper"> <svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg><svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" fill="none" viewBox="0 0 132 14"> <path fill="#000" d="M.861 1.844a.889.889 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777V1.844H.861Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312Zm16 0a.888.888 0 0 1 1.32-.777l9.282 5.156a.89.89 0 0 1 0 1.554l-9.281 5.156a.889.889 0 0 1-1.32-.777l-.001-10.312ZM61.142 1.3c.736 0 1.387.144 1.952.432.565.277.997.677 1.296 1.2.31.512.464 1.115.464 1.808 0 .693-.155 1.301-.464 1.824a3.15 3.15 0 0 1-1.312 1.216c-.555.277-1.2.416-1.936.416H58.23V12.5h-1.392V1.3h4.304ZM58.23 6.916h2.784c.736 0 1.323-.197 1.76-.592.437-.395.656-.923.656-1.584s-.219-1.184-.656-1.568c-.427-.395-1.008-.592-1.744-.592h-2.8v4.336Zm8.108 5.584V1.3h1.392v9.92h5.104v1.28h-6.496Zm7.197 0 4.272-11.2h1.648l4.256 11.2h-1.488l-1.184-3.024h-4.88L74.975 12.5h-1.44Zm3.04-4.288h4.048L78.591 2.82l-2.016 5.392Zm5.694-6.928h1.632l3.296 5.568 3.344-5.568h1.568l-4.224 7.072V12.5h-1.392V8.356l-4.224-7.072Zm19.545.016c.736 0 1.386.144 1.952.432.547.26 1.004.679 1.312 1.2.309.512.464 1.115.464 1.808 0 .779-.219 1.456-.657 2.032-.426.565-1.002.95-1.727 1.152l2.512 4.576h-1.568l-2.32-4.304h-2.864V12.5h-1.393V1.3h4.289Zm-2.896 5.616h2.784c.736 0 1.322-.197 1.76-.592.437-.395.656-.923.656-1.584 0-.65-.219-1.173-.656-1.568-.438-.395-1.019-.592-1.744-.592h-2.8v4.336Zm8.389-5.616h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 0h7.136v1.28h-5.744v3.584h4.784v1.28h-4.784v3.776h5.952v1.28h-7.344V1.3Zm8.906 11.2V1.3h1.392v9.92h5.104v1.28h-6.496Z"></path> </svg> </div> </div> </div> </div> <div id="home-reel-video-placeholder"> <div id="home-reel-video-title">Play Reel</div> </div> <button id="home-reel-video-watch-btn" aria-label="Watch reel button"> <div id="home-reel-video-watch-btn-base"></div> <div id="home-reel-video-watch-btn-background"></div> <svg id="home-reel-video-watch-btn-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 36 36"><path fill="currentColor" d="M7 7.29c0-1.5 1.59-2.466 2.92-1.776l20.656 10.71c1.439.747 1.439 2.805 0 3.552L9.92 30.486C8.589 31.176 7 30.21 7 28.71V7.29Z"></path></svg> </button> </div> </div> </div> </div> <div id="telemetry-table" style="position:relative;top:-70px;"></div> <div id="home-featured" class="section"> <div id="home-featured-title-top"> <div id="home-featured-title-wrapper"> <h4 id="home-featured-title">my works</h4> </div> <div id="home-featured-disclaimer">A selection of immersive digital experiences created for ambitious brands and forward thinking teams.</div> </div> <div class="project-list"> <a class="project-item project-type-website" href="/projects/oryzo_ai" data-id="oryzo_ai" data-color-bg="#1a1411" data-color-text="#ffedd7" data-color-shadow="0.9"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">concept • web • design • development • 3d • animation</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Oryzo AI</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/atlas_motion" data-id="atlas_motion" data-color-bg="#181818" data-color-text="#FFFDE0" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">concept • web • design • development • 3d • animation</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Atlas Motion</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/devin_ai" data-id="devin_ai" data-color-bg="#121414" data-color-text="#ffffff" data-color-shadow="0.9"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Devin AI</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/of_the_oak" data-id="of_the_oak" data-color-bg="#111a13" data-color-text="#d9f3de" data-color-shadow="0.9"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d • animation</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Of The Oak</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/everswap" data-id="everswap" data-color-bg="#E3E3F8" data-color-text="#000" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">concept • web • design • development • 3d • animation</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Everswap</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/porsche_dream_machine" data-id="porsche_dream_machine" data-color-bg="#EFD5D3" data-color-text="#000000" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">concept • 3D illustration • mograph • video</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Porsche: Dream Machine</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/synthetic_human" data-id="synthetic_human" data-color-bg="#9d8aff" data-color-text="#ffffff" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Synthetic Human</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/spatial_fusion" data-id="spatial_fusion" data-color-bg="#D6C8ED" data-color-text="#000000" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Meta: Spatial Fusion</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/spaace" data-id="spaace" data-color-bg="#010a16" data-color-text="#ffece2" data-color-shadow="0.85"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d • web3</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Spaace - NFT Marketplace</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/ddd_2024" data-id="ddd_2024" data-color-bg="#261c46" data-color-text="#ffffff" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">web • design • development • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">DDD 2024</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/choo_choo_world" data-id="choo_choo_world" data-color-bg="#E8EEF8" data-color-text="#000000" data-color-shadow="0.95"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">concept • web • game design • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Choo Choo World</div> </div> </div> </a><a class="project-item project-type-website" href="/projects/soda_experience" data-id="soda_experience" data-color-bg="#E1E2E4" data-color-text="#000000" data-color-shadow="0.85"> <div class="project-item-main"> <div class="project-item-image"></div> </div> <div class="project-item-footer"> <div class="project-item-line-1">AR • development • 3d</div> <div class="project-item-line-2"> <div class="project-item-line-2-icon"></div> <div class="project-item-line-2-inner">Soda Experience</div> </div> </div> </a> </div> <a id="home-featured-cta" href="/projects" target="_blank"> <span id="home-featured-cta-dot"></span> <span id="home-featured-cta-text">See all projects</span> <span id="home-featured-cta-arrow"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.343 8h11.314m0 0L8.673 3.016M13.657 8l-4.984 4.984"></path></svg> </span> </a> </div> <div id="home-goal" class="section"> <div id="home-goal-context"> <div id="home-goal-context-inner"> <div id="home-goal-title">Where Creative Ideas Become Immersive Experiences</div> <div id="home-goal-texts"> <div class="home-goal-texts-paragraph">We do not chase trends or produce work that looks like everyone else. We focus on creating visually distinctive digital experiences that reflect your brand, engage your audience, and make people remember what they saw.</div> <div class="home-goal-texts-paragraph">Our process blends creative direction, 3D craft, and interactive development to build tailored digital journeys that feel original, polished, and built for impact.</div> </div> </div> </div> <div id="home-goal-tunnel-title"> <div class="home-goal-tunnel-title-line">Step into a new world</div> <div class="home-goal-tunnel-title-line">and let your</div> <div class="home-goal-tunnel-title-line">imagination run wild</div> </div> <div id="home-goal-image-in-outer"> <div id="home-goal-image-in-inner"> <div id="home-goal-image-in"></div> </div> </div> <div id="home-goal-image-out-outer"> <div id="home-goal-image-out-inner"> <div id="home-goal-image-out"></div> </div> </div> </div> </div> </div> <div id="page-extra-sections"> <div id="end-section" class="section"> <div id="end-section-outer"> <div id="end-section-inner"> <div id="end-section-content">
+  <!-- Hidden anchor nodes for script compatibility -->
+  <div id="end-section-subtitle" style="display:none !important;"><div id="end-section-subtitle-text"></div></div>
+  <div id="end-section-title" style="display:none !important;"><div id="end-section-title-link"></div><span id="end-section-title-top-decoration"></span><span id="end-section-title-bottom-left-decoration"></span><span id="end-section-title-bottom-right-decoration"></span></div>
+
+  <!-- SOVEREIGN THEATER CONTAINER -->
+  <div id="sovereign-theater-container">
+    <div class="theater-header">
+      <h2 class="theater-title">The Stripes shall Remain</h2>
+      <p class="theater-desc">
+        Tiger Anthem Film 1 · Directed by <strong>Subbiah Nallamuthu</strong> · Music by <strong>Shantanu Moitra</strong>
+      </p>
+    </div>
+
+    <div class="theater-video-wrapper">
+      <div class="theater-video-inner">
+        <iframe
+          id="tigerAnthemIframe"
+          src="https://www.youtube-nocookie.com/embed/ljoY36g8NQ0?enablejsapi=1&rel=0&modestbranding=1&playsinline=1"
+          title="Tiger Anthem Film 1 | Shantanu Moitra | Subbiah Nallamuthu | #SavingOurStripes"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="theater-actions mono">
+        <button type="button" class="theater-pill-btn active" onclick="document.getElementById('tigerAnthemIframe').src='https://www.youtube-nocookie.com/embed/ljoY36g8NQ0?autoplay=1&rel=0&modestbranding=1';">
+          ▶ PLAY ANTHEM FILM
+        </button>
+        <button type="button" class="theater-pill-btn" onclick="document.getElementById('tigerAnthemIframe').src='https://www.youtube-nocookie.com/embed/ljoY36g8NQ0?autoplay=1&start=194&rel=0&modestbranding=1';">
+          ⚡ TIGER TAIL ANIMATION (3:14)
+        </button>
+        <a href="/test-animation-shall" class="theater-pill-btn" target="_blank" rel="noopener noreferrer">
+          ◈ TIGER TAIL LAB (/test-animation-shall)
+        </a>
+      </div>
+    </div>
+  </div>
+</div> <div id="end-bottom"> <div class="end-bottom-arrow-container"> <div class="end-bottom-arrow"></div> <div class="end-bottom-arrow"></div> </div> <div id="end-bottom-text-container"> <div id="end-bottom-text">CONTINUE TO SCROLL</div> <div id="end-bottom-text">CONTINUE TO SCROLL</div> </div> <div class="end-bottom-arrow-container"> <div class="end-bottom-arrow"></div> <div class="end-bottom-arrow"></div> </div> </div> </div> </div> </div> <div id="footer-section" class="section"> <div id="footer-bg"></div> <div id="footer-top"></div> <div id="footer-middle"> <div id="footer-middle-contact"> <a id="footer-contact-address" href="https://goo.gl/maps/x9evc1NxZocjrM947" target="_blank"> <div class="footer-address-line">Suite 2</div> <div class="footer-address-line">9 Marsh Street</div> <div class="footer-address-line">Bristol, BS1 4AA</div> <div class="footer-address-line">United Kingdom</div> </a> <div id="footer-contact-socials"> <a class="footer-socials-line" href="https://twitter.com/lusionltd/" target="_blank"> <svg class="footer-socials-line-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#000" fill-rule="evenodd" d="M6.948 18.113a.75.75 0 0 1-1.06-1.06l9.885-9.886H8.65a.75.75 0 1 1 0-1.5h9.682v9.682a.75.75 0 0 1-1.5 0v-7.12l-9.884 9.884Z" clip-rule="evenodd"></path></svg> <span class="footer-socials-text">Twitter / X</span> </a> <a class="footer-socials-line" href="https://www.instagram.com/lusionltd/" target="_blank"> <svg class="footer-socials-line-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#000" fill-rule="evenodd" d="M6.948 18.113a.75.75 0 0 1-1.06-1.06l9.885-9.886H8.65a.75.75 0 1 1 0-1.5h9.682v9.682a.75.75 0 0 1-1.5 0v-7.12l-9.884 9.884Z" clip-rule="evenodd"></path></svg> <span class="footer-socials-text">Instagram</span> </a> <a class="footer-socials-line" href="https://www.linkedin.com/company/lusionltd/" target="_blank"> <svg class="footer-socials-line-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#000" fill-rule="evenodd" d="M6.948 18.113a.75.75 0 0 1-1.06-1.06l9.885-9.886H8.65a.75.75 0 1 1 0-1.5h9.682v9.682a.75.75 0 0 1-1.5 0v-7.12l-9.884 9.884Z" clip-rule="evenodd"></path></svg> <span class="footer-socials-text">Linkedin</span> </a> </div> <div id="footer-contact-enquires"> <div id="footer-enquires-header">General enquires</div> <a id="footer-enquires-link" href="mailto:hello@lusion.co">hello@lusion.co</a> </div> <div id="footer-contact-business"> <div id="footer-business-header">New business</div> <a id="footer-business-link" href="mailto:business@lusion.co">business@lusion.co</a> </div> </div> <div id="footer-middle-newsletter"> <div id="footer-newsletter-header"> <span class="footer-newsletter-line">Subscribe to</span> <span class="footer-newsletter-line">our newsletter</span> </div> <div id="footer-newsletter-input"> <div id="footer-newsletter-bg"></div> <form id="footer-newsletter-form"> <input id="footer-newsletter-input-field" type="email" name="EMAIL" autocomplete="email" placeholder="Your email"> <button type="submit" id="footer-newsletter-input-arrow" aria-label="Send newsletter form button"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M1.9999 11.9998C1.9999 12.552 2.44762 12.9997 2.9999 12.9997H18.9757C18.8901 13.148 18.7838 13.2876 18.657 13.4144L12.2931 19.7784C11.9025 20.1689 11.9025 20.8021 12.2931 21.1926C12.6836 21.5831 13.3168 21.5831 13.7073 21.1926L22.1926 12.7073C22.5831 12.3168 22.5831 11.6836 22.1926 11.2931L22.1924 11.293L13.7071 2.80767C13.3166 2.41715 12.6834 2.41715 12.2929 2.80767C11.9024 3.1982 11.9024 3.83136 12.2929 4.22189L18.657 10.586C18.7836 10.7126 18.8896 10.8518 18.9752 10.9998H2.9999C2.44762 10.9997 1.9999 11.4475 1.9999 11.9998Z" fill="black"></path> </svg> </button> </form> <div id="footer-newsletter-feedback-message"></div> </div> </div> </div> <div id="footer-bottom"> <div id="footer-bottom-copyright">©2026 LUSION Creative Studio</div> <a id="footer-bottom-labs" href="https://labs.lusion.co" target="_blank"> R&D: labs.lusion.co</a> <div id="footer-bottom-tagline">Built by Lusion with ❤️</div> <div id="footer-bottom-up"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#fff" fill-rule="evenodd" d="M12 22a1 1 0 0 1-1-1V5.857l-6.223 6.224a1 1 0 0 1-1.415-1.415l7.9-7.9a1 1 0 0 1 1.414 0v.001l7.9 7.9a1 1 0 0 1-1.414 1.414L13 5.919V21a1 1 0 0 1-1 1Z" clip-rule="evenodd"></path></svg> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#fff" fill-rule="evenodd" d="M12 22a1 1 0 0 1-1-1V5.857l-6.223 6.224a1 1 0 0 1-1.415-1.415l7.9-7.9a1 1 0 0 1 1.414 0v.001l7.9 7.9a1 1 0 0 1-1.414 1.414L13 5.919V21a1 1 0 0 1-1 1Z" clip-rule="evenodd"></path></svg> </div> </div> </div> <div id="scroll-nav-section" class="section" data-path="/about"> <div id="scroll-nav-content"> <div id="scroll-nav-subtitle">Keep Scrolling<br>to Learn More</div> <div id="scroll-nav-main"> <div id="scroll-nav-text">About Us</div> <div id="scroll-nav-next"> <div id="scroll-nav-next-text">Next Page</div> <div id="scroll-nav-next-bar"><div id="scroll-nav-next-bar-inner"></div></div> <div id="scroll-nav-next-arrow"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M1.9999 11.9998C1.9999 12.552 2.44762 12.9997 2.9999 12.9997H18.9757C18.8901 13.148 18.7838 13.2876 18.657 13.4144L12.2931 19.7784C11.9025 20.1689 11.9025 20.8021 12.2931 21.1926C12.6836 21.5831 13.3168 21.5831 13.7073 21.1926L22.1926 12.7073C22.5831 12.3168 22.5831 11.6836 22.1926 11.2931L22.1924 11.293L13.7071 2.80767C13.3166 2.41715 12.6834 2.41715 12.2929 2.80767C11.9024 3.1982 11.9024 3.83136 12.2929 4.22189L18.657 10.586C18.7836 10.7126 18.8896 10.8518 18.9752 10.9998H2.9999C2.44762 10.9997 1.9999 11.4475 1.9999 11.9998Z" fill="#fff"></path> </svg> </div> </div> </div> <div id="scroll-nav-cross-line"> <div class="scroll-nav-cross"></div> <div class="scroll-nav-cross"></div> <div class="scroll-nav-cross"></div> <div class="scroll-nav-cross"></div> <div class="scroll-nav-cross"></div> </div> </div> </div> </div> </div> </div> <div id="scroll-indicator"> <div id="scroll-indicator-bar"></div> </div> <div id="input-blocker"></div> <div id="video-overlay"> <div id="video-overlay__vimeo-video"></div> <div id="video-overlay__mobile-close-btn"> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M3.75781 3.75732L12.2431 12.2426" stroke="white" stroke-width="2" stroke-linecap="round"></path> <path d="M12.2422 3.75732L3.75691 12.2426" stroke="white" stroke-width="2" stroke-linecap="round"></path> </svg> </div> <div id="video-overlay__controls"> <button id="video-overlay__play-btn">PLAY</button> <div id="video-overlay__progress-container"> <div id="video-overlay__progress-active"></div> <div id="video-overlay__progress-bg"></div> </div> <button id="video-overlay__mute-btn">MUTE</button> </div> <div id="video-overlay-cursor"> <svg id="video-overlay-cursor-svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 36 36"><path stroke="#020022" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M31 31 17.928 18 31 5M5 5l13.072 13L5 31"></path></svg> </div> </div> <canvas id="transition-overlay"></canvas> <div id="preloader"> <div id="preloader-percent-digits"> <div class="preloader-percent-digit"> <div class="preloader-percent-digit-num">0</div> <div class="preloader-percent-digit-num">0</div> </div> <div class="preloader-percent-digit"> <div class="preloader-percent-digit-num">0</div> <div class="preloader-percent-digit-num">0</div> </div> <div class="preloader-percent-digit"> <div class="preloader-percent-digit-num">0</div> <div class="preloader-percent-digit-num">0</div> </div> </div> </div>   <script src="/js/sound-manager.js" defer></script><script src="/js/nav-physics.js" defer></script><script>
 (function() {
   function setupScroll() {
     var buttons = ['home-reel-cta', 'seeCraftBtn'];
@@ -290,420 +479,4 @@ html[data-look="day"] #home-featured-title {
   }
 })();
 </script>
-
-<!-- TIGER TAIL DYNAMIC CURVE ANIMATION OVERLAY -->
-<style>
-#tiger-tail-stage {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 9998;
-  opacity: 0;
-  overflow: hidden;
-  transition: opacity 0.4s ease;
-}
-
-#tiger-tail-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-#tiger-stripes-callout {
-  position: absolute;
-  left: max(40px, 8vw);
-  top: clamp(20%, 28vh, 35%);
-  max-width: min(90vw, 580px);
-  transform: translate3d(-30px, 0, 0);
-  opacity: 0;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-  pointer-events: none;
-}
-#tiger-stripes-callout.active {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
-.stripes-badge {
-  display: inline-block;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: clamp(0.7rem, 0.85vw, 0.85rem);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #FFB800;
-  background: rgba(255, 184, 0, 0.12);
-  border: 1px solid rgba(255, 184, 0, 0.35);
-  padding: 5px 14px;
-  border-radius: 999px;
-  margin-bottom: 14px;
-  backdrop-filter: blur(8px);
-}
-
-.stripes-headline {
-  font-family: 'Aeonik', system-ui, -apple-system, sans-serif;
-  font-size: clamp(2.4rem, 4.5vw, 4.8rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  background: linear-gradient(135deg, #FFFFFF 0%, #FFF5D0 30%, #FFB800 65%, #E5A93C 90%, #D97706 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 26px rgba(255, 184, 0, 0.55)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95));
-  margin: 0 0 12px 0;
-}
-html[data-look="day"] .stripes-headline {
-  background: linear-gradient(135deg, #92400E 0%, #B45309 30%, #D97706 60%, #FFB800 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 20px rgba(217, 119, 6, 0.35));
-}
-
-.stripes-meta {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: clamp(0.68rem, 0.8vw, 0.82rem);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-}
-html[data-look="day"] .stripes-meta {
-  color: rgba(0, 20, 69, 0.7);
-  text-shadow: none;
-}
-</style>
-
-<div id="tiger-tail-stage" aria-hidden="true">
-  <canvas id="tiger-tail-canvas"></canvas>
-
-  <div id="tiger-stripes-callout">
-    <div class="stripes-badge">CENTRAL INDIA & EASTERN VIDARBHA</div>
-    <h2 class="stripes-headline">The Stripes shall Remain</h2>
-    <div class="stripes-meta">APEX SOVEREIGNTY · RESILIENT CALL · T-106</div>
-  </div>
-</div>
-
-<script>
-(function() {
-  function initDynamicTigerTail() {
-    var stage = document.getElementById('tiger-tail-stage');
-    var canvas = document.getElementById('tiger-tail-canvas');
-    var callout = document.getElementById('tiger-stripes-callout');
-    if (!stage || !canvas) return;
-
-    var ctx = canvas.getContext('2d');
-    var width = 0;
-    var height = 0;
-    var dpr = 1;
-
-    function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    function getSplineControlPoints() {
-      var cx = width * 0.5;
-      var cy = height * 0.5;
-      var scale = Math.min(width / 1100, height / 800, 1.2);
-
-      return [
-        { x: cx - 420 * scale, y: cy + 320 * scale },
-        { x: cx - 440 * scale, y: cy + 120 * scale },
-        { x: cx - 340 * scale, y: cy - 140 * scale },
-        { x: cx - 140 * scale, y: cy - 080 * scale },
-        { x: cx + 060 * scale, y: cy + 160 * scale },
-        { x: cx + 280 * scale, y: cy + 120 * scale },
-        { x: cx + 420 * scale, y: cy - 040 * scale },
-        { x: cx + 380 * scale, y: cy - 200 * scale },
-        { x: cx + 220 * scale, y: cy - 180 * scale },
-        { x: cx + 180 * scale, y: cy - 070 * scale },
-        { x: cx + 260 * scale, y: cy + 010 * scale }
-      ];
-    }
-
-    function getSplinePoint(points, t) {
-      var pCount = points.length;
-      var clampedT = Math.max(0, Math.min(1, t));
-      var totalSegs = pCount - 1;
-      var segFloat = clampedT * totalSegs;
-      var segIndex = Math.min(Math.floor(segFloat), totalSegs - 1);
-      var localT = segFloat - segIndex;
-
-      var p0 = points[Math.max(0, segIndex - 1)];
-      var p1 = points[segIndex];
-      var p2 = points[Math.min(pCount - 1, segIndex + 1)];
-      var p3 = points[Math.min(pCount - 1, segIndex + 2)];
-
-      var t2 = localT * localT;
-      var t3 = t2 * localT;
-
-      var x = 0.5 * (
-        (2 * p1.x) +
-        (-p0.x + p2.x) * localT +
-        (2 * p0.x - 5 * p1.x + 4 * p2.x - p3.x) * t2 +
-        (-p0.x + 3 * p1.x - 3 * p2.x + p3.x) * t3
-      );
-
-      var y = 0.5 * (
-        (2 * p1.y) +
-        (-p0.y + p2.y) * localT +
-        (2 * p0.y - 5 * p1.y + 4 * p2.y - p3.y) * t2 +
-        (-p0.y + 3 * p1.y - 3 * p2.y + p3.y) * t3
-      );
-
-      return { x: x, y: y };
-    }
-
-    var NUM_SAMPLES = 420;
-    function computeSampledPath(points) {
-      var samples = [];
-      var totalLength = 0;
-      var prevPt = null;
-
-      for (var i = 0; i <= NUM_SAMPLES; i++) {
-        var t = i / NUM_SAMPLES;
-        var pt = getSplinePoint(points, t);
-        if (prevPt) {
-          var dist = Math.hypot(pt.x - prevPt.x, pt.y - prevPt.y);
-          totalLength += dist;
-        }
-        samples.push({
-          x: pt.x,
-          y: pt.y,
-          t: t,
-          dist: totalLength
-        });
-        prevPt = pt;
-      }
-
-      for (var j = 0; j <= NUM_SAMPLES; j++) {
-        var next = samples[Math.min(NUM_SAMPLES, j + 1)];
-        var prev = samples[Math.max(0, j - 1)];
-        var dx = next.x - prev.x;
-        var dy = next.y - prev.y;
-        var len = Math.hypot(dx, dy) || 1;
-        dx /= len;
-        dy /= len;
-
-        samples[j].tangent = { x: dx, y: dy };
-        samples[j].normal = { x: -dy, y: dx };
-      }
-
-      return { samples: samples, totalLength: totalLength };
-    }
-
-    function getRadius(t) {
-      return 30 - 12 * Math.pow(t, 1.4);
-    }
-
-    function renderTail(curProgress) {
-      var points = getSplineControlPoints();
-      var pathData = computeSampledPath(points);
-      var samples = pathData.samples;
-      var totalLength = pathData.totalLength;
-      var curDist = curProgress * totalLength;
-
-      var activeIndex = 0;
-      for (var i = 0; i < samples.length; i++) {
-        if (samples[i].dist <= curDist) {
-          activeIndex = i;
-        } else {
-          break;
-        }
-      }
-      if (activeIndex < 2) {
-        ctx.clearRect(0, 0, width, height);
-        return;
-      }
-
-      ctx.clearRect(0, 0, width, height);
-
-      // 1. AURA GLOW UNDERLAY
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(samples[0].x, samples[0].y);
-      for (var k = 1; k <= activeIndex; k++) {
-        ctx.lineTo(samples[k].x, samples[k].y);
-      }
-      ctx.lineWidth = getRadius(0) * 2.8;
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-      ctx.strokeStyle = 'rgba(255, 184, 0, 0.25)';
-      ctx.shadowColor = '#FFB800';
-      ctx.shadowBlur = 45;
-      ctx.stroke();
-      ctx.restore();
-
-      // 2. MAIN FUR RIBBON
-      ctx.save();
-      for (var m = 0; m < activeIndex; m++) {
-        var s0 = samples[m];
-        var s1 = samples[m + 1];
-        var r0 = getRadius(s0.t);
-        var r1 = getRadius(s1.t);
-
-        var left0 = { x: s0.x + s0.normal.x * r0, y: s0.y + s0.normal.y * r0 };
-        var right0 = { x: s0.x - s0.normal.x * r0, y: s0.y - s0.normal.y * r0 };
-        var left1 = { x: s1.x + s1.normal.x * r1, y: s1.y + s1.normal.y * r1 };
-        var right1 = { x: s1.x - s1.normal.x * r1, y: s1.y - s1.normal.y * r1 };
-
-        var grad = ctx.createLinearGradient(left0.x, left0.y, right0.x, right0.y);
-        grad.addColorStop(0.0, '#9A3412');
-        grad.addColorStop(0.18, '#EA580C');
-        grad.addColorStop(0.50, '#FFB800');
-        grad.addColorStop(0.85, '#FFD54F');
-        grad.addColorStop(1.0, '#FFFBEB');
-
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.moveTo(left0.x, left0.y);
-        ctx.lineTo(left1.x, left1.y);
-        ctx.lineTo(right1.x, right1.y);
-        ctx.lineTo(right0.x, right0.y);
-        ctx.closePath();
-        ctx.fill();
-      }
-      ctx.restore();
-
-      // 3. AUTHENTIC TIGER STRIPES
-      var stripeSpacing = 36;
-      ctx.save();
-      for (var d = 30; d < curDist - 25; d += stripeSpacing) {
-        var sIdx = 0;
-        for (var n = 0; n < samples.length - 1; n++) {
-          if (samples[n].dist <= d && samples[n + 1].dist >= d) {
-            sIdx = n;
-            break;
-          }
-        }
-        var s = samples[sIdx];
-        if (!s) continue;
-
-        var r = getRadius(s.t);
-        var stripeWidth = 14 + 5 * Math.sin(d * 0.1);
-
-        var pLeft = { x: s.x + s.normal.x * (r + 1), y: s.y + s.normal.y * (r + 1) };
-        var pMid = { x: s.x + s.tangent.x * 6, y: s.y + s.tangent.y * 6 };
-        var pRight = { x: s.x - s.normal.x * (r + 1), y: s.y - s.normal.y * (r + 1) };
-
-        ctx.strokeStyle = '#0C0A09';
-        ctx.lineWidth = stripeWidth;
-        ctx.lineCap = 'round';
-        ctx.beginPath();
-        ctx.moveTo(pLeft.x, pLeft.y);
-        ctx.quadraticCurveTo(pMid.x, pMid.y, pRight.x, pRight.y);
-        ctx.stroke();
-
-        ctx.fillStyle = 'rgba(12, 10, 9, 0.4)';
-        ctx.beginPath();
-        ctx.arc(pLeft.x, pLeft.y, stripeWidth * 0.4, 0, Math.PI * 2);
-        ctx.arc(pRight.x, pRight.y, stripeWidth * 0.4, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.restore();
-
-      // 4. LEADING BLACK TIP
-      var head = samples[activeIndex];
-      var headRadius = getRadius(head.t);
-
-      ctx.save();
-      ctx.translate(head.x, head.y);
-      var angle = Math.atan2(head.tangent.y, head.tangent.x);
-      ctx.rotate(angle);
-
-      ctx.fillStyle = '#08080A';
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-      ctx.shadowBlur = 10;
-      ctx.beginPath();
-      ctx.arc(0, 0, headRadius, -Math.PI / 2, Math.PI / 2);
-      ctx.lineTo(headRadius * 0.6, 0);
-      ctx.closePath();
-      ctx.fill();
-
-      ctx.fillStyle = '#FFFDF5';
-      ctx.shadowColor = '#FFB800';
-      ctx.shadowBlur = 12;
-      ctx.beginPath();
-      ctx.arc(headRadius * 0.75, 0, headRadius * 0.28, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.restore();
-    }
-
-    var currentProgress = 0;
-    var targetProgress = 0;
-    var isSceneActive = false;
-
-    function checkGoalScene() {
-      var gt = window._goalTunnels;
-      if (gt && gt.isWhiteTunnelActive) {
-        var dropRatio = gt.astronautDropRatio;
-        if (typeof dropRatio === 'number' && dropRatio >= 0 && dropRatio <= 1.05) {
-          isSceneActive = true;
-          targetProgress = Math.max(0, Math.min(1, dropRatio));
-          return;
-        }
-      }
-
-      var imgOut = document.getElementById('home-goal-image-out');
-      if (imgOut) {
-        var rect = imgOut.getBoundingClientRect();
-        var vh = window.innerHeight;
-        if (rect.top < vh * 0.85 && rect.bottom > vh * 0.15) {
-          isSceneActive = true;
-          var p = (vh * 0.85 - rect.top) / (vh * 0.7);
-          targetProgress = Math.max(0, Math.min(1, p));
-          return;
-        }
-      }
-      isSceneActive = false;
-      targetProgress = 0;
-    }
-
-    function loop() {
-      checkGoalScene();
-
-      currentProgress += (targetProgress - currentProgress) * 0.15;
-
-      if (isSceneActive && currentProgress > 0.02) {
-        stage.style.opacity = '1';
-        renderTail(currentProgress);
-
-        if (callout) {
-          if (currentProgress > 0.35) {
-            callout.classList.add('active');
-          } else {
-            callout.classList.remove('active');
-          }
-        }
-      } else {
-        stage.style.opacity = '0';
-        if (callout) {
-          callout.classList.remove('active');
-        }
-      }
-
-      requestAnimationFrame(loop);
-    }
-
-    requestAnimationFrame(loop);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initDynamicTigerTail);
-  } else {
-    initDynamicTigerTail();
-  }
-})();
-</script></body></html>
+</body></html>
