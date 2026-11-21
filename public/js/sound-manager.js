@@ -373,21 +373,24 @@
   const audio = new DualLayerAudioEngine();
   window.omkarverseAudio = audio;
 
-  // Hook to the top-right [ sound ○ ] toggle button
+  // Hook to the top-right sound toggle button with Lusion wave visualizer
   function bindSoundButton() {
     const sndBtn = document.getElementById('snd');
     if (!sndBtn) return;
 
     function updateButtonUI(isActive) {
       sndBtn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-      sndBtn.textContent = isActive ? 'sound ●' : 'sound ○';
+      const label = sndBtn.querySelector('.snd-label');
+      if (label) {
+        label.textContent = 'sound';
+      }
       try {
         localStorage.setItem('ins.sound', isActive ? '1' : '0');
       } catch (e) {}
     }
 
     function syncState() {
-      const isPressed = sndBtn.getAttribute('aria-pressed') === 'true' || sndBtn.textContent.includes('●');
+      const isPressed = sndBtn.getAttribute('aria-pressed') === 'true';
       if (isPressed && audio.isMuted) {
         audio.unmute();
       } else if (!isPressed && !audio.isMuted) {
@@ -399,12 +402,12 @@
     const observer = new MutationObserver(() => {
       syncState();
     });
-    observer.observe(sndBtn, { attributes: true, attributeFilter: ['aria-pressed'], childList: true, characterData: true });
+    observer.observe(sndBtn, { attributes: true, attributeFilter: ['aria-pressed'] });
 
     // Handle clicks smoothly on all pages
     sndBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const isCurrentlyActive = sndBtn.getAttribute('aria-pressed') === 'true' || sndBtn.textContent.includes('●');
+      const isCurrentlyActive = sndBtn.getAttribute('aria-pressed') === 'true';
       const nextActive = !isCurrentlyActive;
       updateButtonUI(nextActive);
       if (nextActive) {

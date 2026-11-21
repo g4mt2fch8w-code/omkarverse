@@ -108,7 +108,7 @@ export function GlobalNav({ active = "field" }: { active?: string }) {
           <button type="button" data-look="night" aria-pressed="true">night</button>
           <button type="button" data-look="day" aria-pressed="false">day</button>
         </span>
-        <button className="snd mono" type="button" id="snd" aria-pressed="false" title="Toggle audio">sound ○</button>
+        <button className="snd mono" type="button" id="snd" aria-pressed="false" title="Toggle audio"><span className="snd-label">sound</span><span className="snd-wave-wrap" aria-hidden="true"><canvas className="snd-wave-canvas" width="44" height="28"></canvas></span></button>
         <button className="ins-share" type="button" aria-label="Share this page" title="Share">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M12 15V3.5M8 7.5l4-4 4 4"></path>

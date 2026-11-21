@@ -77,9 +77,12 @@ html[data-look=day] .looks button[aria-pressed=true]{color:#FFFFFF}
 .ins-share:hover svg{transform:translateY(-1px)}
 .ins-share::after{content:attr(data-tip);position:absolute;top:calc(100% + 8px);left:50%;translate:-50% 0;background:var(--ink);color:var(--bg);font:500 11px/1 var(--f-mono);padding:5px 8px;border-radius:99px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .25s ease,translate .25s ease;z-index:30}
 .ins-share.ok::after{opacity:1;translate:-50% 3px}
-.snd{font:inherit;background:0 0;border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:4px 10px;white-space:nowrap}
+.snd{font:inherit;background:0 0;border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:4px 10px;white-space:nowrap;display:inline-flex;align-items:center;gap:8px}
 .snd[aria-pressed=true]{color:var(--brand);border-color:var(--brand)}
 .snd[aria-pressed=false]{animation:invite 968ms ease-out infinite}
+.snd-wave-wrap{display:inline-flex;align-items:center;justify-content:center;width:26px;height:18px;position:relative;vertical-align:middle;pointer-events:none;border-radius:999px;background:rgba(248,248,248,0.05);border:1px solid rgba(248,248,248,0.12);transition:all .25s ease}
+.snd[aria-pressed=true] .snd-wave-wrap{background:color-mix(in srgb,var(--brand) 14%,transparent);border-color:color-mix(in srgb,var(--brand) 40%,transparent)}
+.snd-wave-canvas{width:22px;height:14px;display:block}
 @keyframes invite{0%,30%,to{box-shadow:0 0 0 0 transparent}8%{box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 35%,transparent)}20%{box-shadow:0 0 0 1px color-mix(in srgb,var(--brand) 20%,transparent)}}
 
 @media (max-width:960px){

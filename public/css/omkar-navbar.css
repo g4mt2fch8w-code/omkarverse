@@ -410,20 +410,89 @@ html[data-look="day"] header.top .looks button[aria-pressed="true"] {
 header.top .snd {
   font: inherit !important;
   font-family: var(--f-mono) !important;
-  font-size: 12px !important;
-  background: transparent !important;
+  font-size: 11.5px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  background: rgba(248, 248, 248, 0.04) !important;
   border: 1px solid var(--line-glass, rgba(248, 248, 248, 0.16)) !important;
   color: var(--muted-text, #8E98B8) !important;
   border-radius: 99px !important;
-  padding: 4px 10px !important;
+  padding: 4px 10px 4px 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  transition: border-color 0.2s ease, color 0.2s ease !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+header.top .snd:hover {
+  background: rgba(248, 248, 248, 0.08) !important;
+  color: var(--ink-pure, #F8F8F8) !important;
+  border-color: rgba(248, 248, 248, 0.32) !important;
 }
 
 header.top .snd[aria-pressed="true"] {
   color: var(--brand-neon, #818FFF) !important;
-  border-color: var(--brand-neon, #818FFF) !important;
+  border-color: rgba(129, 143, 255, 0.45) !important;
+  background: rgba(129, 143, 255, 0.08) !important;
+}
+
+html[data-look="day"] header.top .snd {
+  background: rgba(0, 20, 69, 0.03) !important;
+  border-color: var(--line-glass) !important;
+  color: var(--muted-text) !important;
+}
+
+html[data-look="day"] header.top .snd:hover {
+  background: rgba(0, 20, 69, 0.07) !important;
+  color: var(--ink-pure) !important;
+  border-color: rgba(0, 20, 69, 0.25) !important;
+}
+
+html[data-look="day"] header.top .snd[aria-pressed="true"] {
+  color: var(--brand-neon, #6442FF) !important;
+  border-color: rgba(100, 66, 255, 0.4) !important;
+  background: rgba(100, 66, 255, 0.08) !important;
+}
+
+/* Sound Waveform Visualizer (replaces round dot ○ / ●) */
+.snd-wave-wrap {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 26px !important;
+  height: 18px !important;
+  position: relative !important;
+  vertical-align: middle !important;
+  pointer-events: none !important;
+  border-radius: 999px !important;
+  background: rgba(248, 248, 248, 0.05) !important;
+  border: 1px solid rgba(248, 248, 248, 0.12) !important;
+  transition: all 0.25s ease !important;
+}
+
+header.top .snd[aria-pressed="true"] .snd-wave-wrap {
+  background: rgba(129, 143, 255, 0.12) !important;
+  border-color: rgba(129, 143, 255, 0.4) !important;
+}
+
+html[data-look="day"] .snd-wave-wrap {
+  background: rgba(0, 20, 69, 0.04) !important;
+  border-color: rgba(0, 20, 69, 0.12) !important;
+}
+
+html[data-look="day"] header.top .snd[aria-pressed="true"] .snd-wave-wrap {
+  background: rgba(100, 66, 255, 0.1) !important;
+  border-color: rgba(100, 66, 255, 0.35) !important;
+}
+
+.snd-wave-canvas {
+  width: 22px !important;
+  height: 14px !important;
+  display: block !important;
 }
 
 header.top .snd[aria-pressed="false"] {
