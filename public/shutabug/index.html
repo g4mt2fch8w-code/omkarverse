@@ -742,6 +742,10 @@ A.finished.finally(function(){document.__reactViewTransition===A&&(document.__re
 
   function renderDossier(tiger, idx) {
     if (!tiger) return;
+    if (window.__vrCamera) {
+      window.__vrCamera.targetPitch = 0;
+      window.__vrCamera.targetYaw = 0;
+    }
     currentTigerIndex = idx;
 
     var heroImg = document.getElementById('sheetHeroImg');
