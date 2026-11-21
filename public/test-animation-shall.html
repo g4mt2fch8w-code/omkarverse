@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>The Stripes shall Remain · Tiger Tail Film Animation</title>
+  <title>The Stripes shall Remain · 1:1 Tiger Tail Animation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <style>
     * {
@@ -14,12 +14,12 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-color: #F7F6F2; /* Default British Soft White */
+      background-color: #F7F6F2; /* British Soft White */
       color: #001445;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Aeonik", sans-serif;
       user-select: none;
       -webkit-user-select: none;
-      transition: background-color 0.4s ease, color 0.4s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     body.night-mode {
       background-color: #050811;
@@ -38,80 +38,96 @@
       padding: 20px;
     }
 
-    /* THE TITLE */
-    #title-container {
+    /* HEADER */
+    .header-box {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       z-index: 10;
+    }
+    .badge-pill {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      background: rgba(217, 119, 6, 0.15);
+      border: 1px solid rgba(217, 119, 6, 0.35);
+      color: #B45309;
+      margin-bottom: 10px;
+    }
+    body.night-mode .badge-pill {
+      background: rgba(255, 184, 0, 0.15);
+      border-color: rgba(255, 184, 0, 0.4);
+      color: #FFB800;
     }
 
     .headline {
-      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      font-size: clamp(2.2rem, 4.5vw, 4.2rem);
       font-weight: 800;
       line-height: 1.05;
       letter-spacing: -0.025em;
       background: linear-gradient(135deg, #78350F 0%, #B45309 30%, #D97706 65%, #FFB800 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 4px 20px rgba(217, 119, 6, 0.3));
-      margin: 0 0 10px 0;
+      filter: drop-shadow(0 4px 18px rgba(217, 119, 6, 0.25));
+      margin: 0;
     }
     body.night-mode .headline {
       background: linear-gradient(135deg, #FFFFFF 0%, #FFF5D0 30%, #FFB800 65%, #E5A93C 90%, #D97706 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 4px 28px rgba(255, 184, 0, 0.55)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95));
+      filter: drop-shadow(0 4px 28px rgba(255, 184, 0, 0.55));
     }
 
-    /* CINEMA VIEWER */
-    .cinema-box {
+    /* THE CINEMA DISPLAY */
+    .cinema-viewport {
       position: relative;
       width: 100%;
-      max-width: min(92vw, 920px);
+      max-width: min(92vw, 960px);
       border-radius: 24px;
+      padding: 10px;
       background: #FFFFFF;
-      border: 1px solid rgba(217, 119, 6, 0.3);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 0 50px rgba(255, 184, 0, 0.15);
-      padding: 12px;
-      overflow: hidden;
-      transition: all 0.4s ease;
+      border: 1.5px solid rgba(217, 119, 6, 0.35);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.08), 0 0 60px rgba(255, 184, 0, 0.15);
+      transition: all 0.3s ease;
     }
-    body.night-mode .cinema-box {
+    body.night-mode .cinema-viewport {
       background: #0B0F1C;
       border-color: rgba(255, 184, 0, 0.35);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 60px rgba(255, 184, 0, 0.25);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 60px rgba(255, 184, 0, 0.22);
     }
 
-    .video-viewport {
+    .video-inner {
       position: relative;
       width: 100%;
       padding-top: 56.25%; /* 16:9 Aspect Ratio */
       border-radius: 16px;
       overflow: hidden;
-      background: #F7F6F2;
-    }
-    body.night-mode .video-viewport {
-      background: #000000;
+      background: #FBF9F1;
     }
 
-    #tigerVideo {
+    #exactTailVideo {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: contain;
-      border-radius: 16px;
       cursor: pointer;
+      border-radius: 16px;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* FOCUS / ZOOM MODE (Crops out TV borders to focus 100% on the curve) */
-    .cinema-box.focus-mode #tigerVideo {
+    /* ZOOM/FOCUS TOGGLE: Clean zoom on curves without TOI / 50 */
+    .cinema-viewport.zoom-focus #exactTailVideo {
       object-fit: cover;
-      transform: scale(1.22) translateY(-2%);
+      transform: scale(1.24) translateY(-2%);
     }
 
-    /* MILESTONE PILLS (1973 · 2023 · 2073) */
+    /* TIMELINE & MILESTONES (1973 · 2023 · 2073) */
     .milestones-bar {
       display: flex;
       align-items: center;
@@ -119,26 +135,31 @@
       gap: 16px;
       margin-top: 14px;
     }
-    .year-pill {
+    .year-chip {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-weight: 800;
-      font-size: clamp(0.85rem, 1.1vw, 1.15rem);
-      letter-spacing: 0.1em;
-      padding: 6px 18px;
+      font-size: clamp(0.85rem, 1.1vw, 1.1rem);
+      letter-spacing: 0.08em;
+      padding: 6px 20px;
       border-radius: 999px;
       background: linear-gradient(135deg, #FFE066 0%, #FFB800 100%);
       color: #0F0E0C;
       border: 1.5px solid #FFFDF0;
       box-shadow: 0 2px 10px rgba(255, 184, 0, 0.35);
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.2s ease;
     }
-    .year-pill:hover {
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 4px 16px rgba(255, 184, 0, 0.6);
+    .year-chip:hover {
+      transform: translateY(-2px) scale(1.06);
+      box-shadow: 0 4px 18px rgba(255, 184, 0, 0.6);
+    }
+    .year-chip.highlight {
+      background: #FFB800;
+      box-shadow: 0 0 25px #FFB800, 0 4px 12px rgba(0, 0, 0, 0.4);
+      transform: scale(1.1);
     }
 
-    /* CONTROLS BAR */
+    /* CONTROL PANEL */
     #controls {
       position: absolute;
       bottom: 24px;
@@ -150,7 +171,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       border: 1px solid rgba(217, 119, 6, 0.35);
       border-radius: 999px;
       padding: 8px 18px;
@@ -159,8 +180,8 @@
       transition: all 0.3s ease;
     }
     body.night-mode #controls {
-      background: rgba(10, 14, 26, 0.88);
-      border-color: rgba(255, 184, 0, 0.3);
+      background: rgba(10, 14, 26, 0.9);
+      border-color: rgba(255, 184, 0, 0.35);
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
     }
 
@@ -192,27 +213,34 @@
       box-shadow: 0 0 15px rgba(255, 184, 0, 0.5);
     }
 
-    #timeDisplay {
+    #scrubber {
+      width: 140px;
+      accent-color: #FFB800;
+      cursor: pointer;
+    }
+
+    #timeBadge {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 0.8rem;
-      font-weight: 600;
-      min-width: 65px;
+      font-weight: 700;
+      min-width: 55px;
       text-align: center;
     }
   </style>
 </head>
 <body class="day-mode">
   <div id="stage">
-    <div id="title-container">
+    <div class="header-box">
+      <div class="badge-pill">1:1 EXACT ORIGINAL FILM ANIMATION</div>
       <h1 class="headline">The Stripes shall Remain</h1>
     </div>
 
-    <!-- Cinema Box -->
-    <div class="cinema-box focus-mode" id="cinemaBox">
-      <div class="video-viewport">
+    <!-- Cinema Viewport -->
+    <div class="cinema-viewport zoom-focus" id="cinemaViewport">
+      <div class="video-inner">
         <video
-          id="tigerVideo"
-          src="/assets/tiger-anthem/anthem.mp4#t=192"
+          id="exactTailVideo"
+          src="/assets/tiger-anthem/tail_animation_clip.mp4"
           playsinline
           autoplay
           muted
@@ -223,106 +251,128 @@
 
       <!-- 1973 · 2023 · 2073 Milestones -->
       <div class="milestones-bar">
-        <span class="year-pill" id="pill1973" onclick="seekTo(192)">1973</span>
-        <span class="year-pill" id="pill2023" onclick="seekTo(194.5)">2023</span>
-        <span class="year-pill" id="pill2073" onclick="seekTo(196)">2073</span>
+        <span class="year-chip" id="chip1973" onclick="seekClip(1.8)">1973</span>
+        <span class="year-chip" id="chip2023" onclick="seekClip(3.8)">2023</span>
+        <span class="year-chip" id="chip2073" onclick="seekClip(5.6)">2073</span>
       </div>
     </div>
   </div>
 
-  <!-- Interactive Controls Bar -->
+  <!-- Interactive Control Deck -->
   <div id="controls">
-    <button class="btn active" id="loopAnimationBtn">⚡ LOOP TIGER TAIL (3:12 - 3:20)</button>
-    <button class="btn" id="playFullBtn">▶ PLAY FULL ANTHEM</button>
-    <button class="btn" id="focusBtn">🔍 CROP: ON</button>
-    <button class="btn" id="soundBtn">🔇 SOUND: OFF</button>
-    <span id="timeDisplay">3:14</span>
+    <button class="btn active" id="playPauseBtn">❚❚ PAUSE</button>
+    <button class="btn" id="replayBtn">↻ RESTART</button>
+    <input type="range" id="scrubber" min="0" max="1000" value="0" title="Frame-by-frame scrub">
+    <span id="timeBadge">0.0s</span>
+    <button class="btn active" id="zoomToggleBtn">🔍 CROP: ON</button>
+    <button class="btn" id="speedToggleBtn">SPEED: 1x</button>
     <button class="btn" id="themeBtn">◐ NIGHT / DAY</button>
   </div>
 
   <script>
   (function() {
-    const video = document.getElementById('tigerVideo');
-    const cinemaBox = document.getElementById('cinemaBox');
-    const loopBtn = document.getElementById('loopAnimationBtn');
-    const playFullBtn = document.getElementById('playFullBtn');
-    const focusBtn = document.getElementById('focusBtn');
-    const soundBtn = document.getElementById('soundBtn');
+    const video = document.getElementById('exactTailVideo');
+    const viewport = document.getElementById('cinemaViewport');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const replayBtn = document.getElementById('replayBtn');
+    const scrubber = document.getElementById('scrubber');
+    const timeBadge = document.getElementById('timeBadge');
+    const zoomToggleBtn = document.getElementById('zoomToggleBtn');
+    const speedToggleBtn = document.getElementById('speedToggleBtn');
     const themeBtn = document.getElementById('themeBtn');
-    const timeDisplay = document.getElementById('timeDisplay');
 
-    // Tail animation is from 192.5s (3:12.5) to 201s (3:21)
-    const LOOP_START = 192.5;
-    const LOOP_END = 200.5;
-    let isLoopingAnimation = true;
+    const chip1973 = document.getElementById('chip1973');
+    const chip2023 = document.getElementById('chip2023');
+    const chip2073 = document.getElementById('chip2073');
 
-    function initVideo() {
-      video.currentTime = LOOP_START;
-      video.play().catch(e => console.log('Autoplay prevented, user click needed', e));
-    }
+    let isScrubbing = false;
 
     video.addEventListener('timeupdate', () => {
       const cur = video.currentTime;
-      const mins = Math.floor(cur / 60);
-      const secs = Math.floor(cur % 60).toString().padStart(2, '0');
-      timeDisplay.textContent = mins + ':' + secs;
+      const dur = video.duration || 8;
+      timeBadge.textContent = cur.toFixed(1) + 's';
 
-      if (isLoopingAnimation) {
-        if (cur >= LOOP_END || cur < LOOP_START - 1) {
-          video.currentTime = LOOP_START;
-          video.play();
-        }
+      if (!isScrubbing && dur > 0) {
+        scrubber.value = Math.round((cur / dur) * 1000);
+      }
+
+      // Highlight corresponding year milestone as the tail passes them in the real video:
+      // 1973 is active ~1.5s - 3.2s
+      // 2023 is active ~3.2s - 5.0s
+      // 2073 is active ~5.0s+
+      if (cur >= 1.5 && cur < 3.2) {
+        chip1973.classList.add('highlight');
+      } else {
+        chip1973.classList.remove('highlight');
+      }
+
+      if (cur >= 3.2 && cur < 5.0) {
+        chip2023.classList.add('highlight');
+      } else {
+        chip2023.classList.remove('highlight');
+      }
+
+      if (cur >= 5.0) {
+        chip2073.classList.add('highlight');
+      } else {
+        chip2073.classList.remove('highlight');
       }
     });
 
-    window.seekTo = function(seconds) {
-      isLoopingAnimation = false;
-      loopBtn.classList.remove('active');
-      playFullBtn.classList.add('active');
-      video.currentTime = seconds;
+    window.seekClip = function(sec) {
+      video.currentTime = sec;
       video.play();
+      playPauseBtn.textContent = '❚❚ PAUSE';
     };
 
-    loopBtn.addEventListener('click', () => {
-      isLoopingAnimation = true;
-      loopBtn.classList.add('active');
-      playFullBtn.classList.remove('active');
-      video.currentTime = LOOP_START;
-      video.play();
+    playPauseBtn.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        playPauseBtn.textContent = '❚❚ PAUSE';
+      } else {
+        video.pause();
+        playPauseBtn.textContent = '▶ PLAY';
+      }
     });
 
-    playFullBtn.addEventListener('click', () => {
-      isLoopingAnimation = false;
-      playFullBtn.classList.add('active');
-      loopBtn.classList.remove('active');
+    replayBtn.addEventListener('click', () => {
       video.currentTime = 0;
       video.play();
+      playPauseBtn.textContent = '❚❚ PAUSE';
     });
 
-    focusBtn.addEventListener('click', () => {
-      cinemaBox.classList.toggle('focus-mode');
-      focusBtn.textContent = cinemaBox.classList.contains('focus-mode') ? '🔍 CROP: ON' : '🔍 CROP: OFF';
+    scrubber.addEventListener('input', (e) => {
+      isScrubbing = true;
+      const ratio = parseFloat(e.target.value) / 1000;
+      const dur = video.duration || 8;
+      video.currentTime = ratio * dur;
     });
 
-    soundBtn.addEventListener('click', () => {
-      video.muted = !video.muted;
-      soundBtn.textContent = video.muted ? '🔇 SOUND: OFF' : '🔊 SOUND: ON';
-      if (!video.muted) {
-        soundBtn.classList.add('active');
-      } else {
-        soundBtn.classList.remove('active');
-      }
+    scrubber.addEventListener('change', () => {
+      isScrubbing = false;
+    });
+
+    zoomToggleBtn.addEventListener('click', () => {
+      viewport.classList.toggle('zoom-focus');
+      zoomToggleBtn.textContent = viewport.classList.contains('zoom-focus') ? '🔍 CROP: ON' : '🔍 CROP: OFF';
+      zoomToggleBtn.classList.toggle('active');
+    });
+
+    let speedIndex = 1;
+    const speeds = [0.5, 1, 1.5];
+    const speedLabels = ['SPEED: 0.5x', 'SPEED: 1x', 'SPEED: 1.5x'];
+    speedToggleBtn.addEventListener('click', () => {
+      speedIndex = (speedIndex + 1) % speeds.length;
+      video.playbackRate = speeds[speedIndex];
+      speedToggleBtn.textContent = speedLabels[speedIndex];
     });
 
     themeBtn.addEventListener('click', () => {
       document.body.classList.toggle('night-mode');
     });
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initVideo);
-    } else {
-      initVideo();
-    }
+    // Auto-start
+    video.play().catch(e => console.log('Autoplay deferred', e));
   })();
   </script>
 </body>
