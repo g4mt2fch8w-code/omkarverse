@@ -25,6 +25,13 @@
         fieldTab.classList.add('active');
         activeTab = fieldTab;
       }
+    } else if (window.location.pathname.startsWith('/telemetry')) {
+      const telemetryTab = tabs.find(t => t.getAttribute('data-nav') === 'telemetry');
+      if (telemetryTab) {
+        tabs.forEach(t => t.classList.remove('active'));
+        telemetryTab.classList.add('active');
+        activeTab = telemetryTab;
+      }
     }
     let isHovering = false;
 
@@ -72,6 +79,17 @@
         const navKey = tab.getAttribute('data-nav') || 'core';
         const isTigerPage = window.location.pathname.startsWith('/tiger');
         const isFieldPage = window.location.pathname.startsWith('/field');
+        const isTelemetryPage = window.location.pathname.startsWith('/telemetry');
+
+        if (navKey === 'telemetry') {
+          if (!isTelemetryPage) {
+            window.location.href = '/telemetry';
+            return;
+          }
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
 
         if (navKey === 'tiger') {
           if (!isTigerPage) {
@@ -93,12 +111,9 @@
           return;
         }
 
-        if (isTigerPage || isFieldPage) {
+        if (isTigerPage || isFieldPage || isTelemetryPage) {
           if (navKey === 'core') {
             window.location.href = '/';
-            return;
-          } else if (navKey === 'telemetry') {
-            window.location.href = '/#s4';
             return;
           } else if (navKey === 'forest') {
             window.location.href = '/#s3';
@@ -152,7 +167,7 @@
 
     // Auto-update active tab and route tag on page scroll
     function onScroll() {
-      if (window.location.pathname.startsWith('/tiger')) return;
+      if (window.location.pathname.startsWith('/tiger') || window.location.pathname.startsWith('/telemetry')) return;
       const scrollPos = window.scrollY + window.innerHeight * 0.35;
       let currentNav = 'core';
 
