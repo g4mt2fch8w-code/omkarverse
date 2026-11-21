@@ -37,10 +37,13 @@ html[data-look=day] .brand-den{background:linear-gradient(135deg,#D97706 0%,#B45
 .brand-group:hover .brand-den{filter:drop-shadow(0 0 10px rgba(255,184,0,0.65))}
 html[data-look=day] .brand-group:hover .brand-den{filter:drop-shadow(0 0 10px rgba(217,119,6,0.55))}
 
-/* Day mode gradients for SVG elements */
+/* Constant Tiger Gold Gradients for Pugmark across all modes (Day & Night) */
+.pugmark-toes,
+.pugmark-heel,
 html[data-look=day] .pugmark-toes,
-html[data-look=day] .pugmark-heel{fill:url(#pugmarkGoldDay)}
-html[data-look=day] .pugmark-claw{fill:url(#pugmarkClawGoldDay)}
+html[data-look=day] .pugmark-heel{fill:url(#navPugmarkGold) !important}
+.pugmark-claw,
+html[data-look=day] .pugmark-claw{fill:url(#navPugmarkClawGold) !important}
 
 /* Route Tag next to Brand (Removed per request) */
 .route-tag{display:none !important}

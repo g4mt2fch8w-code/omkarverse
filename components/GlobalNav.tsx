@@ -16,11 +16,32 @@ export function GlobalNav({ active = "field" }: { active?: string }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
+                {/* Core Constant Gold Tiger Pugmark Gradients */}
                 <linearGradient id="navPugmarkGold" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#FFB800" />
                   <stop offset="100%" stopColor="#E5A93C" />
                 </linearGradient>
                 <linearGradient id="navPugmarkClawGold" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#FFFDF0" />
+                  <stop offset="35%" stopColor="#FFB800" />
+                  <stop offset="100%" stopColor="#92400E" />
+                </linearGradient>
+
+                {/* Aliases ensuring constant gold in both Day and Night modes */}
+                <linearGradient id="pugmarkGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FFB800" />
+                  <stop offset="100%" stopColor="#E5A93C" />
+                </linearGradient>
+                <linearGradient id="pugmarkClawGold" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#FFFDF0" />
+                  <stop offset="35%" stopColor="#FFB800" />
+                  <stop offset="100%" stopColor="#92400E" />
+                </linearGradient>
+                <linearGradient id="pugmarkGoldDay" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FFB800" />
+                  <stop offset="100%" stopColor="#E5A93C" />
+                </linearGradient>
+                <linearGradient id="pugmarkClawGoldDay" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#FFFDF0" />
                   <stop offset="35%" stopColor="#FFB800" />
                   <stop offset="100%" stopColor="#92400E" />

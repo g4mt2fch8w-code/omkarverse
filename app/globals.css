@@ -1,14 +1,61 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --bg-deep: #041329;
-    --ink-pure: #F8F8F8;
-    --muted-text: #8E98B8;
-  }
+:root {
+  --bg-page: #041329;
+  --text-primary: #F8F8F8;
+  --text-secondary: #8E98B8;
+  --text-muted: #64748B;
+  --card-bg: rgba(4, 19, 41, 0.90);
+  --card-border: rgba(255, 255, 255, 0.10);
+  --card-border-subtle: rgba(255, 255, 255, 0.05);
+  --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  --standby-bg: rgba(4, 19, 41, 0.50);
+  --standby-gradient: #041329;
+  --accent-amber: #F59E0B;
+  --accent-amber-text: #FBBF24;
+  --amber-glow: rgba(245, 158, 11, 0.4);
+  --btn-border: rgba(255, 255, 255, 0.20);
+  --btn-text: #FFFFFF;
+  --drawer-bg: #041329;
+  --drawer-border: rgba(255, 255, 255, 0.10);
+  --drawer-prose: #CBD5E1;
+  --drawer-box-bg: rgba(255, 255, 255, 0.03);
+  --filter-inactive: #64748B;
+  --filter-active-border: #F59E0B;
 }
 
-@keyframes standbyPulse {
+html[data-look="day"] {
+  --bg-page: #F5F5F7;
+  --text-primary: #001445;
+  --text-secondary: #55607F;
+  --text-muted: #7A869E;
+  --card-bg: #FFFFFF;
+  --card-border: rgba(0, 20, 69, 0.12);
+  --card-border-subtle: rgba(0, 20, 69, 0.07);
+  --card-shadow: 0 10px 30px -4px rgba(0, 20, 69, 0.06), 0 1px 3px rgba(0, 20, 69, 0.04);
+  --standby-bg: #FFFFFF;
+  --standby-gradient: #F5F5F7;
+  --accent-amber: #D97706;
+  --accent-amber-text: #B45309;
+  --amber-glow: rgba(217, 119, 6, 0.25);
+  --btn-border: rgba(0, 20, 69, 0.18);
+  --btn-text: #001445;
+  --drawer-bg: #FFFFFF;
+  --drawer-border: rgba(0, 20, 69, 0.12);
+  --drawer-prose: #1E293B;
+  --drawer-box-bg: #F8FAFC;
+  --filter-inactive: #55607F;
+  --filter-active-border: #D97706;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Animations */
+@keyframes standbyPulseNight {
   0%, 100% {
     transform: scale(0.97);
     filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.35));
@@ -21,7 +68,111 @@
   }
 }
 
+@keyframes standbyPulseDay {
+  0%, 100% {
+    transform: scale(0.97);
+    filter: drop-shadow(0 0 10px rgba(217, 119, 6, 0.25));
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 25px rgba(217, 119, 6, 0.55)) drop-shadow(0 0 50px rgba(217, 119, 6, 0.2));
+    opacity: 1;
+  }
+}
+
 .standby-animated {
-  animation: standbyPulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: standbyPulseNight 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   display: inline-block;
+  color: #F59E0B;
+}
+
+html[data-look="day"] .standby-animated {
+  animation: standbyPulseDay 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  color: #D97706 !important;
+}
+
+/* Page semantic classes */
+.field-page-root {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.field-card-base {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.field-standby-base {
+  background-color: var(--standby-bg);
+  border-color: var(--card-border-subtle);
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.field-heading-text {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.field-secondary-text {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.field-muted-text {
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.field-amber-text {
+  color: var(--accent-amber-text);
+  transition: color 0.3s ease;
+}
+
+.field-border-line {
+  border-color: var(--card-border);
+  transition: border-color 0.3s ease;
+}
+
+.field-btn-outline {
+  border: 1px solid var(--btn-border);
+  color: var(--btn-text);
+  background-color: transparent;
+  transition: all 0.25s ease;
+}
+
+.field-btn-outline:hover {
+  border-color: var(--accent-amber);
+  color: var(--accent-amber);
+}
+
+html[data-look="day"] .field-btn-outline {
+  background-color: rgba(0, 20, 69, 0.03);
+}
+
+html[data-look="day"] .field-btn-outline:hover {
+  background-color: rgba(217, 119, 6, 0.07);
+}
+
+/* Slide over drawer Day/Night */
+.field-drawer-container {
+  background-color: var(--drawer-bg);
+  border-color: var(--drawer-border);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.field-drawer-prose {
+  color: var(--drawer-prose);
+  transition: color 0.3s ease;
+}
+
+.field-drawer-box {
+  background-color: var(--drawer-box-bg);
+  border-color: var(--card-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }

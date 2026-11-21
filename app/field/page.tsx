@@ -16,7 +16,7 @@ export default function FieldPage() {
   const dispatches: Dispatch[] = JSON.parse(rawData);
 
   return (
-    <div className="min-h-screen bg-[#041329] text-[#F8F8F8] antialiased selection:bg-amber-400 selection:text-black">
+    <div className="field-page-root min-h-screen antialiased selection:bg-amber-400 selection:text-black">
       <link rel="stylesheet" href="/omkar-header.css" />
 
       {/* Global Navbar */}

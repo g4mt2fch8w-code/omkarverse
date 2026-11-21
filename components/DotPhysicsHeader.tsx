@@ -23,7 +23,7 @@ export function DotPhysicsHeader() {
     canvas.height = height * dpr;
     ctx.scale(dpr, dpr);
 
-    // Particle dot interface with spring mechanics
+    // Dot interface with type flags for instant Day/Night re-coloring
     interface Dot {
       x: number;
       y: number;
@@ -33,6 +33,8 @@ export function DotPhysicsHeader() {
       vy: number;
       radius: number;
       baseRadius: number;
+      isAmber: boolean;
+      isCyan: boolean;
       color: string;
       phase: number;
     }
@@ -45,19 +47,32 @@ export function DotPhysicsHeader() {
     const offsetX = (width - cols * spacing) / 2 + spacing / 2;
     const offsetY = (height - rows * spacing) / 2 + spacing / 2;
 
+    const getDotColor = (isAmber: boolean, isCyan: boolean, isDay: boolean) => {
+      if (isDay) {
+        return isAmber
+          ? "rgba(217, 119, 6, 0.85)"
+          : isCyan
+          ? "rgba(2, 132, 199, 0.70)"
+          : "rgba(0, 20, 69, 0.22)";
+      } else {
+        return isAmber
+          ? "rgba(245, 158, 11, 0.75)"
+          : isCyan
+          ? "rgba(56, 189, 248, 0.55)"
+          : "rgba(255, 255, 255, 0.22)";
+      }
+    };
+
+    let isDay = document.documentElement.getAttribute("data-look") === "day";
+
     for (let i = 0; i < cols; i++) {
       for (let j = 0; j < rows; j++) {
         const ox = offsetX + i * spacing;
         const oy = offsetY + j * spacing;
         
-        // Random accent colors: mostly subtle white/blue with gold/amber telemetry accents
         const isAmber = (i * 7 + j * 13) % 17 === 0;
         const isCyan = (i * 11 + j * 5) % 19 === 0;
-        const color = isAmber
-          ? "rgba(245, 158, 11, 0.75)"
-          : isCyan
-          ? "rgba(56, 189, 248, 0.55)"
-          : "rgba(255, 255, 255, 0.22)";
+        const color = getDotColor(isAmber, isCyan, isDay);
 
         dots.push({
           x: ox,
@@ -68,11 +83,29 @@ export function DotPhysicsHeader() {
           vy: 0,
           radius: isAmber ? 2.2 : 1.4,
           baseRadius: isAmber ? 2.2 : 1.4,
+          isAmber,
+          isCyan,
           color,
           phase: Math.random() * Math.PI * 2,
         });
       }
     }
+
+    // Dynamic theme mutation observer on <html data-look="...">
+    const themeObserver = new MutationObserver(() => {
+      const currentDay = document.documentElement.getAttribute("data-look") === "day";
+      if (currentDay !== isDay) {
+        isDay = currentDay;
+        dots.forEach((dot) => {
+          dot.color = getDotColor(dot.isAmber, dot.isCyan, isDay);
+        });
+      }
+    });
+
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-look"],
+    });
 
     // Mouse pointer interaction state
     const mouse = {
@@ -169,6 +202,7 @@ export function DotPhysicsHeader() {
 
     return () => {
       cancelAnimationFrame(animId);
+      themeObserver.disconnect();
       container.removeEventListener("mousemove", handlePointerMove);
       container.removeEventListener("mouseleave", handlePointerLeave);
       container.removeEventListener("touchmove", handlePointerMove);
@@ -180,12 +214,12 @@ export function DotPhysicsHeader() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full overflow-hidden rounded-xl border border-white/10 bg-[#041329]/90 py-12 px-6 sm:px-10 mb-10 select-none group"
+      className="field-card-base relative w-full overflow-hidden rounded-xl border py-12 px-6 sm:px-10 mb-10 select-none group"
     >
       {/* Interactive Dot Physics Canvas Background */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-60 transition-opacity duration-300 group-hover:opacity-100"
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-70 transition-opacity duration-300 group-hover:opacity-100"
       />
 
       {/* Subtle radial ambient glow behind text */}
@@ -194,7 +228,7 @@ export function DotPhysicsHeader() {
       {/* Foreground Content */}
       <div className="relative z-10 flex flex-col items-start">
         {/* Big Bold Commanding Headline */}
-        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight text-white uppercase leading-[0.9] drop-shadow-sm font-sans">
+        <h1 className="field-heading-text text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight uppercase leading-[0.9] drop-shadow-sm font-sans">
           FIELD DISPATCHES
         </h1>
       </div>
