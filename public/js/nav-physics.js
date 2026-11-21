@@ -391,7 +391,7 @@
       const targetAmp = isPlaying ? (isHovered ? 1.15 : 0.9) : (isHovered ? 0.28 : 0.0);
       currentAmp += (targetAmp - currentAmp) * Math.min(1, dt * 10);
 
-      time += dt * (isPlaying ? 5.5 : 2.0);
+      time += dt * (isPlaying ? 2.0 : 0.9);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.save();
@@ -423,7 +423,7 @@
         const t = f / l;
         const x = (t - 0.5) * waveWidth + cx;
         const envelope = Math.sin(Math.PI * t);
-        const y = cy + Math.sin(time * 8 + t * 7) * activeAmp * envelope;
+        const y = cy + Math.sin(time * 3.2 + t * 5.0) * activeAmp * envelope;
 
         if (f === 0) {
           ctx.moveTo(x, y);
