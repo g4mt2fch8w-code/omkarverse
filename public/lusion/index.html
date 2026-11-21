@@ -291,42 +291,46 @@ html[data-look="day"] #home-featured-title {
 })();
 </script>
 
-<!-- TIGER TAIL C-CURVE ANIMATION OVERLAY -->
+<!-- TIGER TAIL DYNAMIC CURVE ANIMATION OVERLAY -->
 <style>
 #tiger-tail-stage {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: 9998;
   opacity: 0;
   overflow: hidden;
-  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s ease;
 }
 
-#tiger-tail-wrapper {
+#tiger-tail-canvas {
   position: absolute;
-  left: -20px;
-  bottom: 0;
-  width: min(85vw, 950px);
-  height: min(85vh, 800px);
-  transform-origin: left bottom;
-  transform: translate3d(-100%, 0, 0);
-  will-change: transform;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 #tiger-stripes-callout {
   position: absolute;
-  left: max(40px, 6vw);
-  top: 26%;
-  max-width: min(90vw, 560px);
+  left: max(40px, 8vw);
+  top: clamp(20%, 28vh, 35%);
+  max-width: min(90vw, 580px);
   transform: translate3d(-30px, 0, 0);
   opacity: 0;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
   pointer-events: none;
+}
+#tiger-stripes-callout.active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .stripes-badge {
   display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: clamp(0.7rem, 0.85vw, 0.85rem);
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -342,90 +346,300 @@ html[data-look="day"] #home-featured-title {
 .stripes-headline {
   font-family: 'Aeonik', system-ui, -apple-system, sans-serif;
   font-size: clamp(2.4rem, 4.5vw, 4.8rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   background: linear-gradient(135deg, #FFFFFF 0%, #FFF5D0 30%, #FFB800 65%, #E5A93C 90%, #D97706 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 24px rgba(255, 184, 0, 0.45)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(0 4px 26px rgba(255, 184, 0, 0.55)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95));
   margin: 0 0 12px 0;
+}
+html[data-look="day"] .stripes-headline {
+  background: linear-gradient(135deg, #92400E 0%, #B45309 30%, #D97706 60%, #FFB800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 20px rgba(217, 119, 6, 0.35));
 }
 
 .stripes-meta {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: clamp(0.68rem, 0.8vw, 0.82rem);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.8);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
+html[data-look="day"] .stripes-meta {
+  color: rgba(0, 20, 69, 0.7);
+  text-shadow: none;
+}
 </style>
 
 <div id="tiger-tail-stage" aria-hidden="true">
-  <div id="tiger-tail-wrapper">
-    <svg id="tiger-tail-svg" viewBox="0 0 1000 850" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="tailAura" x="-20%" y="-20%" width="150%" height="150%">
-          <feGaussianBlur stdDeviation="16" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <linearGradient id="tigerGoldGrad" x1="0%" y1="100%" x2="50%" y2="0%">
-          <stop offset="0%" stop-color="#8A3408" />
-          <stop offset="25%" stop-color="#D97706" />
-          <stop offset="60%" stop-color="#FFB800" />
-          <stop offset="85%" stop-color="#FBBF24" />
-          <stop offset="100%" stop-color="#0F0F14" />
-        </linearGradient>
-      </defs>
-
-      <!-- Aura Glow Underlay -->
-      <path id="tailGlow" d="M -50,680 C 180,660 360,530 440,360 C 500,230 450,110 350,115 C 275,120 235,195 275,250"
-            stroke="#FFB800" stroke-width="68" stroke-linecap="round" opacity="0.4" filter="url(#tailAura)" />
-
-      <!-- Base Tail Fur (Golden Amber) -->
-      <path id="tailMain" d="M -50,680 C 180,660 360,530 440,360 C 500,230 450,110 350,115 C 275,120 235,195 275,250"
-            stroke="url(#tigerGoldGrad)" stroke-width="48" stroke-linecap="round" />
-
-      <!-- Underbelly Soft White Accent -->
-      <path id="tailBelly" d="M -50,695 C 175,675 350,545 425,375 C 480,250 435,135 345,135"
-            stroke="#FFFDF5" stroke-width="12" stroke-linecap="round" opacity="0.65" />
-
-      <!-- Bengal Tiger Dark Stripes along the tail spine -->
-      <path d="M 15,640 Q 30,670 45,695" stroke="#0F0E0C" stroke-width="18" stroke-linecap="round" />
-      <path d="M 85,615 Q 105,645 125,670" stroke="#0F0E0C" stroke-width="18" stroke-linecap="round" />
-      <path d="M 160,580 Q 185,610 205,635" stroke="#0F0E0C" stroke-width="18" stroke-linecap="round" />
-      <path d="M 235,530 Q 265,560 285,585" stroke="#0F0E0C" stroke-width="18" stroke-linecap="round" />
-      <path d="M 310,465 Q 345,495 365,515" stroke="#0F0E0C" stroke-width="18" stroke-linecap="round" />
-      <path d="M 380,390 Q 415,415 435,430" stroke="#0F0E0C" stroke-width="18" stroke-linecap="round" />
-      <path d="M 430,305 Q 460,325 470,345" stroke="#0F0E0C" stroke-width="17" stroke-linecap="round" />
-      <path d="M 445,215 Q 465,230 460,255" stroke="#0F0E0C" stroke-width="17" stroke-linecap="round" />
-      <path d="M 405,140 Q 425,165 410,185" stroke="#0F0E0C" stroke-width="16" stroke-linecap="round" />
-      <path d="M 345,115 Q 355,140 335,160" stroke="#0F0E0C" stroke-width="16" stroke-linecap="round" />
-      <path d="M 285,135 Q 290,165 270,185" stroke="#0F0E0C" stroke-width="15" stroke-linecap="round" />
-
-      <!-- Distinctive Black Tail Tip of Bengal Tiger -->
-      <path d="M 255,185 C 240,215 250,245 275,250" stroke="#08080A" stroke-width="40" stroke-linecap="round" />
-      <circle cx="275" cy="250" r="10" fill="#FFFDF5" opacity="0.9" />
-    </svg>
-  </div>
+  <canvas id="tiger-tail-canvas"></canvas>
 
   <div id="tiger-stripes-callout">
-    <div class="stripes-badge mono">EASTERN VIDARBHA TIGER LANDSCAPE</div>
+    <div class="stripes-badge">CENTRAL INDIA & EASTERN VIDARBHA</div>
     <h2 class="stripes-headline">The Stripes shall Remain</h2>
-    <div class="stripes-meta mono">APEX SANCTUARY · CENTRAL INDIA MATRIX</div>
+    <div class="stripes-meta">APEX SOVEREIGNTY · RESILIENT CALL · T-106</div>
   </div>
 </div>
 
 <script>
 (function() {
-  function initTigerTail() {
+  function initDynamicTigerTail() {
     var stage = document.getElementById('tiger-tail-stage');
-    var wrapper = document.getElementById('tiger-tail-wrapper');
+    var canvas = document.getElementById('tiger-tail-canvas');
     var callout = document.getElementById('tiger-stripes-callout');
-    if (!stage || !wrapper) return;
+    if (!stage || !canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var width = 0;
+    var height = 0;
+    var dpr = 1;
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function getSplineControlPoints() {
+      var cx = width * 0.5;
+      var cy = height * 0.5;
+      var scale = Math.min(width / 1100, height / 800, 1.2);
+
+      return [
+        { x: cx - 420 * scale, y: cy + 320 * scale },
+        { x: cx - 440 * scale, y: cy + 120 * scale },
+        { x: cx - 340 * scale, y: cy - 140 * scale },
+        { x: cx - 140 * scale, y: cy - 080 * scale },
+        { x: cx + 060 * scale, y: cy + 160 * scale },
+        { x: cx + 280 * scale, y: cy + 120 * scale },
+        { x: cx + 420 * scale, y: cy - 040 * scale },
+        { x: cx + 380 * scale, y: cy - 200 * scale },
+        { x: cx + 220 * scale, y: cy - 180 * scale },
+        { x: cx + 180 * scale, y: cy - 070 * scale },
+        { x: cx + 260 * scale, y: cy + 010 * scale }
+      ];
+    }
+
+    function getSplinePoint(points, t) {
+      var pCount = points.length;
+      var clampedT = Math.max(0, Math.min(1, t));
+      var totalSegs = pCount - 1;
+      var segFloat = clampedT * totalSegs;
+      var segIndex = Math.min(Math.floor(segFloat), totalSegs - 1);
+      var localT = segFloat - segIndex;
+
+      var p0 = points[Math.max(0, segIndex - 1)];
+      var p1 = points[segIndex];
+      var p2 = points[Math.min(pCount - 1, segIndex + 1)];
+      var p3 = points[Math.min(pCount - 1, segIndex + 2)];
+
+      var t2 = localT * localT;
+      var t3 = t2 * localT;
+
+      var x = 0.5 * (
+        (2 * p1.x) +
+        (-p0.x + p2.x) * localT +
+        (2 * p0.x - 5 * p1.x + 4 * p2.x - p3.x) * t2 +
+        (-p0.x + 3 * p1.x - 3 * p2.x + p3.x) * t3
+      );
+
+      var y = 0.5 * (
+        (2 * p1.y) +
+        (-p0.y + p2.y) * localT +
+        (2 * p0.y - 5 * p1.y + 4 * p2.y - p3.y) * t2 +
+        (-p0.y + 3 * p1.y - 3 * p2.y + p3.y) * t3
+      );
+
+      return { x: x, y: y };
+    }
+
+    var NUM_SAMPLES = 420;
+    function computeSampledPath(points) {
+      var samples = [];
+      var totalLength = 0;
+      var prevPt = null;
+
+      for (var i = 0; i <= NUM_SAMPLES; i++) {
+        var t = i / NUM_SAMPLES;
+        var pt = getSplinePoint(points, t);
+        if (prevPt) {
+          var dist = Math.hypot(pt.x - prevPt.x, pt.y - prevPt.y);
+          totalLength += dist;
+        }
+        samples.push({
+          x: pt.x,
+          y: pt.y,
+          t: t,
+          dist: totalLength
+        });
+        prevPt = pt;
+      }
+
+      for (var j = 0; j <= NUM_SAMPLES; j++) {
+        var next = samples[Math.min(NUM_SAMPLES, j + 1)];
+        var prev = samples[Math.max(0, j - 1)];
+        var dx = next.x - prev.x;
+        var dy = next.y - prev.y;
+        var len = Math.hypot(dx, dy) || 1;
+        dx /= len;
+        dy /= len;
+
+        samples[j].tangent = { x: dx, y: dy };
+        samples[j].normal = { x: -dy, y: dx };
+      }
+
+      return { samples: samples, totalLength: totalLength };
+    }
+
+    function getRadius(t) {
+      return 30 - 12 * Math.pow(t, 1.4);
+    }
+
+    function renderTail(curProgress) {
+      var points = getSplineControlPoints();
+      var pathData = computeSampledPath(points);
+      var samples = pathData.samples;
+      var totalLength = pathData.totalLength;
+      var curDist = curProgress * totalLength;
+
+      var activeIndex = 0;
+      for (var i = 0; i < samples.length; i++) {
+        if (samples[i].dist <= curDist) {
+          activeIndex = i;
+        } else {
+          break;
+        }
+      }
+      if (activeIndex < 2) {
+        ctx.clearRect(0, 0, width, height);
+        return;
+      }
+
+      ctx.clearRect(0, 0, width, height);
+
+      // 1. AURA GLOW UNDERLAY
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(samples[0].x, samples[0].y);
+      for (var k = 1; k <= activeIndex; k++) {
+        ctx.lineTo(samples[k].x, samples[k].y);
+      }
+      ctx.lineWidth = getRadius(0) * 2.8;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.strokeStyle = 'rgba(255, 184, 0, 0.25)';
+      ctx.shadowColor = '#FFB800';
+      ctx.shadowBlur = 45;
+      ctx.stroke();
+      ctx.restore();
+
+      // 2. MAIN FUR RIBBON
+      ctx.save();
+      for (var m = 0; m < activeIndex; m++) {
+        var s0 = samples[m];
+        var s1 = samples[m + 1];
+        var r0 = getRadius(s0.t);
+        var r1 = getRadius(s1.t);
+
+        var left0 = { x: s0.x + s0.normal.x * r0, y: s0.y + s0.normal.y * r0 };
+        var right0 = { x: s0.x - s0.normal.x * r0, y: s0.y - s0.normal.y * r0 };
+        var left1 = { x: s1.x + s1.normal.x * r1, y: s1.y + s1.normal.y * r1 };
+        var right1 = { x: s1.x - s1.normal.x * r1, y: s1.y - s1.normal.y * r1 };
+
+        var grad = ctx.createLinearGradient(left0.x, left0.y, right0.x, right0.y);
+        grad.addColorStop(0.0, '#9A3412');
+        grad.addColorStop(0.18, '#EA580C');
+        grad.addColorStop(0.50, '#FFB800');
+        grad.addColorStop(0.85, '#FFD54F');
+        grad.addColorStop(1.0, '#FFFBEB');
+
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.moveTo(left0.x, left0.y);
+        ctx.lineTo(left1.x, left1.y);
+        ctx.lineTo(right1.x, right1.y);
+        ctx.lineTo(right0.x, right0.y);
+        ctx.closePath();
+        ctx.fill();
+      }
+      ctx.restore();
+
+      // 3. AUTHENTIC TIGER STRIPES
+      var stripeSpacing = 36;
+      ctx.save();
+      for (var d = 30; d < curDist - 25; d += stripeSpacing) {
+        var sIdx = 0;
+        for (var n = 0; n < samples.length - 1; n++) {
+          if (samples[n].dist <= d && samples[n + 1].dist >= d) {
+            sIdx = n;
+            break;
+          }
+        }
+        var s = samples[sIdx];
+        if (!s) continue;
+
+        var r = getRadius(s.t);
+        var stripeWidth = 14 + 5 * Math.sin(d * 0.1);
+
+        var pLeft = { x: s.x + s.normal.x * (r + 1), y: s.y + s.normal.y * (r + 1) };
+        var pMid = { x: s.x + s.tangent.x * 6, y: s.y + s.tangent.y * 6 };
+        var pRight = { x: s.x - s.normal.x * (r + 1), y: s.y - s.normal.y * (r + 1) };
+
+        ctx.strokeStyle = '#0C0A09';
+        ctx.lineWidth = stripeWidth;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(pLeft.x, pLeft.y);
+        ctx.quadraticCurveTo(pMid.x, pMid.y, pRight.x, pRight.y);
+        ctx.stroke();
+
+        ctx.fillStyle = 'rgba(12, 10, 9, 0.4)';
+        ctx.beginPath();
+        ctx.arc(pLeft.x, pLeft.y, stripeWidth * 0.4, 0, Math.PI * 2);
+        ctx.arc(pRight.x, pRight.y, stripeWidth * 0.4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+
+      // 4. LEADING BLACK TIP
+      var head = samples[activeIndex];
+      var headRadius = getRadius(head.t);
+
+      ctx.save();
+      ctx.translate(head.x, head.y);
+      var angle = Math.atan2(head.tangent.y, head.tangent.x);
+      ctx.rotate(angle);
+
+      ctx.fillStyle = '#08080A';
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+      ctx.shadowBlur = 10;
+      ctx.beginPath();
+      ctx.arc(0, 0, headRadius, -Math.PI / 2, Math.PI / 2);
+      ctx.lineTo(headRadius * 0.6, 0);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = '#FFFDF5';
+      ctx.shadowColor = '#FFB800';
+      ctx.shadowBlur = 12;
+      ctx.beginPath();
+      ctx.arc(headRadius * 0.75, 0, headRadius * 0.28, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.restore();
+    }
 
     var currentProgress = 0;
     var targetProgress = 0;
@@ -464,25 +678,19 @@ html[data-look="day"] #home-featured-title {
 
       if (isSceneActive && currentProgress > 0.02) {
         stage.style.opacity = '1';
-        var translateX = (-75 * (1 - Math.min(1, currentProgress * 1.2)));
-        var rotate = (-12 + currentProgress * 16);
-        var scale = 0.85 + currentProgress * 0.2;
-        wrapper.style.transform = 'translate3d(' + translateX + '%, 0, 0) rotate(' + rotate + 'deg) scale(' + scale + ')';
+        renderTail(currentProgress);
 
         if (callout) {
-          if (currentProgress > 0.12) {
-            callout.style.opacity = '1';
-            callout.style.transform = 'translate3d(0, 0, 0)';
+          if (currentProgress > 0.35) {
+            callout.classList.add('active');
           } else {
-            callout.style.opacity = '0';
-            callout.style.transform = 'translate3d(-30px, 0, 0)';
+            callout.classList.remove('active');
           }
         }
       } else {
         stage.style.opacity = '0';
         if (callout) {
-          callout.style.opacity = '0';
-          callout.style.transform = 'translate3d(-30px, 0, 0)';
+          callout.classList.remove('active');
         }
       }
 
@@ -493,9 +701,9 @@ html[data-look="day"] #home-featured-title {
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTigerTail);
+    document.addEventListener('DOMContentLoaded', initDynamicTigerTail);
   } else {
-    initTigerTail();
+    initDynamicTigerTail();
   }
 })();
 </script></body></html>
