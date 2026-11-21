@@ -34,8 +34,23 @@
   overflow: hidden !important;
 }
 
-/* 3. Eliminate 3D Jacks Visual Container */
-#home-hero-visual-container {
+/* 3. Eliminate Blank Hero Spacer Completely */
+#home-hero {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+#home-hero-visual-container,
+#home-hero-scroll-container,
+#home-hero-scroll {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
@@ -45,6 +60,10 @@
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
+}
+
+#home-reel {
+  padding-top: calc(var(--base-padding-y, 60px) + 80px) !important;
 }
 
 /* 4. Sovereign Omkar Den Unified Navigation Header */
