@@ -5,9 +5,9 @@ const nextConfig = {
   async rewrites() {
     return [
       { source: '/core', destination: '/' },
-      { source: '/telemetry', destination: '/' },
       { source: '/forest', destination: '/' },
       { source: '/field', destination: '/' },
+      { source: '/assets/:path*', destination: 'https://lusion.co/assets/:path*' },
     ];
   },
 };
